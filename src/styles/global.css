@@ -1,0 +1,11 @@
+@theme {
+  --color-brand: #cf102d;
+  --color-brand-strong: #a80e23;
+  --color-brand-medium: #e63946;
+  --color-brand-light: #f8c9cc;
+  --color-primary: #16254c;
+  --color-accent: #49c0b8;
+  --font-family-heading: 'Bebas Neue', system-ui, -apple-system, sans-serif;
+}
+
+@import "tailwindcss";

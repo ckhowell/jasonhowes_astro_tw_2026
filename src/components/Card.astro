@@ -1,0 +1,19 @@
+---
+// Props: image (string), heading (string), subheading (string), copy (string), buttonText (string), buttonLink (string)
+const { image, heading, subheading, copy, buttonText, buttonLink } = Astro.props;
+---
+<div class="bg-white flex flex-col md:flex-row overflow-hidden">
+  <div class="md:w-auto w-full flex justify-center md:justify-start">
+    <img src={image} alt={heading} class="object-cover w-[185px] h-[270px] rounded" />
+  </div>
+  <div class="md:flex-1 w-full flex flex-col justify-center p-6 text-center md:text-left">
+    <h5 class=" font-bold mb-2">{heading}</h5>
+    {subheading && <h3 class="text-lg font-semibold mb-2 text-brand">{subheading}</h3>}
+    <p class="mb-4 text-gray-700">{copy}</p>
+    {buttonText && buttonLink && (
+      <a href={buttonLink} class="inline-block bg-brand text-white font-semibold px-6 py-2 rounded shadow hover:bg-brand-strong transition">
+        {buttonText}
+      </a>
+    )}
+  </div>
+</div>

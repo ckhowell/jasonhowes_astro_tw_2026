@@ -1,0 +1,60 @@
+---
+
+---
+
+<style>
+  .elementor-shape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
+  }
+  .elementor-shape-fill {
+    fill: #fff;
+  }
+</style>
+
+<section
+  class="relative flex items-center h-[70vh] lg:h-[80vh]"
+>
+  <div
+    class="absolute inset-0 bg-cover bg-center bg-fixed"
+    style="background-image: url('/Rectangle.jpg');"
+  ></div>
+  <div class="elementor-shape elementor-shape-bottom" aria-hidden="true" data-negative="false">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+      <path class="elementor-shape-fill" d="M0,94V100h1000V0L0,94z"></path>
+    </svg>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 min-h-[60vh]">
+    <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+      <!-- LEFT: Speaker Image -->
+      <div class="hidden lg:block relative min-h-[80vh]">
+      </div>
+      <!-- RIGHT: Text Content -->
+      <div class="text-white text-center lg:text-right flex flex-col justify-center h-full">
+        <h1 class="order-1 lg:order-3 text-5xl md:text-6xl xl:text-7xl font-extrabold leading-tight font-heading">
+          WIN MORE<br />
+          NEW SALES
+        </h1>
+        <h4 class="order-2 lg:order-1 mt-6 text-sm tracking-widest uppercase font-semibold opacity-90">
+          Simple. Blunt. Practical.<br />
+          Powerful. Actionable. Truth.
+        </h4>
+        <h3 class="order-3 lg:order-2 mt-6 text-lg md:text-xl font-medium opacity-90">
+          Helping Sellers and Sales Leaders…
+        </h3>
+      </div>
+    </div>
+    <!-- Speaker Image positioned absolutely to section -->
+    <img
+      id="parallax-speaker"
+      src="/Jason-Howes_7324-web2.png"
+      alt="Speaker"
+      class="hidden lg:block absolute left-1/2 lg:left-0 lg:translate-x-0 -translate-x-1/2 max-h-[84vh] w-auto will-change-transform"
+      style="transform: scale(0.8); bottom: -10%;"
+    />
+  </div>
+</section>
+
