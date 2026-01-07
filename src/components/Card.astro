@@ -1,19 +1,24 @@
 ---
-// Props: image (string), heading (string), subheading (string), copy (string), buttonText (string), buttonLink (string)
-const { image, heading, subheading, copy, buttonText, buttonLink } = Astro.props;
+// Props: image (string), heading (string), subheading (string), copy (string), buttonText (string), buttonLink (string), buttonVariant ('primary' | 'accent')
+const { image, heading, subheading, copy, buttonText, buttonLink, buttonVariant = 'primary' } = Astro.props;
 ---
-<div class="bg-white flex flex-col md:flex-row overflow-hidden">
+<div class="flex flex-col md:flex-row overflow-hidden max-w-md">
   <div class="md:w-auto w-full flex justify-center md:justify-start">
-    <img src={image} alt={heading} class="object-cover w-[185px] h-[270px] rounded" />
+    <img src={image} alt={heading} class="object-cover w-[205px] h-[290px] rounded" />
   </div>
   <div class="md:flex-1 w-full flex flex-col justify-center p-6 text-center md:text-left">
-    <h5 class=" font-bold mb-2">{heading}</h5>
-    {subheading && <h3 class="text-lg font-semibold mb-2 text-brand">{subheading}</h3>}
-    <p class="mb-4 text-gray-700">{copy}</p>
+    <h6 class="!font-light mb-2">{heading}</h6>
+    {subheading && <h4 class="text-lg font-semibold mb-2 text-brand">{subheading}</h4>}
+    <p class="mb-4 text-gray-700 text-sm">{copy}</p>
     {buttonText && buttonLink && (
-      <a href={buttonLink} class="inline-block bg-brand text-white font-semibold px-6 py-2 rounded shadow hover:bg-brand-strong transition">
-        {buttonText}
-      </a>
+      <div>
+        <a href={buttonLink} class={`inline-block w-auto font-semibold px-4 py-2 rounded shadow transition ease-in-out hover:scale-105 ${buttonVariant === 'accent' ? 'bg-brand text-accent hover:bg-brand/80' : 'bg-accent text-brand hover:bg-accent/80'}`}>
+          {buttonText}
+          <svg class="w-4 h-4 inline ml-1 align-middle -translate-y-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </a>
+      </div>
     )}
   </div>
 </div>

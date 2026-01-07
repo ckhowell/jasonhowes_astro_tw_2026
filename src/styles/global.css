@@ -1,11 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Poppins:wght@700&display=swap');
+
 @theme {
-  --color-brand: #cf102d;
-  --color-brand-strong: #a80e23;
-  --color-brand-medium: #e63946;
-  --color-brand-light: #f8c9cc;
-  --color-primary: #16254c;
-  --color-accent: #49c0b8;
-  --font-family-heading: 'Bebas Neue', system-ui, -apple-system, sans-serif;
+  --color-brand-50: #f8fafc;
+  --color-brand-100: #f1f5f9;
+  --color-brand-200: #e2e8f0;
+  --color-brand-300: #cbd5e1;
+  --color-brand-400: #94a3b8;
+  --color-brand-500: #64748b;
+  --color-brand-600: #475569;
+  --color-brand-700: #334155;
+  --color-brand-800: #1e293b;
+  --color-brand-900: #16254c;
+  --color-brand: var(--color-brand-900);
+  --color-brand-light: var(--color-brand-300);
+  --color-accent-50: #f0f9ff;
+  --color-accent-100: #e0f2fe;
+  --color-accent-200: #bae6fd;
+  --color-accent-300: #7dd3fc;
+  --color-accent-400: #38bdf8;
+  --color-accent-500: #71dcfe;
+  --color-accent-600: #0284c7;
+  --color-accent-700: #0369a1;
+  --color-accent-800: #075985;
+  --color-accent-900: #0c4a6e;
+  --color-accent: var(--color-accent-500);
+  --color-muted: #6E8D9D;
+  --font-family-heading: 'Raleway', sans-serif;
+  --font-family-sans: 'Inter', sans-serif;
 }
 
 @import "tailwindcss";
+
+.font-heading {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+}
+
+h4, h5, h6 {
+    letter-spacing: 3px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+h1, h2, h3, h4 {
+    /* color: #3F4C55; */
+}
+
+h5, h6 {
+    color: #6E8D9D;
+}
+
+h1 {
+    font-size: calc(40px + 50 * ((100vw - 320px) / 830));
+    line-height: 0.9;
+}
+
+.sm h1 {
+    font-size: calc(30px + 32 * ((100vw - 320px) / 830));
+    line-height: 0.9;
+}
+
+h2 {
+    font-size: calc(28px + 14 * ((100vw - 320px) / 830));
+    line-height: 1.05;
+}
+
+h3 {
+    font-size: calc(21px + 7 * ((100vw - 320px) / 830));
+    line-height: 1.1;
+}
+
+h4, h5 {
+    font-size: calc(18px + 2 * ((100vw - 320px) / 830));
+    line-height: 1.2;
+}
+
+h6 {
+    line-height: 1.2;
+}
+
+/* p, li {
+    font-size: calc(14px + 3 * ((100vw - 320px) / 830));
+    line-height: 1.6;
+} */
+
+/* .text-sm p {
+    font-size: calc(10px + 2 * ((100vw - 320px) / 830));
+} */
+
+.text-lg p {
+    font-size: calc(18px + 3 * ((100vw - 320px) / 830));
+}
+
+.pmb p:last-child {
+    margin-bottom: 0;
+}
+
+@media only screen and (min-width: 1150px) {
+    h1 {
+        font-size: calc(40px + 50 * ((1150px - 320px) / 830));
+    }
+
+    .sm h1 {
+        font-size: calc(30px + 32 * ((1150px - 320px) / 830));
+    }
+
+    h2 {
+        font-size: calc(28px + 14 * ((1150px - 320px) / 830));
+    }
+
+    h3 {
+        font-size: calc(21px + 7 * ((1150px - 320px) / 830));
+    }
+
+    h4, h5 {
+        font-size: calc(18px + 2 * ((1150px - 320px) / 830));
+    }
+
+    /* p, li {
+        font-size: calc(14px + 3 * ((1150px - 320px) / 830));
+    } */
+
+    /* .text-sm p {
+        font-size: calc(10px + 2 * ((1150px - 320px) / 830));
+    } */
+
+    .text-lg p {
+        font-size: calc(18px + 3 * ((1150px - 320px) / 830));
+    }
+}

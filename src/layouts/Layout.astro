@@ -6,17 +6,40 @@ import "../styles/global.css";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+        <title>
+      Crystal Ball Recruiting | Jason Howes - The Sales Hiring Playbook
+    </title>
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+<meta
+      name="description"
+      content="The sales hiring playbook for global leaders. Learn how to attract, recruit, and retain the top 20% of sales professionals with a proven methodology."
+    />
+    <meta name="author" content="Jason Howes" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta property="og:image" content="assets/img/book/front.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Crystal Ball Recruiting | Jason Howes - The Sales Hiring Playbook" />
+    <meta property="og:description" content="The sales hiring playbook for global leaders. Learn how to attract, recruit, and retain the top 20% of sales professionals with a proven methodology." />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
   </head>
-  <body>
+  <body class="font-sans text-[#303E4A]">
     <slot />
   </body>
 </html>
