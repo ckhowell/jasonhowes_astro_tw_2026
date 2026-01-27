@@ -1,0 +1,41 @@
+---
+// About page
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout>
+  <Nav variant="light" />
+  <div class="bg-white py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <PageHeader
+        title="About Jason Howes"
+        description="Sales leadership expert and consultant helping organizations build high-performing sales teams through strategic recruitment and development."
+      />
+
+      <div class="mx-auto mt-16 max-w-2xl lg:mx-0 lg:max-w-none">
+        <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-16">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Experience & Expertise</h2>
+            <p class="mt-4 text-gray-600">
+              With over 20 years in sales leadership and recruitment, Jason has helped numerous organizations
+              transform their sales capabilities. His expertise spans sales strategy, talent acquisition,
+              team development, and performance optimization.
+            </p>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Mission</h2>
+            <p class="mt-4 text-gray-600">
+              To empower sales leaders with the knowledge, strategies, and talent needed to drive
+              sustainable growth and build championship-caliber sales organizations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</Layout>

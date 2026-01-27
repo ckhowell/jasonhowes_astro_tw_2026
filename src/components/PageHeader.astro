@@ -1,0 +1,28 @@
+---
+// PageHeader component for consistent page titles across the site
+// Usage:
+// <PageHeader title="Page Title" description="Optional description" centered={true} />
+//
+// Props:
+// - title: string (required) - The main heading text
+// - description?: string (optional) - Subtitle or description text
+// - centered?: boolean (optional, default: true) - Whether to center the header
+export interface Props {
+  title: string;
+  description?: string;
+  centered?: boolean;
+}
+
+const { title, description, centered = true } = Astro.props;
+---
+
+<div class={`mx-auto my-32 ${centered ? 'max-w-2xl lg:mx-0' : 'max-w-4xl'}`}>
+  <h1 class="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+    {title}
+  </h1>
+  {description && (
+    <p class="mt-2 text-lg/8 text-brand-600">
+      {description}
+    </p>
+  )}
+</div>

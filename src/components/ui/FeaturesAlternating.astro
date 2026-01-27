@@ -1,0 +1,121 @@
+---
+// FeaturesAlternating - Oatmeal-style alternating 2-column feature blocks
+// Each feature alternates between text-left/image-right and image-left/text-right
+
+interface Feature {
+  eyebrow?: string;
+  headline: string;
+  description: string;
+  image: {
+    src: string;
+    alt: string;
+  };
+  link?: {
+    text: string;
+    href: string;
+  };
+  bullets?: string[];
+}
+
+interface Props {
+  sectionEyebrow?: string;
+  sectionHeadline?: string;
+  sectionDescription?: string;
+  features: Feature[];
+}
+
+const {
+  sectionEyebrow,
+  sectionHeadline,
+  sectionDescription,
+  features
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    {(sectionEyebrow || sectionHeadline || sectionDescription) && (
+      <div class="max-w-3xl mb-16 md:mb-24">
+        {sectionEyebrow && (
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+            {sectionEyebrow}
+          </p>
+        )}
+        {sectionHeadline && (
+          <h2 class="text-brand-900 dark:text-white mb-4">
+            {sectionHeadline}
+          </h2>
+        )}
+        {sectionDescription && (
+          <p class="text-lg text-brand-600 dark:text-brand-400">
+            {sectionDescription}
+          </p>
+        )}
+      </div>
+    )}
+
+    <!-- Features -->
+    <div class="space-y-24 md:space-y-32">
+      {features.map((feature, index) => {
+        const isEven = index % 2 === 0;
+        return (
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <!-- Text Content -->
+            <div class={isEven ? 'lg:order-1' : 'lg:order-2'}>
+              {feature.eyebrow && (
+                <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+                  {feature.eyebrow}
+                </p>
+              )}
+              <h3 class="text-2xl md:text-3xl text-brand-900 dark:text-white mb-4">
+                {feature.headline}
+              </h3>
+              <p class="text-brand-600 dark:text-brand-400 mb-6">
+                {feature.description}
+              </p>
+
+              {feature.bullets && feature.bullets.length > 0 && (
+                <ul class="space-y-3 mb-6">
+                  {feature.bullets.map((bullet) => (
+                    <li class="flex items-start gap-3">
+                      <svg class="w-5 h-5 mt-0.5 text-accent-500 dark:text-accent-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span class="text-brand-600 dark:text-brand-400">{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {feature.link && (
+                <a
+                  href={feature.link.href}
+                  class="inline-flex items-center gap-2 text-sm font-medium text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 transition-colors group"
+                >
+                  {feature.link.text}
+                  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              )}
+            </div>
+
+            <!-- Image -->
+            <div class={isEven ? 'lg:order-2' : 'lg:order-1'}>
+              <div class="relative">
+                <img
+                  src={feature.image.src}
+                  alt={feature.image.alt}
+                  class="w-full h-auto rounded-2xl shadow-lg"
+                />
+                <!-- Subtle decorative background -->
+                <div class="absolute -inset-4 bg-gradient-to-br from-brand-100 to-brand-200 dark:from-brand-800 dark:to-brand-900 rounded-3xl -z-10 opacity-50"></div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

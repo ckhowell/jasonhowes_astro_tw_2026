@@ -16,6 +16,7 @@
     "@tailwindplus/elements": "^1.0.22",
     "aos": "^2.3.4",
     "flyonui": "^2.4.1",
+    "swiper": "^12.0.3",
     "tailwindcss": "^4.1.18"
   }
 }

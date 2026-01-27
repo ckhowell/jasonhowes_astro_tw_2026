@@ -1,0 +1,115 @@
+---
+// FeaturesThreeColumn - Oatmeal-style 3-card feature grid
+// Clean cards with optional icons, headlines, descriptions, and links
+
+interface Feature {
+  icon?: string; // Boxicons class (e.g., 'bx-rocket')
+  headline: string;
+  description: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  link?: {
+    text: string;
+    href: string;
+  };
+}
+
+interface Props {
+  sectionEyebrow?: string;
+  sectionHeadline?: string;
+  sectionDescription?: string;
+  features: Feature[];
+  variant?: 'default' | 'bordered' | 'cards';
+}
+
+const {
+  sectionEyebrow,
+  sectionHeadline,
+  sectionDescription,
+  features,
+  variant = 'default'
+} = Astro.props;
+
+const cardClasses = {
+  default: '',
+  bordered: 'border border-brand-200 dark:border-brand-700 rounded-2xl p-8',
+  cards: 'bg-brand-50 dark:bg-brand-900 rounded-2xl p-8'
+};
+---
+
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    {(sectionEyebrow || sectionHeadline || sectionDescription) && (
+      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+        {sectionEyebrow && (
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+            {sectionEyebrow}
+          </p>
+        )}
+        {sectionHeadline && (
+          <h2 class="text-brand-900 dark:text-white mb-4">
+            {sectionHeadline}
+          </h2>
+        )}
+        {sectionDescription && (
+          <p class="text-lg text-brand-600 dark:text-brand-400">
+            {sectionDescription}
+          </p>
+        )}
+      </div>
+    )}
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      {features.map((feature) => (
+        <div class={cardClasses[variant]}>
+          <!-- Image (if provided) -->
+          {feature.image && (
+            <div class="mb-6">
+              <img
+                src={feature.image.src}
+                alt={feature.image.alt}
+                class="w-full h-48 object-cover rounded-xl"
+              />
+            </div>
+          )}
+
+          <!-- Icon (if provided and no image) -->
+          {feature.icon && !feature.image && (
+            <div class="mb-5">
+              <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50">
+                <i class={`bx ${feature.icon} text-2xl text-accent-600 dark:text-accent-400`}></i>
+              </div>
+            </div>
+          )}
+
+          <!-- Headline -->
+          <h3 class="text-xl text-brand-900 dark:text-white mb-3">
+            {feature.headline}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-brand-600 dark:text-brand-400 mb-4">
+            {feature.description}
+          </p>
+
+          <!-- Link -->
+          {feature.link && (
+            <a
+              href={feature.link.href}
+              class="inline-flex items-center gap-2 text-sm font-medium text-accent-600 dark:text-accent-400 hover:text-accent-700 dark:hover:text-accent-300 transition-colors group"
+            >
+              {feature.link.text}
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

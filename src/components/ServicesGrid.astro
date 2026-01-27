@@ -1,0 +1,87 @@
+---
+// ServicesGrid Component - Services offerings in Oatmeal style
+
+const services = [
+  {
+    icon: 'bx-book-open',
+    title: 'Online Courses',
+    description: 'Self-paced training programs designed for sales leaders and their teams. Master prospecting, pipeline management, and closing techniques on your schedule.',
+    link: '/courses'
+  },
+  {
+    icon: 'bx-microphone',
+    title: 'Speaking & Training',
+    description: 'Keynotes and workshops that energize sales teams and deliver actionable frameworks. From half-day sessions to multi-day intensives.',
+    link: '/speaking'
+  },
+  {
+    icon: 'bx-calendar-event',
+    title: 'Events',
+    description: 'Join exclusive sales leadership events and mastermind sessions. Connect with peers, sharpen your skills, and stay ahead of the curve.',
+    link: '/events'
+  },
+  {
+    icon: 'bx-book-bookmark',
+    title: 'Books',
+    description: 'Bestselling guides that have transformed thousands of sales organizations. Practical wisdom you can implement immediately.',
+    link: '/books'
+  },
+  {
+    icon: 'bx-podcast',
+    title: 'Podcast',
+    description: 'Weekly insights on sales management, leadership, and building high-performance teams. Candid conversations with top performers.',
+    link: '/podcast'
+  },
+  {
+    icon: 'bx-briefcase-alt',
+    title: 'Consulting',
+    description: 'Hands-on advisory for sales leaders serious about transformation. Custom strategies, team assessments, and ongoing coaching.',
+    link: '/consulting'
+  }
+];
+---
+
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="max-w-2xl mb-12 md:mb-16">
+      <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+        Get More from Jason
+      </p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium text-brand-900 dark:text-white leading-tight">
+        Ready to take your sales game to a new level?
+      </h2>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-brand-200 dark:bg-brand-700 border border-brand-200 dark:border-brand-700 rounded-2xl overflow-hidden">
+      {services.map((service) => (
+        <a
+          href={service.link}
+          class="group bg-brand-50 dark:bg-brand-900 p-8 md:p-10 transition-colors hover:bg-white dark:hover:bg-brand-800"
+        >
+          <!-- Icon -->
+          <div class="mb-6">
+            <i class={`bx ${service.icon} text-3xl text-accent-500 dark:text-accent-400 group-hover:text-accent-600 dark:group-hover:text-accent-300 transition-colors`}></i>
+          </div>
+
+          <!-- Title -->
+          <h3 class="text-lg font-semibold text-brand-900 dark:text-white mb-3 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+            {service.title}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-sm text-brand-600 dark:text-brand-400 leading-relaxed">
+            {service.description}
+          </p>
+
+          <!-- Arrow indicator -->
+          <div class="mt-6 flex items-center text-accent-500 dark:text-accent-400 opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="text-sm font-medium">Learn more</span>
+            <i class="bx bx-right-arrow-alt text-lg ml-1 group-hover:translate-x-1 transition-transform"></i>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,470 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Import all Oatmeal components
+import AnnouncementBanner from '../components/oatmeal/AnnouncementBanner.astro';
+import HeroCentered from '../components/oatmeal/HeroCentered.astro';
+import HeroTwoColumn from '../components/oatmeal/HeroTwoColumn.astro';
+import HeroWithImageBelow from '../components/oatmeal/HeroWithImageBelow.astro';
+import LogoStrip from '../components/oatmeal/LogoStrip.astro';
+import FeaturesAlternating from '../components/oatmeal/FeaturesAlternating.astro';
+import FeaturesThreeColumn from '../components/oatmeal/FeaturesThreeColumn.astro';
+import Statistics from '../components/oatmeal/Statistics.astro';
+import TestimonialsGrid from '../components/oatmeal/TestimonialsGrid.astro';
+import TestimonialSingle from '../components/oatmeal/TestimonialSingle.astro';
+import FAQAccordion from '../components/oatmeal/FAQAccordion.astro';
+import PricingCards from '../components/oatmeal/PricingCards.astro';
+import TeamGrid from '../components/oatmeal/TeamGrid.astro';
+import ValuesGrid from '../components/oatmeal/ValuesGrid.astro';
+import CTASection from '../components/oatmeal/CTASection.astro';
+import Footer from '../components/oatmeal/Footer.astro';
+
+// Demo data
+const logos = [
+  { src: 'https://placehold.co/120x40/dee7f4/244a78?text=Company+1', alt: 'Company 1' },
+  { src: 'https://placehold.co/120x40/dee7f4/244a78?text=Company+2', alt: 'Company 2' },
+  { src: 'https://placehold.co/120x40/dee7f4/244a78?text=Company+3', alt: 'Company 3' },
+  { src: 'https://placehold.co/120x40/dee7f4/244a78?text=Company+4', alt: 'Company 4' },
+  { src: 'https://placehold.co/120x40/dee7f4/244a78?text=Company+5', alt: 'Company 5' },
+];
+
+const features = [
+  {
+    eyebrow: 'Feature One',
+    headline: 'Science-based hiring assessments',
+    description: 'Stop guessing and start measuring. Our assessments reveal the traits that predict sales success, so you can hire with confidence every time.',
+    image: { src: 'https://placehold.co/600x400/b8d0ed/244a78?text=Feature+1', alt: 'Feature 1' },
+    bullets: ['Predictive accuracy over 90%', 'Results in 24 hours', 'Easy to implement'],
+    link: { text: 'Learn more', href: '#' }
+  },
+  {
+    eyebrow: 'Feature Two',
+    headline: 'Team performance analytics',
+    description: 'Understand your team\'s strengths and gaps at a glance. Our dashboard gives you actionable insights to coach, develop, and retain top performers.',
+    image: { src: 'https://placehold.co/600x400/b8d0ed/244a78?text=Feature+2', alt: 'Feature 2' },
+    link: { text: 'Learn more', href: '#' }
+  },
+];
+
+const threeColumnFeatures = [
+  {
+    icon: 'bx-target-lock',
+    headline: 'Precision Hiring',
+    description: 'Identify candidates with the DNA for sales success before you make an offer.',
+    link: { text: 'Learn more', href: '#' }
+  },
+  {
+    icon: 'bx-line-chart',
+    headline: 'Performance Insights',
+    description: 'Get real-time visibility into what\'s working and what needs attention.',
+    link: { text: 'Learn more', href: '#' }
+  },
+  {
+    icon: 'bx-group',
+    headline: 'Team Development',
+    description: 'Tailored coaching paths for each team member based on their unique profile.',
+    link: { text: 'Learn more', href: '#' }
+  },
+];
+
+const stats = [
+  { value: '2M+', label: 'Professionals assessed', description: 'Across 200+ industries worldwide' },
+  { value: '92%', label: 'Predictive accuracy', description: 'In identifying top performers' },
+  { value: '35+', label: 'Years experience', description: 'In sales recruitment' },
+];
+
+const testimonials = [
+  {
+    quote: 'Jason\'s approach transformed how we hire. We\'ve cut bad hires by 80% and our sales team is stronger than ever.',
+    name: 'Sarah Mitchell',
+    role: 'CEO',
+    company: 'TechFlow',
+    avatar: 'https://placehold.co/100x100/b8d0ed/244a78?text=SM'
+  },
+  {
+    quote: 'The assessment process is incredibly accurate. Every hire we\'ve made using it has exceeded expectations.',
+    name: 'David Chen',
+    role: 'Sales Director',
+    company: 'Greenway',
+    avatar: 'https://placehold.co/100x100/b8d0ed/244a78?text=DC'
+  },
+  {
+    quote: 'Finally, a scientific approach to sales hiring. No more gut feelings, just data-driven decisions.',
+    name: 'Emma Roberts',
+    role: 'VP of Sales',
+    company: 'Nexus Corp',
+    avatar: 'https://placehold.co/100x100/b8d0ed/244a78?text=ER'
+  },
+  {
+    quote: 'We reduced our time-to-hire by 50% while improving quality. The ROI has been remarkable.',
+    name: 'Michael Torres',
+    role: 'Head of Talent',
+    company: 'BlueScale',
+    avatar: 'https://placehold.co/100x100/b8d0ed/244a78?text=MT'
+  },
+  {
+    quote: 'Jason\'s book is now required reading for every hiring manager in our organization.',
+    name: 'Lisa Park',
+    role: 'COO',
+    company: 'Elevate',
+    avatar: 'https://placehold.co/100x100/b8d0ed/244a78?text=LP'
+  },
+  {
+    quote: 'The insights we\'ve gained have helped us build a championship-caliber sales team.',
+    name: 'James Wilson',
+    role: 'Founder',
+    company: 'Prism',
+    avatar: 'https://placehold.co/100x100/b8d0ed/244a78?text=JW'
+  },
+];
+
+const faqs = [
+  {
+    question: 'How accurate are the sales assessments?',
+    answer: 'Our assessments have a 92% predictive accuracy rate, validated across millions of candidates over 35+ years. They measure 21 core sales competencies that correlate directly with on-the-job performance.'
+  },
+  {
+    question: 'How long does the assessment take?',
+    answer: 'Candidates typically complete the assessment in 45-60 minutes. Results are delivered within 24 hours with a detailed report and recommendations.'
+  },
+  {
+    question: 'Can this work for our industry?',
+    answer: 'Yes. The assessment has been validated across 200+ industries including technology, financial services, manufacturing, healthcare, and professional services.'
+  },
+  {
+    question: 'What if we\'re a small team?',
+    answer: 'We work with teams of all sizes. In fact, getting hiring right early is even more critical for smaller organizations where each hire has outsized impact.'
+  },
+  {
+    question: 'Is there training included?',
+    answer: 'Absolutely. Every engagement includes onboarding, interpretation training, and ongoing support to ensure you get maximum value from the system.'
+  },
+  {
+    question: 'How quickly can we get started?',
+    answer: 'Most clients are up and running within a week. We handle all the setup and integration so you can focus on what matters—finding great talent.'
+  },
+];
+
+const pricingTiers = [
+  {
+    name: 'Starter',
+    description: 'Perfect for small teams getting started',
+    price: '$299',
+    period: 'month',
+    features: ['Up to 10 assessments/month', 'Basic reporting', 'Email support', 'Candidate comparison tools'],
+    cta: { text: 'Get started', href: '#' }
+  },
+  {
+    name: 'Growth',
+    description: 'For scaling sales organizations',
+    price: '$799',
+    period: 'month',
+    features: ['Up to 50 assessments/month', 'Advanced analytics', 'Priority support', 'Team benchmarking', 'Custom scorecards', 'API access'],
+    cta: { text: 'Get started', href: '#' },
+    popular: true
+  },
+  {
+    name: 'Enterprise',
+    description: 'For large organizations',
+    price: 'Custom',
+    features: ['Unlimited assessments', 'Dedicated success manager', 'Custom integrations', 'On-site training', 'SLA guarantee', 'Executive reporting'],
+    cta: { text: 'Contact sales', href: '#' }
+  },
+];
+
+const team = [
+  {
+    name: 'Jason Howes',
+    role: 'Founder & CEO',
+    image: 'https://placehold.co/400x400/b8d0ed/244a78?text=JH',
+    social: { linkedin: '#', twitter: '#' }
+  },
+  {
+    name: 'Sarah Chen',
+    role: 'Head of Assessment',
+    image: 'https://placehold.co/400x400/b8d0ed/244a78?text=SC',
+    social: { linkedin: '#' }
+  },
+  {
+    name: 'Michael Torres',
+    role: 'Client Success',
+    image: 'https://placehold.co/400x400/b8d0ed/244a78?text=MT',
+    social: { linkedin: '#' }
+  },
+  {
+    name: 'Emma Williams',
+    role: 'Sales Director',
+    image: 'https://placehold.co/400x400/b8d0ed/244a78?text=EW',
+    social: { linkedin: '#', twitter: '#' }
+  },
+];
+
+const values = [
+  {
+    icon: 'bx-bulb',
+    title: 'Science Over Gut Feel',
+    description: 'We believe in data-driven decisions. Every recommendation is backed by research and validated methodology.'
+  },
+  {
+    icon: 'bx-shield-quarter',
+    title: 'Integrity First',
+    description: 'We tell you what you need to hear, not what you want to hear. Honesty builds lasting partnerships.'
+  },
+  {
+    icon: 'bx-rocket',
+    title: 'Results Obsessed',
+    description: 'We measure our success by your outcomes. If you\'re not winning, we\'re not done.'
+  },
+  {
+    icon: 'bx-heart',
+    title: 'People Matter',
+    description: 'Behind every assessment is a person with dreams and potential. We never forget the human element.'
+  },
+  {
+    icon: 'bx-refresh',
+    title: 'Continuous Improvement',
+    description: 'The best organizations never stop learning. We help you build that culture from the ground up.'
+  },
+  {
+    icon: 'bx-handshake',
+    title: 'Partnership Mindset',
+    description: 'We\'re not vendors, we\'re partners. Your success is our success, and we\'re in it for the long haul.'
+  },
+];
+
+const footerColumns = [
+  {
+    title: 'Services',
+    links: [
+      { text: 'Assessments', href: '#' },
+      { text: 'Consulting', href: '#' },
+      { text: 'Training', href: '#' },
+      { text: 'Speaking', href: '#' },
+    ]
+  },
+  {
+    title: 'Resources',
+    links: [
+      { text: 'Blog', href: '#' },
+      { text: 'Podcast', href: '#' },
+      { text: 'Books', href: '#' },
+      { text: 'Free Chapter', href: '#' },
+    ]
+  },
+  {
+    title: 'Company',
+    links: [
+      { text: 'About', href: '#' },
+      { text: 'Contact', href: '#' },
+      { text: 'Careers', href: '#' },
+    ]
+  },
+  {
+    title: 'Legal',
+    links: [
+      { text: 'Privacy', href: '#' },
+      { text: 'Terms', href: '#' },
+    ]
+  },
+];
+---
+
+<Layout title="Oatmeal Components Demo">
+  <!-- Section Divider Helper -->
+  <style>
+    .section-label {
+      background: linear-gradient(90deg, transparent, rgba(58, 120, 188, 0.1), transparent);
+      border-top: 1px dashed rgba(58, 120, 188, 0.3);
+      border-bottom: 1px dashed rgba(58, 120, 188, 0.3);
+    }
+  </style>
+
+  <!-- Announcement Banner -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Announcement Banner</div>
+  <AnnouncementBanner
+    text="New: Crystal Ball Recruiting is now available"
+    linkText="Get your copy"
+    linkHref="#"
+    dismissable={true}
+  />
+
+  <!-- Hero Centered -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500 mt-8">Hero Centered</div>
+  <HeroCentered
+    eyebrow="Introducing Crystal Ball Recruiting"
+    eyebrowLink="#"
+    headline="Stop gambling on sales hires"
+    subheadline="The science-backed system for identifying, assessing, and hiring sales talent that actually performs."
+    primaryCTA={{ text: "Get the book", href: "#" }}
+    secondaryCTA={{ text: "Learn more", href: "#" }}
+  />
+
+  <!-- Logo Strip -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Logo Strip</div>
+  <LogoStrip
+    headline="Trusted by leading companies"
+    logos={logos}
+  />
+
+  <!-- Hero Two Column -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Hero Two Column</div>
+  <HeroTwoColumn
+    eyebrow="About the Author"
+    headline="35 years of sales expertise, distilled"
+    subheadline="Jason Howes has helped hundreds of organizations transform their sales hiring. Now he's sharing the system."
+    primaryCTA={{ text: "Meet Jason", href: "#" }}
+    image={{ src: "https://placehold.co/600x500/b8d0ed/244a78?text=Jason+Howes", alt: "Jason Howes" }}
+  />
+
+  <!-- Hero With Image Below -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Hero With Image Below</div>
+  <HeroWithImageBelow
+    eyebrow="The Platform"
+    headline="Your complete sales hiring system"
+    subheadline="From assessment to onboarding, everything you need to build a world-class sales team."
+    primaryCTA={{ text: "See it in action", href: "#" }}
+    secondaryCTA={{ text: "Book a demo", href: "#" }}
+    image={{ src: "https://placehold.co/1200x600/b8d0ed/244a78?text=Platform+Screenshot", alt: "Platform" }}
+  />
+
+  <!-- Features Alternating -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Features Alternating</div>
+  <FeaturesAlternating
+    sectionEyebrow="How It Works"
+    sectionHeadline="A better way to hire salespeople"
+    sectionDescription="Our proven methodology takes the guesswork out of sales recruitment."
+    features={features}
+  />
+
+  <!-- Features Three Column -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Features Three Column</div>
+  <FeaturesThreeColumn
+    sectionEyebrow="Capabilities"
+    sectionHeadline="Everything you need to succeed"
+    sectionDescription="Powerful tools designed for modern sales organizations."
+    features={threeColumnFeatures}
+    variant="cards"
+  />
+
+  <!-- Statistics -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Statistics</div>
+  <Statistics
+    eyebrow="By the Numbers"
+    headline="Proven results at scale"
+    stats={stats}
+    variant="bordered"
+  />
+
+  <!-- Testimonial Single -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Testimonial Single</div>
+  <TestimonialSingle
+    quote="Jason's methodology completely changed how we approach sales hiring. We've seen a 40% improvement in new hire performance and cut our turnover in half."
+    name="Rebecca Martinez"
+    role="Chief Revenue Officer"
+    company="Altitude Tech"
+    avatar="https://placehold.co/100x100/b8d0ed/244a78?text=RM"
+    variant="large"
+  />
+
+  <!-- Testimonials Grid -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Testimonials Grid</div>
+  <TestimonialsGrid
+    eyebrow="What People Say"
+    headline="Trusted by sales leaders everywhere"
+    testimonials={testimonials}
+    columns={3}
+  />
+
+  <!-- Values Grid -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Values Grid</div>
+  <ValuesGrid
+    eyebrow="Our Values"
+    headline="What we stand for"
+    description="The principles that guide everything we do."
+    values={values}
+    variant="bordered"
+  />
+
+  <!-- Team Grid -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Team Grid</div>
+  <TeamGrid
+    eyebrow="Our Team"
+    headline="Meet the experts"
+    description="Dedicated professionals committed to your success."
+    team={team}
+    columns={4}
+  />
+
+  <!-- FAQ Accordion -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">FAQ Accordion</div>
+  <FAQAccordion
+    eyebrow="FAQ"
+    headline="Frequently asked questions"
+    description="Everything you need to know about getting started."
+    faqs={faqs}
+    columns={2}
+  />
+
+  <!-- Pricing Cards -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Pricing Cards</div>
+  <PricingCards
+    eyebrow="Pricing"
+    headline="Simple, transparent pricing"
+    description="Choose the plan that's right for your team."
+    tiers={pricingTiers}
+  />
+
+  <!-- CTA Section (Default) -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">CTA Section (Default)</div>
+  <CTASection
+    headline="Ready to transform your hiring?"
+    description="Get started today and see the difference science-based hiring can make."
+    primaryCTA={{ text: "Get started", href: "#" }}
+    secondaryCTA={{ text: "Talk to sales", href: "#" }}
+  />
+
+  <!-- CTA Section (Contained) -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">CTA Section (Contained)</div>
+  <CTASection
+    eyebrow="Get Started"
+    headline="Have questions?"
+    description="Our team is here to help you find the right solution."
+    primaryCTA={{ text: "Chat with us", href: "#" }}
+    secondaryCTA={{ text: "Book a demo", href: "#" }}
+    variant="contained"
+  />
+
+  <!-- CTA Section (Dark) -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">CTA Section (Dark)</div>
+  <CTASection
+    headline="Join thousands of sales leaders"
+    description="Start building your championship team today."
+    primaryCTA={{ text: "Get the book", href: "#" }}
+    secondaryCTA={{ text: "Free chapter", href: "#" }}
+    variant="dark"
+  />
+
+  <!-- Footer -->
+  <div class="section-label py-2 text-center text-xs uppercase tracking-widest text-brand-500">Footer</div>
+  <Footer
+    logo={{ text: "Jason Howes", href: "/" }}
+    description="Helping sales leaders build high-performing teams through science-based hiring."
+    columns={footerColumns}
+    newsletter={{
+      headline: "Stay updated",
+      description: "Get the latest insights on sales hiring.",
+      placeholder: "Enter your email",
+      buttonText: "Subscribe"
+    }}
+    socialLinks={[
+      { platform: "twitter", href: "#" },
+      { platform: "linkedin", href: "#" },
+      { platform: "youtube", href: "#" },
+    ]}
+    copyright="© 2026 Jason Howes. All rights reserved."
+    bottomLinks={[
+      { text: "Privacy Policy", href: "#" },
+      { text: "Terms of Service", href: "#" },
+    ]}
+  />
+</Layout>

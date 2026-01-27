@@ -1,0 +1,106 @@
+---
+// HeroTwoColumn - Oatmeal-style 2-column hero (text left, image right)
+// Based on about-02 hero pattern
+
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  subheadline?: string;
+  primaryCTA?: {
+    text: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    text: string;
+    href: string;
+  };
+  image?: {
+    src: string;
+    alt: string;
+  };
+  imagePosition?: 'left' | 'right';
+}
+
+const {
+  eyebrow,
+  headline,
+  subheadline,
+  primaryCTA,
+  secondaryCTA,
+  image,
+  imagePosition = 'right'
+} = Astro.props;
+
+const isImageLeft = imagePosition === 'left';
+---
+
+<section class="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${isImageLeft ? 'lg:flex-row-reverse' : ''}`}>
+
+      <!-- Text Content -->
+      <div class={`${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+        <!-- Eyebrow -->
+        {eyebrow && (
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+            {eyebrow}
+          </p>
+        )}
+
+        <!-- Headline -->
+        <h1 class="text-brand-900 dark:text-white mb-6">
+          {headline}
+        </h1>
+
+        <!-- Subheadline -->
+        {subheadline && (
+          <p class="text-lg md:text-xl text-brand-600 dark:text-brand-400 mb-8">
+            {subheadline}
+          </p>
+        )}
+
+        <!-- CTAs -->
+        {(primaryCTA || secondaryCTA) && (
+          <div class="flex flex-col sm:flex-row gap-4">
+            {primaryCTA && (
+              <a
+                href={primaryCTA.href}
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-white dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
+              >
+                {primaryCTA.text}
+              </a>
+            )}
+            {secondaryCTA && (
+              <a
+                href={secondaryCTA.href}
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium text-sm hover:bg-brand-100 dark:hover:bg-brand-800 transition-colors"
+              >
+                {secondaryCTA.text}
+              </a>
+            )}
+          </div>
+        )}
+
+        <!-- Slot for additional text content -->
+        <slot name="content" />
+      </div>
+
+      <!-- Image -->
+      <div class={`${isImageLeft ? 'lg:order-1' : 'lg:order-2'}`}>
+        {image ? (
+          <div class="relative">
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-auto rounded-2xl shadow-xl"
+            />
+            <!-- Decorative element -->
+            <div class="absolute -inset-4 bg-gradient-to-br from-accent-200/20 to-accent-400/20 dark:from-accent-600/10 dark:to-accent-800/10 rounded-3xl -z-10"></div>
+          </div>
+        ) : (
+          <slot name="image" />
+        )}
+      </div>
+    </div>
+  </div>
+</section>

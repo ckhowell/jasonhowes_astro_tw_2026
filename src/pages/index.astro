@@ -1,26 +1,30 @@
 ---
 import Nav from "../components/Nav.astro";
-import Hero from "../components/Hero.astro";
+import Hero from "../components/Hero-type.astro";
 import FreeResources from "../components/FreeResources.astro";
+import LogoStrip from "../components/LogoStrip.astro";
 import Resources from "../components/Resources.astro";
 import Services from "../components/Services.astro";
-import Testimonials from "../components/Testimonials.astro";
+import TestimonialSlider from "../components/TestimonialSlider.astro";
 import FreeChapterCTA from "../components/FreeChapterCTA.astro";
 import Author from "../components/Author.astro";
 import BookFeature from "../components/book-feature.astro";
+import ResourcesHub from "../components/ResourcesHub.astro";
+import ServicesGrid from "../components/ServicesGrid.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
+<Nav />
+<Hero />
+<LogoStrip />
+<FreeResources />
+
 <Layout>
-  <Nav />
-  <Hero />
-  <FreeResources />
   <Author />
   <BookFeature />
-  <Resources />
-  <Services />
-  <Testimonials />
-  <FreeChapterCTA />
+  <TestimonialSlider />
+  <ResourcesHub />
+  <ServicesGrid />
   <Footer />
 </Layout>

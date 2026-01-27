@@ -1,0 +1,120 @@
+---
+// CTASection - Call-to-action banner
+// Centered conversion-focused section with dual buttons
+
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  description?: string;
+  primaryCTA?: {
+    text: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    text: string;
+    href: string;
+  };
+  variant?: 'default' | 'contained' | 'dark';
+}
+
+const {
+  eyebrow,
+  headline,
+  description,
+  primaryCTA,
+  secondaryCTA,
+  variant = 'default'
+} = Astro.props;
+
+const sectionClasses = {
+  default: 'py-16 md:py-24',
+  contained: 'py-16 md:py-24',
+  dark: 'py-16 md:py-24 bg-brand-900 dark:bg-brand-950'
+};
+
+const containerClasses = {
+  default: '',
+  contained: 'bg-brand-100 dark:bg-brand-900 rounded-3xl p-12 md:p-16',
+  dark: ''
+};
+
+const textClasses = {
+  default: {
+    eyebrow: 'text-accent-600 dark:text-accent-400',
+    headline: 'text-brand-900 dark:text-white',
+    description: 'text-brand-600 dark:text-brand-400'
+  },
+  contained: {
+    eyebrow: 'text-accent-600 dark:text-accent-400',
+    headline: 'text-brand-900 dark:text-white',
+    description: 'text-brand-600 dark:text-brand-400'
+  },
+  dark: {
+    eyebrow: 'text-accent-400',
+    headline: 'text-white',
+    description: 'text-brand-300'
+  }
+};
+
+const buttonClasses = {
+  default: {
+    primary: 'bg-brand-900 dark:bg-white text-white dark:text-brand-900 hover:bg-brand-800 dark:hover:bg-brand-100',
+    secondary: 'border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-brand-800'
+  },
+  contained: {
+    primary: 'bg-brand-900 dark:bg-white text-white dark:text-brand-900 hover:bg-brand-800 dark:hover:bg-brand-100',
+    secondary: 'border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 hover:bg-brand-50 dark:hover:bg-brand-800'
+  },
+  dark: {
+    primary: 'bg-white text-brand-900 hover:bg-brand-100',
+    secondary: 'border border-brand-600 text-white hover:bg-brand-800'
+  }
+};
+---
+
+<section class={`px-4 ${sectionClasses[variant]}`}>
+  <div class="max-w-7xl mx-auto">
+    <div class={`text-center ${containerClasses[variant]}`}>
+      <!-- Eyebrow -->
+      {eyebrow && (
+        <p class={`text-sm uppercase tracking-[0.15em] mb-3 ${textClasses[variant].eyebrow}`}>
+          {eyebrow}
+        </p>
+      )}
+
+      <!-- Headline -->
+      <h2 class={`mb-4 ${textClasses[variant].headline}`}>
+        {headline}
+      </h2>
+
+      <!-- Description -->
+      {description && (
+        <p class={`text-lg max-w-2xl mx-auto mb-8 ${textClasses[variant].description}`}>
+          {description}
+        </p>
+      )}
+
+      <!-- CTAs -->
+      {(primaryCTA || secondaryCTA) && (
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {primaryCTA && (
+            <a
+              href={primaryCTA.href}
+              class={`inline-flex items-center justify-center px-6 py-3 rounded-full font-medium text-sm transition-colors ${buttonClasses[variant].primary}`}
+            >
+              {primaryCTA.text}
+            </a>
+          )}
+          {secondaryCTA && (
+            <a
+              href={secondaryCTA.href}
+              class={`inline-flex items-center justify-center px-6 py-3 rounded-full font-medium text-sm transition-colors ${buttonClasses[variant].secondary}`}
+            >
+              {secondaryCTA.text}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</section>

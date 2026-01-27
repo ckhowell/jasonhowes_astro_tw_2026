@@ -1,0 +1,160 @@
+---
+// PricingCards - Oatmeal-style 3-tier pricing comparison
+// Clean cards with feature lists and highlighted "popular" option
+
+interface PricingFeature {
+  text: string;
+  included: boolean;
+}
+
+interface PricingTier {
+  name: string;
+  description?: string;
+  price: string;
+  period?: string;
+  features: (string | PricingFeature)[];
+  cta: {
+    text: string;
+    href: string;
+  };
+  popular?: boolean;
+}
+
+interface Props {
+  eyebrow?: string;
+  headline?: string;
+  description?: string;
+  tiers: PricingTier[];
+}
+
+const {
+  eyebrow,
+  headline,
+  description,
+  tiers
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    {(eyebrow || headline || description) && (
+      <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
+        {eyebrow && (
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+            {eyebrow}
+          </p>
+        )}
+        {headline && (
+          <h2 class="text-brand-900 dark:text-white mb-4">
+            {headline}
+          </h2>
+        )}
+        {description && (
+          <p class="text-lg text-brand-600 dark:text-brand-400">
+            {description}
+          </p>
+        )}
+      </div>
+    )}
+
+    <!-- Pricing Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {tiers.map((tier) => (
+        <div
+          class={`relative rounded-2xl p-8 ${
+            tier.popular
+              ? 'bg-brand-900 dark:bg-white ring-2 ring-brand-900 dark:ring-white'
+              : 'bg-brand-50 dark:bg-brand-900 border border-brand-200 dark:border-brand-700'
+          }`}
+        >
+          <!-- Popular Badge -->
+          {tier.popular && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="inline-block px-4 py-1 rounded-full bg-accent-500 text-white text-sm font-medium">
+                Most popular
+              </span>
+            </div>
+          )}
+
+          <!-- Tier Name -->
+          <h3 class={`text-xl font-medium mb-2 ${
+            tier.popular ? 'text-white dark:text-brand-900' : 'text-brand-900 dark:text-white'
+          }`}>
+            {tier.name}
+          </h3>
+
+          <!-- Description -->
+          {tier.description && (
+            <p class={`text-sm mb-6 ${
+              tier.popular ? 'text-brand-300 dark:text-brand-600' : 'text-brand-500 dark:text-brand-500'
+            }`}>
+              {tier.description}
+            </p>
+          )}
+
+          <!-- Price -->
+          <div class="mb-6">
+            <span class={`text-4xl font-medium ${
+              tier.popular ? 'text-white dark:text-brand-900' : 'text-brand-900 dark:text-white'
+            }`}>
+              {tier.price}
+            </span>
+            {tier.period && (
+              <span class={`text-sm ${
+                tier.popular ? 'text-brand-300 dark:text-brand-600' : 'text-brand-500 dark:text-brand-500'
+              }`}>
+                /{tier.period}
+              </span>
+            )}
+          </div>
+
+          <!-- CTA Button -->
+          <a
+            href={tier.cta.href}
+            class={`block w-full text-center py-3 px-6 rounded-full font-medium text-sm transition-colors mb-8 ${
+              tier.popular
+                ? 'bg-white dark:bg-brand-900 text-brand-900 dark:text-white hover:bg-brand-100 dark:hover:bg-brand-800'
+                : 'bg-brand-900 dark:bg-white text-white dark:text-brand-900 hover:bg-brand-800 dark:hover:bg-brand-100'
+            }`}
+          >
+            {tier.cta.text}
+          </a>
+
+          <!-- Features List -->
+          <ul class="space-y-3">
+            {tier.features.map((feature) => {
+              const featureText = typeof feature === 'string' ? feature : feature.text;
+              const included = typeof feature === 'string' ? true : feature.included;
+
+              return (
+                <li class="flex items-start gap-3">
+                  {included ? (
+                    <svg class={`w-5 h-5 mt-0.5 shrink-0 ${
+                      tier.popular ? 'text-accent-400 dark:text-accent-600' : 'text-accent-500 dark:text-accent-400'
+                    }`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <svg class={`w-5 h-5 mt-0.5 shrink-0 ${
+                      tier.popular ? 'text-brand-600 dark:text-brand-400' : 'text-brand-400 dark:text-brand-600'
+                    }`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
+                  <span class={`text-sm ${
+                    tier.popular
+                      ? included ? 'text-brand-200 dark:text-brand-700' : 'text-brand-500 dark:text-brand-400'
+                      : included ? 'text-brand-600 dark:text-brand-400' : 'text-brand-400 dark:text-brand-600'
+                  }`}>
+                    {featureText}
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

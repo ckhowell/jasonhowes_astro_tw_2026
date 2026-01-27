@@ -1,0 +1,90 @@
+---
+// ValuesGrid - Oatmeal-style company values/culture section
+// Grid of value cards with icons and descriptions
+
+interface Value {
+  icon?: string; // Boxicons class (e.g., 'bx-bulb')
+  title: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  headline?: string;
+  description?: string;
+  values: Value[];
+  columns?: 2 | 3;
+  variant?: 'default' | 'cards' | 'bordered';
+}
+
+const {
+  eyebrow,
+  headline,
+  description,
+  values,
+  columns = 3,
+  variant = 'default'
+} = Astro.props;
+
+const gridCols = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3'
+};
+
+const cardClasses = {
+  default: '',
+  cards: 'bg-brand-50 dark:bg-brand-900 rounded-2xl p-8',
+  bordered: 'border border-brand-200 dark:border-brand-700 rounded-2xl p-8'
+};
+---
+
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    {(eyebrow || headline || description) && (
+      <div class="max-w-3xl mb-12 md:mb-16">
+        {eyebrow && (
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+            {eyebrow}
+          </p>
+        )}
+        {headline && (
+          <h2 class="text-brand-900 dark:text-white mb-4">
+            {headline}
+          </h2>
+        )}
+        {description && (
+          <p class="text-lg text-brand-600 dark:text-brand-400">
+            {description}
+          </p>
+        )}
+      </div>
+    )}
+
+    <!-- Values Grid -->
+    <div class={`grid grid-cols-1 ${gridCols[columns]} gap-8`}>
+      {values.map((value) => (
+        <div class={cardClasses[variant]}>
+          <!-- Icon -->
+          {value.icon && (
+            <div class="mb-4">
+              <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50">
+                <i class={`bx ${value.icon} text-2xl text-accent-600 dark:text-accent-400`}></i>
+              </div>
+            </div>
+          )}
+
+          <!-- Title -->
+          <h3 class="text-xl font-medium text-brand-900 dark:text-white mb-3">
+            {value.title}
+          </h3>
+
+          <!-- Description -->
+          <p class="text-brand-600 dark:text-brand-400 leading-relaxed">
+            {value.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

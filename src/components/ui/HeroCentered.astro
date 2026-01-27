@@ -1,0 +1,92 @@
+---
+// HeroCentered - Oatmeal-style centered hero with optional announcement badge
+// Based on home-01 hero pattern
+
+interface Props {
+  eyebrow?: string;
+  eyebrowLink?: string;
+  headline: string;
+  subheadline?: string;
+  primaryCTA?: {
+    text: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    text: string;
+    href: string;
+  };
+}
+
+const {
+  eyebrow,
+  eyebrowLink,
+  headline,
+  subheadline,
+  primaryCTA,
+  secondaryCTA
+} = Astro.props;
+---
+
+<section class="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <!-- Announcement Badge -->
+    {eyebrow && (
+      <div class="mb-8">
+        {eyebrowLink ? (
+          <a
+            href={eyebrowLink}
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 dark:bg-brand-800 text-sm text-brand-700 dark:text-brand-300 hover:bg-brand-200 dark:hover:bg-brand-700 transition-colors"
+          >
+            <span class="inline-block w-2 h-2 rounded-full bg-accent-500 dark:bg-accent-400"></span>
+            <span>{eyebrow}</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        ) : (
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 dark:bg-brand-800 text-sm text-brand-700 dark:text-brand-300">
+            <span class="inline-block w-2 h-2 rounded-full bg-accent-500 dark:bg-accent-400"></span>
+            <span>{eyebrow}</span>
+          </span>
+        )}
+      </div>
+    )}
+
+    <!-- Headline -->
+    <h1 class="text-brand-900 dark:text-white mb-6 text-balance">
+      {headline}
+    </h1>
+
+    <!-- Subheadline -->
+    {subheadline && (
+      <p class="text-lg md:text-xl text-brand-600 dark:text-brand-400 max-w-2xl mx-auto mb-10 text-balance">
+        {subheadline}
+      </p>
+    )}
+
+    <!-- CTAs -->
+    {(primaryCTA || secondaryCTA) && (
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        {primaryCTA && (
+          <a
+            href={primaryCTA.href}
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-white dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
+          >
+            {primaryCTA.text}
+          </a>
+        )}
+        {secondaryCTA && (
+          <a
+            href={secondaryCTA.href}
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium text-sm hover:bg-brand-100 dark:hover:bg-brand-800 transition-colors"
+          >
+            {secondaryCTA.text}
+          </a>
+        )}
+      </div>
+    )}
+
+    <!-- Optional slot for additional content (e.g., hero images) -->
+    <slot />
+  </div>
+</section>

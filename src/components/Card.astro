@@ -1,20 +1,24 @@
 ---
 // Props: image (string), heading (string), subheading (string), copy (string), buttonText (string), buttonLink (string), buttonVariant ('primary' | 'accent')
 const { image, heading, subheading, copy, buttonText, buttonLink, buttonVariant = 'primary' } = Astro.props;
+const baseButtonClasses = 'inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 font-semibold shadow-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
+const variantClasses = buttonVariant === 'accent'
+  ? 'bg-brand-900 text-white hover:bg-brand-800 focus-visible:outline-brand-500'
+  : 'bg-brand-400 text-brand-50 hover:bg-brand-800 focus-visible:outline-brand-400';
 ---
 <div class="flex flex-col md:flex-row overflow-hidden max-w-md">
   <div class="md:w-auto w-full flex justify-center md:justify-start">
     <img src={image} alt={heading} class="object-cover w-[205px] h-[290px] rounded" />
   </div>
   <div class="md:flex-1 w-full flex flex-col justify-center p-6 text-center md:text-left">
-    <h6 class="!font-light mb-2">{heading}</h6>
-    {subheading && <h4 class="text-lg font-semibold mb-2 text-brand">{subheading}</h4>}
-    <p class="mb-4 text-gray-700 text-sm">{copy}</p>
+    <h6 class="!font-light mb-2 text-brand-800 dark:text-brand-200">{heading}</h6>
+    {subheading && <h4 class="text-lg font-semibold mb-2 text-accent-600 dark:text-accent-400">{subheading}</h4>}
+    <p class="mb-4 text-sm text-brand-600 dark:text-brand-300">{copy}</p>
     {buttonText && buttonLink && (
       <div>
-        <a href={buttonLink} class={`inline-block w-auto font-semibold px-4 py-2 rounded shadow transition ease-in-out hover:scale-105 ${buttonVariant === 'accent' ? 'bg-brand text-accent-900 hover:bg-brand/80' : 'bg-accent text-accent-900 hover:bg-accent/80'}`}>
+        <a href={buttonLink} class={`${baseButtonClasses} ${variantClasses}`}>
           {buttonText}
-          <i class="bx bx-down-arrow-alt ml-1 align-middle"></i>
+          <i class="bx bx-down-arrow-alt text-xl"></i>
         </a>
       </div>
     )}

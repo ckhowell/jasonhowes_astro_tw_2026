@@ -1,0 +1,29 @@
+---
+// Dynamic blog post pages
+import { getCollection } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  // Skip blog posts in development to speed up builds
+  if (import.meta.env.DEV) {
+    return [];
+  }
+  
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BlogPost frontmatter={entry.data}>
+  <Content />
+</BlogPost>

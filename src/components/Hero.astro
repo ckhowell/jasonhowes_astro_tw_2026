@@ -2,51 +2,30 @@
 
 ---
 
-<style>
-  .shape {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100%;
-    z-index: 11;
-  }
-  .shape-fill {
-    fill: #f1f1f1;
-  }
-</style>
-
 <section
-  class="relative flex items-center min-h-[70vh] md:min-h-[60vh] lg:min-h-[80vh]"
+  class="relative flex items-end h-screen bg-brand-100 dark:bg-brand-950"
 >
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-brand-900 via-accent-800 to-accent-700"
-  ></div>
-  <div class="shape shape-bottom" aria-hidden="true" data-negative="false">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 101" preserveAspectRatio="none">
-      <path class="shape-fill" d="M0,94V101h1000V50L0,94z"></path>
-    </svg>
-  </div>
   <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:pt-12 lg:pb-0">
     <div class="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-1 items-center gap-8 md:gap-12">
       <!-- LEFT: Speaker Image -->
-      <div class="hidden lg:block 3xl:hidden flex justify-center lg:justify-center self-center pt-8">
+      <div class="hidden lg:block 3xl:hidden flex justify-center lg:justify-center self-end pb-8">
         <img
           src="/Jason-Howes_7324-web3.png"
           alt="Speaker"
-          class="mx-auto max-w-[374px] sm:max-w-[418px] md:max-w-[462px] lg:max-w-[596px] xl:max-w-[630px] h-auto object-contain"
+          class="mx-auto max-w-[374px] sm:max-w-[418px] md:max-w-[462px] lg:max-w-[596px] xl:max-w-[630px] h-auto object-contain object-bottom"
         />
       </div>
       <!-- RIGHT: Text Content -->
-      <div class="text-white text-center lg:text-left 3xl:text-center flex flex-col justify-center min-h-[50vh] lg:min-h-0 3xl:min-h-[70vh]">
+      <div class="text-brand-800 dark:text-brand-100 text-center lg:text-left 3xl:text-center flex flex-col justify-center min-h-[50vh] lg:min-h-0 3xl:min-h-[70vh]">
 
-        <h4 class="mb-4 md:mb-6 text-xs sm:text-sm tracking-widest font-semibold opacity-90 !text-white">
+        <h4 class="mb-4 md:mb-6 text-xs sm:text-sm tracking-widest font-semibold text-brand-500 dark:text-brand-700!">
           Sales clarity beats sales hype.<br />
           Simple. Practical. Proven.
         </h4>
-        <h3 class="text-base sm:text-lg md:text-xl font-medium opacity-90 !text-accent-400">
-          Helping Sellers and Sales Leaders…
+        <h3 class="text-base sm:text-lg md:text-xl font-medium text-brand-600 dark:text-brand-400!">
+          Helping Sellers and Sales Leaders...
         </h3>
-                <h1 class="mb-4 py-6 md:mb-6 leading-tight !text-white">
+        <h1 class="mb-4 py-6 md:mb-6 leading-tight text-brand-700 dark:text-brand-400!">
           WIN MORE<br />
           NEW SALES
         </h1>
@@ -55,4 +34,3 @@
   </div>
 
 </section>
-

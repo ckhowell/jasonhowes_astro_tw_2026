@@ -1,0 +1,97 @@
+---
+// HeroWithImageBelow - Oatmeal-style hero with centered text and full-width image below
+// Based on about-01 hero pattern
+
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  subheadline?: string;
+  primaryCTA?: {
+    text: string;
+    href: string;
+  };
+  secondaryCTA?: {
+    text: string;
+    href: string;
+  };
+  image?: {
+    src: string;
+    alt: string;
+  };
+}
+
+const {
+  eyebrow,
+  headline,
+  subheadline,
+  primaryCTA,
+  secondaryCTA,
+  image
+} = Astro.props;
+---
+
+<section class="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Text Content - Centered -->
+    <div class="max-w-4xl mx-auto text-center mb-12 md:mb-16">
+      <!-- Eyebrow -->
+      {eyebrow && (
+        <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+          {eyebrow}
+        </p>
+      )}
+
+      <!-- Headline -->
+      <h1 class="text-brand-900 dark:text-white mb-6 text-balance">
+        {headline}
+      </h1>
+
+      <!-- Subheadline -->
+      {subheadline && (
+        <p class="text-lg md:text-xl text-brand-600 dark:text-brand-400 max-w-2xl mx-auto mb-10 text-balance">
+          {subheadline}
+        </p>
+      )}
+
+      <!-- CTAs -->
+      {(primaryCTA || secondaryCTA) && (
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {primaryCTA && (
+            <a
+              href={primaryCTA.href}
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-white dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
+            >
+              {primaryCTA.text}
+            </a>
+          )}
+          {secondaryCTA && (
+            <a
+              href={secondaryCTA.href}
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium text-sm hover:bg-brand-100 dark:hover:bg-brand-800 transition-colors"
+            >
+              {secondaryCTA.text}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+
+    <!-- Full-width Image -->
+    {image ? (
+      <div class="relative">
+        <img
+          src={image.src}
+          alt={image.alt}
+          class="w-full h-auto rounded-2xl shadow-2xl"
+        />
+        <!-- Subtle gradient overlay at bottom for visual interest -->
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/10 to-transparent rounded-2xl pointer-events-none"></div>
+      </div>
+    ) : (
+      <slot name="image" />
+    )}
+
+    <!-- Optional slot for content below image -->
+    <slot />
+  </div>
+</section>

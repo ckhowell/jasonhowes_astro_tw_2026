@@ -2,34 +2,29 @@
 import Card from './Card.astro';
 ---
 
-
-
-
-<section id="free-resources" class="px-4 py-12 md:py-18 bg-[#F1F1F1]">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
-      <h3 class="text-sm md:text-base/9 font-semibold">DOWNLOAD JASON'S FREE GUIDES TO ATTRACT MORE CLIENTS AND BOOST SALES</h3>
-      <h5 class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">FREE RESOURCES</h5>
+<section id="free-resources" class="px-4 py-12 md:py-18">
+  <div class="mx-auto max-w-5xl p-8 md:p-12">
+    <div class="mx-auto max-w-2xl text-center mb-8">
+      <!-- <h5 class="pb-16 mt-2 mb-5 text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl lg:text-balance">FREE RESOURCES</h5> -->
+      <!-- <h3 class="text-sm md:text-base/9 text-brand-300">DOWNLOAD JASON'S FREE GUIDES TO ATTRACT MORE CLIENTS AND BOOST SALES</h3> -->
+    </div>
+    <div class="flex flex-col md:flex-row gap-6 md:gap-10 justify-center items-center">
+      <Card
+        image="/whitepaper_cover.png"
+        heading="Compensation Guide"
+        subheading="Pay & performance"
+        copy="A proven model to optimise pay, motivate sales teams, and retain talent."
+        buttonText="Download"
+        buttonLink="#"
+      />
+      <Card
+        image="/onboarding.png"
+        heading="Onboarding Process"
+        subheading="Clarity from day one"
+        copy="Hiring well isn't enough. Clear strategy and expectations help new hires perform faster."
+        buttonText="Download"
+        buttonLink="#"
+      />
     </div>
   </div>
-  <div class="py-12 md:py-20 max-w-6xl mx-auto flex flex-col md:flex-row gap-6 md:gap-10 justify-center items-center">
-    <Card 
-      image="/whitepaper_cover.png"
-      heading="Compensation Guide"
-      subheading="Pay & performance"
-      copy="A proven model to optimise pay, motivate sales teams, and retain talent."
-      buttonText="Download"
-      buttonLink="#"
-    />
-    <Card 
-      image="/onboarding.png"
-      heading="Onboarding Process"
-      subheading="Clarity from day one"
-      copy="Hiring well isn’t enough. Clear strategy and expectations help new hires perform faster."
-      buttonText="Download"
-      buttonLink="#"
-    />
-  </div>
 </section>
-
-

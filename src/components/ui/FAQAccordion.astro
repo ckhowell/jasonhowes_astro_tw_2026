@@ -1,0 +1,124 @@
+---
+// FAQAccordion - Oatmeal-style collapsible FAQ section
+// Clean accordion with smooth animations
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  headline?: string;
+  description?: string;
+  faqs: FAQ[];
+  columns?: 1 | 2;
+}
+
+const {
+  eyebrow,
+  headline,
+  description,
+  faqs,
+  columns = 1
+} = Astro.props;
+
+// Split FAQs into two columns if needed
+const midpoint = Math.ceil(faqs.length / 2);
+const leftColumn = columns === 2 ? faqs.slice(0, midpoint) : faqs;
+const rightColumn = columns === 2 ? faqs.slice(midpoint) : [];
+---
+
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Header -->
+    {(eyebrow || headline || description) && (
+      <div class={`mb-12 md:mb-16 ${columns === 1 ? 'max-w-3xl mx-auto text-center' : 'max-w-3xl'}`}>
+        {eyebrow && (
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+            {eyebrow}
+          </p>
+        )}
+        {headline && (
+          <h2 class="text-brand-900 dark:text-white mb-4">
+            {headline}
+          </h2>
+        )}
+        {description && (
+          <p class="text-lg text-brand-600 dark:text-brand-400">
+            {description}
+          </p>
+        )}
+      </div>
+    )}
+
+    <!-- FAQ Accordion -->
+    <div class={`${columns === 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0' : 'max-w-3xl mx-auto'}`}>
+      <!-- Left/Main Column -->
+      <div class="divide-y divide-brand-200 dark:divide-brand-700">
+        {leftColumn.map((faq, index) => (
+          <details class="group py-6" data-faq-item>
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <h3 class="text-base md:text-lg font-medium text-brand-900 dark:text-white pr-8">
+                {faq.question}
+              </h3>
+              <span class="shrink-0 ml-4">
+                <svg
+                  class="w-5 h-5 text-brand-500 dark:text-brand-400 transition-transform duration-200 group-open:rotate-180"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-brand-600 dark:text-brand-400 leading-relaxed pr-12">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <!-- Right Column (if 2 columns) -->
+      {columns === 2 && rightColumn.length > 0 && (
+        <div class="divide-y divide-brand-200 dark:divide-brand-700">
+          {rightColumn.map((faq, index) => (
+            <details class="group py-6" data-faq-item>
+              <summary class="flex items-center justify-between cursor-pointer list-none">
+                <h3 class="text-base md:text-lg font-medium text-brand-900 dark:text-white pr-8">
+                  {faq.question}
+                </h3>
+                <span class="shrink-0 ml-4">
+                  <svg
+                    class="w-5 h-5 text-brand-500 dark:text-brand-400 transition-transform duration-200 group-open:rotate-180"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="mt-4 text-brand-600 dark:text-brand-400 leading-relaxed pr-12">
+                {faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Remove default marker */
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Smooth open/close animation */
+  details[data-faq-item] > div {
+    overflow: hidden;
+  }
+</style>

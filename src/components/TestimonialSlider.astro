@@ -1,0 +1,132 @@
+---
+const testimonials = [
+  {
+    name: "Leo Santani",
+    role: "General Manager, ShapeCUT",
+    quote: "Crystal Ball Recruiting helped us hire with purpose. Recruitment finally feels efficient, effective, and effortless.",
+    image: "/testimonial-leo.jpg"
+  },
+  {
+    name: "Craig Armstrong",
+    role: "CEO, Mortim Australia",
+    quote: "It brings science to the behavioural side of recruitment. The process validates gut instinct and protects our culture.",
+    image: "/testimonial-craig.jpg"
+  },
+  {
+    name: "Brendan O'Shea",
+    role: "National Sales Manager, Knotwood ANZ",
+    quote: "Every hire feels stronger than the last. The system raises the bar and shows the team what good really looks like.",
+    image: "/testimonial-brendan.jpg"
+  }
+];
+---
+
+<section class="py-16 md:py-24 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="relative bg-brand-100 dark:bg-brand-900 rounded-2xl overflow-hidden" data-testimonial-root>
+
+      {testimonials.map((t, index) => (
+        <article
+          class={`testimonial-slide grid grid-cols-1 lg:grid-cols-2 gap-0 transition-opacity duration-500 ${index === 0 ? 'opacity-100 relative' : 'opacity-0 absolute inset-0 pointer-events-none'}`}
+          data-testimonial-slide
+          data-index={index}
+          aria-hidden={index === 0 ? 'false' : 'true'}
+        >
+          <!-- Left: Quote Content -->
+          <div class="flex flex-col justify-center p-8 md:p-12 lg:p-16">
+            <blockquote class="text-2xl md:text-3xl lg:text-4xl font-medium leading-snug text-brand-700 dark:text-brand-400 tracking-tight">
+              "{t.quote}"
+            </blockquote>
+            <div class="mt-8 md:mt-12">
+              <p class="text-base font-semibold text-brand-700 dark:text-brand-400">{t.name}</p>
+              <p class="text-sm text-brand-600 dark:text-brand-400">{t.role}</p>
+            </div>
+          </div>
+
+          <!-- Right: Image -->
+          <div class="relative aspect-[4/3] lg:aspect-auto">
+            <img
+              src={t.image}
+              alt={`Portrait of ${t.name}`}
+              class="w-full h-full object-cover rounded-lg lg:rounded-none lg:rounded-r-2xl"
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+          </div>
+        </article>
+      ))}
+
+      <!-- Navigation Dots -->
+      <div class="absolute bottom-6 left-8 md:left-12 lg:left-16 flex gap-2" role="tablist" aria-label="Testimonials">
+        {testimonials.map((_, index) => (
+          <button
+            type="button"
+            class={`testimonial-dot size-2.5 rounded-full transition-all duration-300 ${index === 0 ? 'bg-brand-400 dark:bg-brand-400 scale-110' : 'bg-brand-400 dark:bg-brand-600 hover:bg-brand-600 dark:hover:bg-brand-400'}`}
+            data-testimonial-dot
+            data-index={index}
+            aria-label={`Show testimonial ${index + 1}`}
+            aria-selected={index === 0 ? 'true' : 'false'}
+          ></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector('[data-testimonial-root]');
+  if (root) {
+    const slides = Array.from(root.querySelectorAll('[data-testimonial-slide]'));
+    const dots = Array.from(root.querySelectorAll('[data-testimonial-dot]'));
+    let active = 0;
+    let timerId: number | undefined;
+
+    const setActive = (nextIndex: number) => {
+      slides.forEach((slide, index) => {
+        const isActive = index === nextIndex;
+        slide.classList.toggle('opacity-100', isActive);
+        slide.classList.toggle('relative', isActive);
+        slide.classList.toggle('opacity-0', !isActive);
+        slide.classList.toggle('absolute', !isActive);
+        slide.classList.toggle('pointer-events-none', !isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+
+      dots.forEach((dot, index) => {
+        const isActive = index === nextIndex;
+        dot.classList.toggle('bg-brand-600', isActive);
+        dot.classList.toggle('dark:brand-300', isActive);
+        dot.classList.toggle('scale-110', isActive);
+        dot.classList.toggle('bg-brand-400', !isActive);
+        dot.classList.toggle('dark:bg-brand-600', !isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      active = nextIndex;
+    };
+
+    const advance = () => {
+      const nextIndex = (active + 1) % slides.length;
+      setActive(nextIndex);
+    };
+
+    const resetTimer = () => {
+      if (timerId) window.clearInterval(timerId);
+      timerId = window.setInterval(advance, 6000);
+    };
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const nextIndex = Number((dot as HTMLElement).dataset.index);
+        setActive(nextIndex);
+        resetTimer();
+      });
+    });
+
+    resetTimer();
+
+    root.addEventListener('mouseenter', () => {
+      if (timerId) window.clearInterval(timerId);
+    });
+    root.addEventListener('mouseleave', resetTimer);
+  }
+</script>
