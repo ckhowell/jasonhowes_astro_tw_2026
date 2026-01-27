@@ -51,7 +51,7 @@ const statClasses = {
           </p>
         )}
         {headline && (
-          <h2 class="text-brand-900 dark:text-white mb-4">
+          <h2 class="text-brand-900 dark:text-brand-100 mb-4">
             {headline}
           </h2>
         )}
@@ -67,7 +67,7 @@ const statClasses = {
     <div class={`grid grid-cols-1 ${gridCols[columns]} gap-8 md:gap-12`}>
       {stats.map((stat) => (
         <div class={statClasses[variant]}>
-          <div class="text-4xl md:text-5xl lg:text-6xl font-medium text-brand-900 dark:text-white tracking-tight mb-2">
+          <div class="text-4xl md:text-5xl lg:text-6xl font-medium text-brand-900 dark:text-brand-100 tracking-tight mb-2">
             {stat.value}
           </div>
           <div class="text-base font-medium text-brand-700 dark:text-brand-300 mb-1">

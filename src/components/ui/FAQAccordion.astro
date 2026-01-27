@@ -40,7 +40,7 @@ const rightColumn = columns === 2 ? faqs.slice(midpoint) : [];
           </p>
         )}
         {headline && (
-          <h2 class="text-brand-900 dark:text-white mb-4">
+          <h2 class="text-brand-900 dark:text-brand-100 mb-4">
             {headline}
           </h2>
         )}
@@ -59,7 +59,7 @@ const rightColumn = columns === 2 ? faqs.slice(midpoint) : [];
         {leftColumn.map((faq, index) => (
           <details class="group py-6" data-faq-item>
             <summary class="flex items-center justify-between cursor-pointer list-none">
-              <h3 class="text-base md:text-lg font-medium text-brand-900 dark:text-white pr-8">
+              <h3 class="text-base md:text-lg font-medium text-brand-900 dark:text-brand-100 pr-8">
                 {faq.question}
               </h3>
               <span class="shrink-0 ml-4">
@@ -86,7 +86,7 @@ const rightColumn = columns === 2 ? faqs.slice(midpoint) : [];
           {rightColumn.map((faq, index) => (
             <details class="group py-6" data-faq-item>
               <summary class="flex items-center justify-between cursor-pointer list-none">
-                <h3 class="text-base md:text-lg font-medium text-brand-900 dark:text-white pr-8">
+                <h3 class="text-base md:text-lg font-medium text-brand-900 dark:text-brand-100 pr-8">
                   {faq.question}
                 </h3>
                 <span class="shrink-0 ml-4">

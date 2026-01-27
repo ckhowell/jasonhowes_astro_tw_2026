@@ -3,7 +3,7 @@ import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="fonts-loading">
   <head>
     <meta charset="UTF-8" />
     <!-- Inline script to prevent flash of wrong theme -->
@@ -13,11 +13,11 @@ import "../styles/global.css";
         document.documentElement.classList.remove('dark');
       }
     </script>
-        <title>
+    <title>
       Jason Howes - Specialist in sales recruitment and performance consulting.
     </title>
     <meta name="viewport" content="width=device-width" />
-<meta
+    <meta
       name="description"
       content="The sales hiring playbook for global leaders. Learn how to attract, recruit, and retain the top 20% of sales professionals with a proven methodology."
     />
@@ -31,6 +31,51 @@ import "../styles/global.css";
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Crystal Ball Recruiting | Jason Howes - The Sales Hiring Playbook" />
     <meta property="og:description" content="The sales hiring playbook for global leaders. Learn how to attract, recruit, and retain the top 20% of sales professionals with a proven methodology." />
+
+    <!-- Preconnect to font sources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" as="style">
+
+    <!-- Load fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- Hide page until fonts load -->
+    <style>
+      html.fonts-loading {
+        opacity: 0;
+      }
+      html {
+        opacity: 1;
+        transition: opacity 0.1s ease-in;
+      }
+    </style>
+
+    <!-- Remove fonts-loading class when fonts are ready -->
+    <script is:inline>
+      if ('fonts' in document) {
+        Promise.all([
+          document.fonts.load('400 1em Inter'),
+          document.fonts.load('500 1em "Mona Sans"')
+        ]).then(() => {
+          document.documentElement.classList.remove('fonts-loading');
+        }).catch(() => {
+          document.documentElement.classList.remove('fonts-loading');
+        });
+        // Fallback - show page after 1 second regardless
+        setTimeout(() => {
+          document.documentElement.classList.remove('fonts-loading');
+        }, 1000);
+      } else {
+        document.documentElement.classList.remove('fonts-loading');
+      }
+    </script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -40,16 +85,9 @@ import "../styles/global.css";
       gtag('config', 'G-XXXXXXXXXX');
     </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-
-<!-- Boxicons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet" />
-
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
   </head>
-  <body class="font-sans bg-brand-50 dark:bg-brand-950 dark:text-brand-400 transition-colors duration-200  text-brand-700">
+  <body class="font-sans bg-brand-50 dark:bg-brand-950 dark:text-brand-400 text-brand-700">
     <slot />
   </body>
 </html>

@@ -1,0 +1,139 @@
+---
+// Books page
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const books = [
+  {
+    title: 'Crystal Ball Recruiting',
+    subtitle: 'The Sales Hiring Playbook',
+    description: 'Stop gambling on sales hires. Learn the science-backed system for identifying, assessing, and hiring sales talent that actually performs.',
+    image: '/assets/img/book/front.jpg',
+    buyLink: '#',
+    featured: true
+  },
+  {
+    title: 'Sales Management. Simplified.',
+    subtitle: 'The Straight Truth About Getting Exceptional Results from Your Sales Team',
+    description: 'A practical guide to sales management that cuts through the noise and delivers real-world strategies that work.',
+    image: 'https://placehold.co/400x600/b8d0ed/244a78?text=Book+2',
+    buyLink: '#'
+  },
+  {
+    title: 'New Sales. Simplified.',
+    subtitle: 'The Essential Handbook for Prospecting and New Business Development',
+    description: 'Master the art of prospecting and new business development with proven frameworks and actionable strategies.',
+    image: 'https://placehold.co/400x600/b8d0ed/244a78?text=Book+3',
+    buyLink: '#'
+  }
+];
+---
+
+<Layout>
+  <Nav variant="light" />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+          Books by Jason Howes
+        </p>
+        <h1 class="text-brand-900 dark:text-brand-100 mb-6">
+          Practical wisdom for sales leaders
+        </h1>
+        <p class="text-lg text-brand-600 dark:text-brand-400">
+          Bestselling guides that have transformed thousands of sales organizations. Implement what you learn immediately.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Book -->
+  {books.filter(b => b.featured).map((book) => (
+    <section class="py-16 md:py-24 px-4 bg-brand-100 dark:bg-brand-900">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div class="order-2 lg:order-1">
+            <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+              Featured Book
+            </p>
+            <h2 class="text-brand-900 dark:text-brand-100 mb-2">
+              {book.title}
+            </h2>
+            <p class="text-lg text-accent-600 dark:text-accent-400 mb-6">
+              {book.subtitle}
+            </p>
+            <p class="text-brand-600 dark:text-brand-400 mb-8">
+              {book.description}
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href={book.buyLink}
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
+              >
+                Buy Now
+              </a>
+              <a
+                href="/free-chapter"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium text-sm hover:bg-brand-200 dark:hover:bg-brand-800 transition-colors"
+              >
+                Free Chapter
+              </a>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2 flex justify-center">
+            <img
+              src={book.image}
+              alt={book.title}
+              class="w-64 md:w-80 rounded-lg shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Other Books -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-brand-900 dark:text-brand-100 mb-12">
+        More from Jason
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        {books.filter(b => !b.featured).map((book) => (
+          <div class="flex gap-6">
+            <img
+              src={book.image}
+              alt={book.title}
+              class="w-32 md:w-40 rounded-lg shadow-lg flex-shrink-0"
+            />
+            <div>
+              <h3 class="text-xl text-brand-900 dark:text-brand-100 mb-2">
+                {book.title}
+              </h3>
+              <p class="text-sm text-accent-600 dark:text-accent-400 mb-3">
+                {book.subtitle}
+              </p>
+              <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">
+                {book.description}
+              </p>
+              <a
+                href={book.buyLink}
+                class="inline-flex items-center gap-2 text-sm font-medium text-accent-600 dark:text-accent-400 hover:gap-3 transition-all"
+              >
+                Learn more
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

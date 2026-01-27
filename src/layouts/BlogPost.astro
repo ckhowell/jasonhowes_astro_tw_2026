@@ -7,6 +7,7 @@ interface Props {
     pubDate?: string;
     category?: string;
     description?: string;
+    image?: string;
   };
 }
 
@@ -15,127 +16,308 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
 const { frontmatter } = Astro.props;
+
+const formattedDate = frontmatter.pubDate
+  ? new Date(frontmatter.pubDate).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    })
+  : null;
 ---
 
 <Layout>
   <Nav variant="light" />
-  <article class="py-12 md:py-16 px-4">
+
+  <article class="pt-32 pb-24 md:pt-40 px-4">
     <div class="max-w-3xl mx-auto">
       <!-- Header -->
-      <div class="mb-8 pb-8 border-b border-gray-200">
-        <div class="mb-4">
+      <header class="mb-12">
+        <!-- Meta -->
+        <div class="flex items-center gap-3 mb-6">
           {frontmatter.category && (
-            <span class="inline-block px-3 py-1 bg-accent-100 text-accent-700 text-xs font-semibold uppercase rounded-full">
+            <span class="text-xs font-medium uppercase tracking-wider text-accent-600 dark:text-accent-400">
               {frontmatter.category}
             </span>
           )}
+          {formattedDate && (
+            <span class="text-xs text-brand-400 dark:text-brand-500">
+              {formattedDate}
+            </span>
+          )}
         </div>
-        <h1 class="text-4xl sm:text-5xl font-bold text-brand-900 mb-4 font-heading">
+
+        <!-- Title -->
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl text-brand-900 dark:text-brand-100 mb-6">
           {frontmatter.title}
         </h1>
+
+        <!-- Description -->
         {frontmatter.description && (
-          <p class="text-lg text-gray-600 mb-4">
+          <p class="text-xl text-brand-600 dark:text-brand-400 leading-relaxed">
             {frontmatter.description}
           </p>
         )}
-        <div class="flex items-center text-sm text-gray-500 space-x-4">
-          {frontmatter.author && (
-            <span>By {frontmatter.author}</span>
-          )}
-          {frontmatter.pubDate && (
-            <span>{new Date(frontmatter.pubDate).toLocaleDateString()}</span>
-          )}
+
+        <!-- Author -->
+        {frontmatter.author && (
+          <div class="flex items-center gap-4 mt-8 pt-8 border-t border-brand-200 dark:border-brand-700">
+            <div class="w-12 h-12 rounded-full bg-brand-400 dark:bg-brand-800 flex items-center justify-center">
+              <span class="text-brand-600 dark:text-brand-400 text-sm font-semibold">
+                {frontmatter.author.split(' ').map(n => n[0]).join('')}
+              </span>
+            </div>
+            <div>
+              <p class="font-medium text-brand-900 dark:text-blue-400">
+                {frontmatter.author}
+              </p>
+              <p class="text-sm text-brand-500 dark:text-brand-500">
+                Sales Leadership Expert
+              </p>
+            </div>
+          </div>
+        )}
+      </header>
+
+      <!-- Featured Image -->
+      {frontmatter.image && (
+        <div class="mb-12">
+          <img
+            src={frontmatter.image}
+            alt={frontmatter.title}
+            class="w-full rounded-2xl"
+          />
         </div>
-      </div>
+      )}
 
       <!-- Content -->
-      <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+      <div class="prose-content">
         <slot />
       </div>
+
+      <!-- Footer -->
+      <footer class="mt-16 pt-8 border-t border-brand-200 dark:border-brand-700">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 text-sm font-medium text-accent-600 dark:text-accent-400 hover:gap-3 transition-all"
+        >
+          <svg class="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+          Back to all articles
+        </a>
+      </footer>
     </div>
   </article>
+
   <Footer />
 </Layout>
 
 <style is:global>
-  article h2 {
-    font-size: 1.25rem;
-    font-weight: bold;
+  /* Prose content styles */
+  .prose-content {
+    color: var(--color-brand-700);
+  }
+
+  html.dark .prose-content {
+    color: var(--color-brand-300);
+  }
+
+  .prose-content > * + * {
+    margin-top: 1.5rem;
+  }
+
+  /* Headings */
+  .prose-content h2 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--color-brand-700);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  html.dark .prose-content h2 {
+    color: text-brand-200;
+  }
+
+  .prose-content h3 {
+    font-size: 1.375rem;
+    font-weight: 500;
+    color: var(--color-brand-700);
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  html.dark .prose-content h3 {
+    color: text-brand-200;
+  }
+
+  .prose-content h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
     color: var(--color-brand-900);
     margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-family: var(--font-family-heading);
-  }
-
-  article h3 {
-    font-size: 1.125rem;
-    font-weight: bold;
-    color: var(--color-brand-800);
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    font-family: var(--font-family-heading);
-  }
-
-  article h4 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1f2937;
-    margin-top: 1rem;
     margin-bottom: 0.5rem;
   }
 
-  article p {
-    margin-bottom: 1rem;
-    font-size: 1.125rem;
-    line-height: 1.75;
+  html.dark .prose-content h4 {
+    color: var(--color-brand-200);
   }
 
-  article li {
+  /* Paragraphs */
+  .prose-content p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+
+  /* Lists */
+  .prose-content ul,
+  .prose-content ol {
+    padding-left: 1.5rem;
+  }
+
+  .prose-content li {
+    font-size: 1.125rem;
+    line-height: 1.8;
     margin-bottom: 0.5rem;
-    font-size: 1.125rem;
-    line-height: 1.75;
   }
 
-  article blockquote {
-    border-left: 4px solid var(--color-accent-400);
-    padding-left: 1rem;
+  .prose-content ul li {
+    list-style-type: disc;
+  }
+
+  .prose-content ol li {
+    list-style-type: decimal;
+  }
+
+  .prose-content li::marker {
+    color: var(--color-accent-500);
+  }
+
+  /* Blockquotes */
+  .prose-content blockquote {
+    border-left: 3px solid var(--color-accent-400);
+    padding-left: 1.5rem;
     padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.25rem;
     font-style: italic;
-    color: #374151;
-    background-color: #f9fafb;
-    padding: 1rem;
-    margin: 1rem 0;
+    color: var(--color-brand-600);
+    margin: 2rem 0;
   }
 
-  article a {
+  html.dark .prose-content blockquote {
+    border-left-color: var(--color-accent-500);
+    color: var(--color-brand-400);
+  }
+
+  /* Links */
+  .prose-content a {
     color: var(--color-accent-600);
     text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.15s;
   }
 
-  article a:hover {
+  .prose-content a:hover {
     color: var(--color-accent-700);
   }
 
-  article code {
-    background-color: #f3f4f6;
-    color: #111827;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
+  html.dark .prose-content a {
+    color: var(--color-accent-400);
+  }
+
+  html.dark .prose-content a:hover {
+    color: var(--color-accent-300);
+  }
+
+  /* Code */
+  .prose-content code {
+    background-color: var(--color-brand-100);
+    color: var(--color-brand-900);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.375rem;
     font-size: 0.875rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   }
 
-  article pre {
-    background-color: #111827;
-    color: #f3f4f6;
-    padding: 1rem;
-    border-radius: 0.5rem;
+  html.dark .prose-content code {
+    background-color: var(--color-brand-900);
+    color: var(--color-brand-200);
+  }
+
+  .prose-content pre {
+    background-color: var(--color-brand-900);
+    color: var(--color-brand-100);
+    padding: 1.5rem;
+    border-radius: 1rem;
     overflow-x: auto;
-    margin: 1rem 0;
+    margin: 2rem 0;
   }
 
-  article ul,
-  article ol {
-    margin-bottom: 1rem;
-    margin-left: 1.5rem;
+  .prose-content pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+
+  /* Images */
+  .prose-content img {
+    border-radius: 1rem;
+    margin: 2rem 0;
+  }
+
+  /* Horizontal rules */
+  .prose-content hr {
+    border: none;
+    border-top: 1px solid var(--color-brand-200);
+    margin: 3rem 0;
+  }
+
+  html.dark .prose-content hr {
+    border-top-color: var(--color-brand-700);
+  }
+
+  /* Strong/Bold */
+  .prose-content strong {
+    font-weight: 600;
+    color: var(--color-brand-900);
+  }
+
+  html.dark .prose-content strong {
+    color: var(--color-brand-100);
+  }
+
+  /* Tables */
+  .prose-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+  }
+
+  .prose-content th,
+  .prose-content td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-brand-200);
+  }
+
+  html.dark .prose-content th,
+  html.dark .prose-content td {
+    border-bottom-color: var(--color-brand-700);
+  }
+
+  .prose-content th {
+    font-weight: 600;
+    color: var(--color-brand-900);
+    background-color: var(--color-brand-50);
+  }
+
+  html.dark .prose-content th {
+    color: var(--color-brand-100);
+    background-color: var(--color-brand-900);
   }
 </style>

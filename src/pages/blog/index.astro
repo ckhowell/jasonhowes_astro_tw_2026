@@ -4,10 +4,8 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
-import PageHeader from '../../components/PageHeader.astro';
 
-// Skip loading blog posts in development to speed up builds
-const allPosts = import.meta.env.DEV ? [] : await getCollection('blog');
+const allPosts = await getCollection('blog');
 const sortedPosts = allPosts.sort((a, b) => {
   return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 });
@@ -20,61 +18,95 @@ const toSentenceCase = (str: string) => {
 
 <Layout>
   <Nav variant="light" />
-  <div class="py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <PageHeader
-        title="From the blog"
-        description="Practical thinking on recruitment, sales, and leadership from Jason Howes"
-      />
-      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-24 border-t border-brand-400 pt-10 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+
+  <!-- Hero Header -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+          Insights & Ideas
+        </p>
+        <h1 class="text-brand-900 dark:text-brand-100 mb-6">
+          From the blog
+        </h1>
+        <p class="text-lg text-brand-600 dark:text-brand-400">
+          Practical thinking on recruitment, sales, and leadership.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="pb-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {sortedPosts.map((post) => (
-          <article class="flex max-w-xl flex-col items-start justify-between">
-            <div class="flex items-center gap-x-4 text-xs">
-              <time datetime={post.data.pubDate.toISOString()} class="text-gray-500">
-                {post.data.pubDate.toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </time>
-              {post.data.category && (
-                <a href="#" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
-                  {post.data.category}
-                </a>
+          <article class="group">
+            <a href={`/blog/${post.slug}`} class="block">
+              <!-- Image placeholder or featured image -->
+              {post.data.image ? (
+                <div class="aspect-[16/10] rounded-2xl overflow-hidden mb-6 bg-brand-100 dark:bg-brand-800">
+                  <img
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ) : (
+                <div class="aspect-[16/10] rounded-2xl mb-6 bg-brand-100 dark:bg-brand-800 flex items-center justify-center">
+                  <i class="bx bx-file-blank text-4xl text-brand-300 dark:text-brand-600"></i>
+                </div>
               )}
-            </div>
-            <div class="group relative grow">
-              <h5 class="mt-3 text-lg/6 font-semibold text-gray-900! group-hover:text-gray-900 blog-title">
-                <a href={`/blog/${post.slug}`}>
-                  <span class="absolute inset-0"></span>
-                  {toSentenceCase(post.data.title)}
-                </a>
-              </h5>
-              <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600">
-                {post.data.description || 'Discover insights on sales leadership, recruitment strategies, and business growth from Jason Howes.'}
+
+              <!-- Meta -->
+              <div class="flex items-center gap-3 mb-3">
+                {post.data.category && (
+                  <span class="text-xs font-medium uppercase tracking-wider text-accent-600 dark:text-accent-400">
+                    {post.data.category}
+                  </span>
+                )}
+                <span class="text-xs text-brand-400 dark:text-brand-500">
+                  {post.data.pubDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric'
+                  })}
+                </span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-xl font-medium text-brand-900 dark:text-brand-100 mb-3 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
+                {toSentenceCase(post.data.title)}
+              </h3>
+
+              <!-- Description -->
+              <p class="text-sm text-brand-600 dark:text-brand-400 line-clamp-2 mb-4">
+                {post.data.description || 'Discover insights on sales leadership, recruitment strategies, and business growth.'}
               </p>
-            </div>
-            <div class="relative mt-8 flex items-center gap-x-4 justify-self-end">
-              <div class="size-10 rounded-full bg-gray-100 flex items-center justify-center">
-                <span class="text-gray-600 text-sm font-semibold">JH</span>
-              </div>
-              <div class="text-sm/6">
-                <p class="font-semibold text-gray-900">
-                  <span>Jason Howes</span>
-                </p>
-                <p class="text-gray-600">Sales Leadership Expert</p>
-              </div>
-            </div>
+
+              <!-- Read more -->
+              <span class="inline-flex items-center gap-2 text-sm font-medium text-accent-600 dark:text-accent-400 group-hover:gap-3 transition-all">
+                Read article
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
+            </a>
           </article>
         ))}
       </div>
 
       {sortedPosts.length === 0 && (
-        <div class="text-center py-12">
-          <p class="text-brand-600 text-lg">No blog posts yet.</p>
+        <div class="text-center py-24">
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-100 dark:bg-brand-800 mb-6">
+            <i class="bx bx-file-blank text-3xl text-brand-400 dark:text-brand-500"></i>
+          </div>
+          <p class="text-brand-600 dark:text-brand-400 text-lg">No blog posts yet.</p>
+          <p class="text-brand-500 dark:text-brand-500 text-sm mt-2">Check back soon for new content.</p>
         </div>
       )}
     </div>
-  </div>
+  </section>
+
   <Footer />
 </Layout>

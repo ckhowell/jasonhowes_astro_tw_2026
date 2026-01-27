@@ -1,0 +1,206 @@
+---
+// Engage Jason page - Speaking, Training, Consulting
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const services = [
+  {
+    icon: 'bx-microphone',
+    title: 'Keynote Speaking',
+    description: 'High-energy keynotes that inspire and equip your sales team. Perfect for annual kickoffs, conferences, and leadership summits.',
+    features: [
+      'Customized content for your audience',
+      'Interactive elements that engage',
+      'Actionable takeaways attendees can use immediately',
+      'Virtual and in-person options'
+    ],
+    cta: 'Book a Keynote'
+  },
+  {
+    icon: 'bx-chalkboard',
+    title: 'Workshops & Training',
+    description: 'Hands-on workshops that build skills and change behavior. From half-day sessions to multi-day intensives.',
+    features: [
+      'Sales fundamentals and advanced techniques',
+      'Sales management and leadership',
+      'Recruiting and hiring best practices',
+      'Custom programs for your specific challenges'
+    ],
+    cta: 'Schedule Training'
+  },
+  {
+    icon: 'bx-briefcase-alt',
+    title: 'Consulting & Advisory',
+    description: 'Strategic guidance for sales leaders serious about transformation. Ongoing support to drive lasting change.',
+    features: [
+      'Sales organization assessment',
+      'Hiring process optimization',
+      'Team performance analysis',
+      'Compensation and incentive design'
+    ],
+    cta: 'Start a Conversation'
+  }
+];
+
+const clients = [
+  'Fortune 500 enterprises',
+  'High-growth startups',
+  'Professional services firms',
+  'Technology companies',
+  'Financial services',
+  'Healthcare organizations'
+];
+---
+
+<Layout>
+  <Nav variant="light" />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+            Speaking, Training & Consulting
+          </p>
+          <h1 class="text-brand-900 dark:text-brand-100 mb-6">
+            Bring Jason to your organization
+          </h1>
+          <p class="text-lg text-brand-600 dark:text-brand-400 mb-8">
+            Keynotes, workshops, and advisory services that transform sales teams. Practical strategies your people can implement immediately.
+          </p>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
+          >
+            Request Availability
+          </a>
+        </div>
+        <div class="flex justify-center">
+          <img
+            src="/book-signing.jpg"
+            alt="Jason Howes speaking"
+            class="w-full max-w-md rounded-2xl shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl mb-12">
+        <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+          How Jason can help
+        </h2>
+        <p class="text-brand-600 dark:text-brand-400">
+          Choose the engagement model that fits your needs. All services are customized for your specific situation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {services.map((service) => (
+          <div class="bg-white dark:bg-brand-900 rounded-2xl p-8 border border-brand-200 dark:border-brand-700">
+            <div class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center mb-6">
+              <i class={`bx ${service.icon} text-2xl text-accent-600 dark:text-accent-400`}></i>
+            </div>
+            <h3 class="text-xl text-brand-900 dark:text-brand-100 mb-3">
+              {service.title}
+            </h3>
+            <p class="text-brand-600 dark:text-brand-400 mb-6">
+              {service.description}
+            </p>
+            <ul class="space-y-2 mb-8">
+              {service.features.map((feature) => (
+                <li class="flex items-start gap-2 text-sm text-brand-600 dark:text-brand-400">
+                  <i class="bx bx-check text-accent-500 mt-0.5"></i>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="/contact"
+              class="inline-flex items-center gap-2 text-sm font-medium text-accent-600 dark:text-accent-400 hover:gap-3 transition-all"
+            >
+              {service.cta}
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+            Who Jason Works With
+          </p>
+          <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+            Trusted by leading organizations
+          </h2>
+          <p class="text-brand-600 dark:text-brand-400 mb-8">
+            From startups to Fortune 500 companies, Jason has helped organizations of all sizes transform their sales capabilities.
+          </p>
+          <ul class="grid grid-cols-2 gap-4">
+            {clients.map((client) => (
+              <li class="flex items-center gap-2 text-brand-700 dark:text-brand-300">
+                <i class="bx bx-check-circle text-accent-500"></i>
+                {client}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 md:p-12">
+          <blockquote class="text-xl text-brand-700 dark:text-brand-300 mb-6">
+            "Jason's keynote was the highlight of our annual conference. Six months later, our team is still talking about the frameworks he shared."
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-brand-200 dark:bg-brand-800 flex items-center justify-center">
+              <span class="text-brand-600 dark:text-brand-400 font-semibold">SM</span>
+            </div>
+            <div>
+              <p class="font-medium text-brand-900 dark:text-brand-100">Sarah Mitchell</p>
+              <p class="text-sm text-brand-500">VP of Sales, TechCorp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 px-4 bg-brand-900 dark:bg-brand-950">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-brand-100 mb-4">
+        Ready to get started?
+      </h2>
+      <p class="text-brand-300 mb-8">
+        Let's discuss how Jason can help your organization achieve its sales goals.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-brand-900 font-medium text-sm hover:bg-brand-100 transition-colors"
+        >
+          Request Availability
+        </a>
+        <a
+          href="tel:+61000000000"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-600 text-brand-100 font-medium text-sm hover:bg-brand-800 transition-colors"
+        >
+          Call Directly
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

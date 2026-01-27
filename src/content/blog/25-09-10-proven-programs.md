@@ -6,7 +6,7 @@ category: "Sales"
 description: "Transform your sales training into measurable revenue growth with proven programs designed to win those dream accounts you've always wanted."
 ---
 
-#### Turning training into revenue.
+### Turning training into revenue.
 
 Imagine finally landing those dream accounts. The ones you’ve always wanted but never quite had the confidence, skill, or process to win. That’s exactly what our new sales training programs are designed to help you achieve.
 

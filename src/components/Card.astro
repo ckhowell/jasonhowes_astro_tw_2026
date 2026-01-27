@@ -3,7 +3,7 @@
 const { image, heading, subheading, copy, buttonText, buttonLink, buttonVariant = 'primary' } = Astro.props;
 const baseButtonClasses = 'inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 font-semibold shadow-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
 const variantClasses = buttonVariant === 'accent'
-  ? 'bg-brand-900 text-white hover:bg-brand-800 focus-visible:outline-brand-500'
+  ? 'bg-brand-900 text-brand-100 hover:bg-brand-800 focus-visible:outline-brand-500'
   : 'bg-brand-400 text-brand-50 hover:bg-brand-800 focus-visible:outline-brand-400';
 ---
 <div class="flex flex-col md:flex-row overflow-hidden max-w-md">

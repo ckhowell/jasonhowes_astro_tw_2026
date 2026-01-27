@@ -3,15 +3,16 @@
 ---
 
 <section class="relative flex items-center justify-center h-screen bg-checkered">
+  <div class="hero-duotone-overlay" aria-hidden="true"></div>
   <div class="hero-water-overlay" aria-hidden="true"></div>
   <div class="hero-gradient-overlay" aria-hidden="true"></div>
   <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
     <div class="grid lg:grid-cols-2 gap-8 items-center">
       <div>
-          <h1 class="mb-4 py-6 md:mb-6 leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] text-brand-700!">
+          <h1 class="mb-4 py-6 md:mb-6 leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] text-brand-700 dark:text-brand-200">
           Stop hoping your next sales hire works out
         </h1>
-        <h3 class="mb-6 text-xs sm:text-sm tracking-[0.3em] font-semibold text-brand-700!">
+        <h3 class="mb-6 text-xs sm:text-sm tracking-[0.3em] font-semibold text-brand-700 dark:text-brand-300">
           Jason pairs diagnostic insight with hands-on coaching so you know how a hire will perform before day one.
         </h3>
       </div>
@@ -20,32 +21,58 @@
   </div>
 </section>
 
-<style>
+<style is:global>
+  /* Duotone color overlay - sits behind the image */
+  .hero-duotone-overlay {
+    position: absolute;
+    inset: 0;
+    /* Light mode: brand-400 blue tint */
+    background: linear-gradient(135deg, #5a94d1 0%, #3a78bc 100%);
+    pointer-events: none;
+  }
+
+  html.dark .hero-duotone-overlay {
+    /* Dark mode: brand-800 to brand-900 deep blue */
+    background: linear-gradient(135deg, #1a3557 0%, #0e1c2b 100%);
+  }
+
+  /* Image overlay with blend mode for duotone effect */
   .hero-water-overlay {
     position: absolute;
     inset: 0;
     background-image: url('/hero.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.65;
-    filter: saturate(0);
+    opacity: 0.7;
+    filter: grayscale(100%) contrast(1.1);
+    mix-blend-mode: luminosity;
     pointer-events: none;
   }
 
-  :where(.dark .hero-water-overlay) {
-    opacity: 0.35;
-    mix-blend-mode: screen;
+  html.dark .hero-water-overlay {
+    opacity: 0.6;
+    filter: grayscale(100%) contrast(1.2) brightness(0.8);
   }
 
+  /* Gradient overlay for text readability */
   .hero-gradient-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(231, 237, 246, 0.95) 0%, rgba(231, 237, 246, 0.6) 45%, rgba(231, 237, 246, 0.2) 70%, rgba(231, 237, 246, 0) 95%);
+    background: linear-gradient(90deg,
+      rgba(222, 231, 244, 0.95) 0%,
+      rgba(222, 231, 244, 0.75) 35%,
+      rgba(222, 231, 244, 0.3) 60%,
+      rgba(222, 231, 244, 0) 100%
+    );
     pointer-events: none;
   }
 
-  :where(.dark .hero-gradient-overlay) {
-    background: linear-gradient(90deg, rgba(10, 21, 32, 0.85) 0%, rgba(10, 21, 32, 0.5) 45%, rgba(10, 21, 32, 0.2) 70%, rgba(10, 21, 32, 0) 95%);
+  html.dark .hero-gradient-overlay {
+    background: linear-gradient(90deg,
+      rgba(10, 21, 32, 0.95) 0%,
+      rgba(10, 21, 32, 0.85) 40%,
+      rgba(10, 21, 32, 0.5) 70%,
+      rgba(10, 21, 32, 0) 100%
+    );
   }
-
 </style>

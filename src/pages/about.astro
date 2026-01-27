@@ -3,39 +3,237 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import PageHeader from '../components/PageHeader.astro';
+
+const stats = [
+  { number: '20+', label: 'Years in Sales Leadership' },
+  { number: '500+', label: 'Organizations Transformed' },
+  { number: '10,000+', label: 'Sales Professionals Trained' },
+  { number: '3', label: 'Bestselling Books' }
+];
+
+const values = [
+  {
+    icon: 'bx-target-lock',
+    title: 'Results-Driven',
+    description: 'Every strategy, framework, and recommendation is designed to deliver measurable outcomes.'
+  },
+  {
+    icon: 'bx-bulb',
+    title: 'Practical Wisdom',
+    description: 'No theory for theory\'s sake. Everything taught can be implemented immediately.'
+  },
+  {
+    icon: 'bx-heart',
+    title: 'People First',
+    description: 'Great sales organizations are built on great people. Hiring right is the foundation.'
+  },
+  {
+    icon: 'bx-trending-up',
+    title: 'Continuous Growth',
+    description: 'The best sales leaders never stop learning. Neither should their teams.'
+  }
+];
 ---
 
 <Layout>
   <Nav variant="light" />
-  <div class="bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <PageHeader
-        title="About Jason Howes"
-        description="Sales leadership expert and consultant helping organizations build high-performing sales teams through strategic recruitment and development."
-      />
 
-      <div class="mx-auto mt-16 max-w-2xl lg:mx-0 lg:max-w-none">
-        <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:gap-x-16">
-          <div>
-            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Experience & Expertise</h2>
-            <p class="mt-4 text-gray-600">
-              With over 20 years in sales leadership and recruitment, Jason has helped numerous organizations
-              transform their sales capabilities. His expertise spans sales strategy, talent acquisition,
-              team development, and performance optimization.
+  <!-- Hero -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+            About Jason
+          </p>
+          <h1 class="text-brand-900 dark:text-brand-100 mb-6">
+            Helping sales leaders build championship teams
+          </h1>
+          <p class="text-lg text-brand-600 dark:text-brand-400">
+            Jason Howes is a sales leadership expert, bestselling author, and sought-after speaker who has dedicated his career to helping organizations hire, develop, and retain top sales talent.
+          </p>
+        </div>
+        <div class="flex justify-center">
+          <img
+            src="/jason-portrait.jpg"
+            alt="Jason Howes"
+            class="w-full max-w-md rounded-2xl shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="py-12 px-4 bg-brand-100 dark:bg-brand-900">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <p class="text-4xl md:text-5xl font-bold text-brand-900 dark:text-brand-100 mb-2">
+              {stat.number}
+            </p>
+            <p class="text-sm text-brand-600 dark:text-brand-400">
+              {stat.label}
             </p>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-          <div>
-            <h2 class="text-2xl font-bold tracking-tight text-gray-900">Mission</h2>
-            <p class="mt-4 text-gray-600">
-              To empower sales leaders with the knowledge, strategies, and talent needed to drive
-              sustainable growth and build championship-caliber sales organizations.
+  <!-- Story -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4 text-center">
+          The Story
+        </p>
+        <h2 class="text-brand-900 dark:text-brand-100 mb-8 text-center">
+          From the trenches to the boardroom
+        </h2>
+
+        <div class="space-y-6 text-brand-600 dark:text-brand-400">
+          <p>
+            Jason's journey began on the front lines of sales, where he quickly learned that success isn't about tricks or manipulation—it's about understanding people, solving problems, and building genuine relationships.
+          </p>
+          <p>
+            After years of consistently outperforming his peers, Jason moved into sales leadership, where he discovered his true passion: helping others succeed. He found that the skills that made him a great salesperson—active listening, strategic thinking, and relentless focus on value—translated directly into building high-performing teams.
+          </p>
+          <p>
+            But it was in recruiting where Jason had his biggest breakthrough. He realized that most sales hiring was fundamentally broken. Companies were gambling on candidates based on gut feel and rehearsed interview answers, only to watch 50% or more of their hires fail within the first year.
+          </p>
+          <p>
+            This realization led to the development of his signature diagnostic approach to sales hiring—a methodology that has helped hundreds of organizations dramatically improve their hiring success rates and build sales teams that consistently outperform.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-2xl mb-12 text-center mx-auto">
+        <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+          Philosophy
+        </p>
+        <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+          What drives the work
+        </h2>
+        <p class="text-brand-600 dark:text-brand-400">
+          These principles guide every engagement, every training, and every piece of advice.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {values.map((value) => (
+          <div class="bg-white dark:bg-brand-900 rounded-2xl p-8 border border-brand-200 dark:border-brand-700">
+            <div class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center mb-6">
+              <i class={`bx ${value.icon} text-2xl text-accent-600 dark:text-accent-400`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-brand-900 dark:text-brand-100 mb-3">
+              {value.title}
+            </h3>
+            <p class="text-sm text-brand-600 dark:text-brand-400">
+              {value.description}
             </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+            Expertise
+          </p>
+          <h2 class="text-brand-900 dark:text-brand-100 mb-6">
+            Deep knowledge across the sales ecosystem
+          </h2>
+          <p class="text-brand-600 dark:text-brand-400 mb-8">
+            Jason brings hands-on experience in every aspect of building and leading sales organizations.
+          </p>
+
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-accent-500 mt-0.5"></i>
+              <div>
+                <p class="font-medium text-brand-900 dark:text-brand-100">Sales Talent Assessment</p>
+                <p class="text-sm text-brand-600 dark:text-brand-400">Diagnostic tools and frameworks for evaluating sales candidates</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-accent-500 mt-0.5"></i>
+              <div>
+                <p class="font-medium text-brand-900 dark:text-brand-100">Sales Team Development</p>
+                <p class="text-sm text-brand-600 dark:text-brand-400">Training programs that build skills and change behavior</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-accent-500 mt-0.5"></i>
+              <div>
+                <p class="font-medium text-brand-900 dark:text-brand-100">Sales Leadership Coaching</p>
+                <p class="text-sm text-brand-600 dark:text-brand-400">Executive guidance for sales leaders at all levels</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-accent-500 mt-0.5"></i>
+              <div>
+                <p class="font-medium text-brand-900 dark:text-brand-100">Sales Organization Design</p>
+                <p class="text-sm text-brand-600 dark:text-brand-400">Structure, compensation, and process optimization</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 md:p-12">
+          <blockquote class="text-xl text-brand-700 dark:text-brand-300 mb-6">
+            "Jason doesn't just teach theory—he's lived it. His insights come from real-world experience leading sales teams, and that authenticity comes through in everything he does."
+          </blockquote>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-brand-200 dark:bg-brand-800 flex items-center justify-center">
+              <span class="text-brand-600 dark:text-brand-400 font-semibold">MR</span>
+            </div>
+            <div>
+              <p class="font-medium text-brand-900 dark:text-brand-100">Michael Roberts</p>
+              <p class="text-sm text-brand-500">CEO, GrowthTech Solutions</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 px-4 bg-brand-900 dark:bg-brand-950">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-brand-100 mb-4">
+        Let's work together
+      </h2>
+      <p class="text-brand-300 mb-8">
+        Whether you need a keynote speaker, a training partner, or strategic consulting, Jason is ready to help your organization succeed.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="/engage-jason"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-brand-900 font-medium text-sm hover:bg-brand-100 transition-colors"
+        >
+          Explore Services
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-600 text-brand-100 font-medium text-sm hover:bg-brand-800 transition-colors"
+        >
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
   <Footer />
 </Layout>
