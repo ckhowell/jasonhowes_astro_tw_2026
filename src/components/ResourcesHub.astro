@@ -1,6 +1,8 @@
 ---
 // ResourcesHub Component - Podcast & Blog combined
 
+import { getCollection } from 'astro:content';
+
 const podcastEpisodes = [
   { title: 'How "Hannah the Hunter" Achieved a Blowout Year and Breakthrough Sales Success', date: 'MARCH 4, 2025' },
   { title: 'A Big Picture Diagnostic: 5 Reasons Your Sales Team May Not Be Developing More New Business', date: 'NOVEMBER 24, 2024' },
@@ -8,12 +10,20 @@ const podcastEpisodes = [
   { title: 'The #1 Reason Your Sales Team Is Not Bringing In More New Business', date: 'AUGUST 22, 2023' },
 ];
 
-const blogPosts = [
-  { title: 'Winners Own the Outcome Instead of Blaming Others & Circumstances When They Lose', date: 'MARCH 22, 2023' },
-  { title: 'The Stupidly Simple Foolproof Way to Guarantee Consistent Deal Flow & a Full Pipeline', date: 'MARCH 1, 2022' },
-  { title: 'Obedient Order-Taker and Yes-Men/Women Salespeople Don\'t Win More Business', date: 'DECEMBER 2, 2021' },
-  { title: 'The ROI Is Huge for Those Who Implement', date: 'OCTOBER 27, 2021' },
-];
+const formatDateForLabel = (isoDate: string) =>
+  new Date(isoDate)
+    .toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+    .toUpperCase();
+
+const blogPosts = (await getCollection('blog'))
+  .filter((post) => Boolean(post.data.pubDate))
+  .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
+  .slice(0, 4)
+  .map((post) => ({
+    title: post.data.title,
+    date: formatDateForLabel(post.data.pubDate),
+    href: `/blog/${post.slug}`
+  }));
 ---
 
 <section class="py-16 md:py-24 px-4">
@@ -129,12 +139,12 @@ const blogPosts = [
 
             <div class="space-y-6">
               {blogPosts.map((post) => (
-                <div class="group cursor-pointer">
+                <a href={post.href} class="group block cursor-pointer" aria-label={`Read ${post.title}`}>
                   <p class="font-semibold text-brand-800 dark:text-brand-200 leading-snug mb-1 group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors">
                     {post.title}
                   </p>
                   <p class="text-xs text-brand-500 uppercase tracking-wider">{post.date}</p>
-                </div>
+                </a>
               ))}
             </div>
 
