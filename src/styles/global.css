@@ -65,19 +65,19 @@
     pointer-events: none;
 }
 
-.bg-checkered::before {
-    background-image: radial-gradient(circle, rgba(90, 148, 209, 0.45) 2.5px, transparent 2.5px);
+/* .bg-checkered::before {
+    background-image: radial-gradient(circle, rgba(90, 148, 209, 0.25) 2.5px, transparent 2.5px);
     background-size: 70px 70px;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0) 100%);
 }
 
 .bg-checkered::after {
-    background-image: radial-gradient(circle, rgba(45, 95, 153, 0.55) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(45, 95, 153, 0.35) 1px, transparent 1px);
     background-size: 45px 45px;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 1) 95%, rgba(0, 0, 0, 0) 100%);
     -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 1) 65%, rgba(0, 0, 0, 1) 95%, rgba(0, 0, 0, 0) 100%);
-}
+} */
 
 .dark .bg-checkered {
     background:
@@ -86,11 +86,11 @@
 }
 
 .dark .bg-checkered::before {
-    background-image: radial-gradient(circle, rgba(26, 53, 87, 0.75) 2.5px, transparent 2.5px);
+    /* background-image: radial-gradient(circle, rgba(26, 53, 87, 0.45) 2.5px, transparent 2.5px); */
 }
 
 .dark .bg-checkered::after {
-    background-image: radial-gradient(circle, rgba(26, 53, 87, 0.85) 1px, transparent 1px);
+    /* background-image: radial-gradient(circle, rgba(26, 53, 87, 0.55) 1px, transparent 1px); */
 }
 
 
