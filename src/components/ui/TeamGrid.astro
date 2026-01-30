@@ -44,12 +44,12 @@ const gridCols = {
     {(eyebrow || headline || description) && (
       <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
         {eyebrow && (
-          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-3">
             {eyebrow}
           </p>
         )}
         {headline && (
-          <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+          <h2 class="text-brand-700 dark:text-brand-100 mb-4">
             {headline}
           </h2>
         )}
@@ -84,7 +84,7 @@ const gridCols = {
 
           <!-- Name & Role -->
           <div class={variant === 'minimal' ? 'text-center' : ''}>
-            <h3 class="text-lg font-medium text-brand-900 dark:text-brand-100">
+            <h3 class="text-lg font-medium text-brand-700 dark:text-brand-100">
               {member.name}
             </h3>
             <p class="text-sm text-brand-500 dark:text-brand-500 mb-2">
@@ -104,7 +104,7 @@ const gridCols = {
                 {member.social.twitter && (
                   <a
                     href={member.social.twitter}
-                    class="text-brand-400 hover:text-accent-500 dark:text-brand-500 dark:hover:text-accent-400 transition-colors"
+                    class="text-brand-400 hover:text-brand-500 dark:text-brand-500 dark:hover:text-brand-300 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${member.name} on Twitter`}
@@ -117,7 +117,7 @@ const gridCols = {
                 {member.social.linkedin && (
                   <a
                     href={member.social.linkedin}
-                    class="text-brand-400 hover:text-accent-500 dark:text-brand-500 dark:hover:text-accent-400 transition-colors"
+                    class="text-brand-400 hover:text-brand-500 dark:text-brand-500 dark:hover:text-brand-300 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${member.name} on LinkedIn`}
@@ -130,7 +130,7 @@ const gridCols = {
                 {member.social.github && (
                   <a
                     href={member.social.github}
-                    class="text-brand-400 hover:text-accent-500 dark:text-brand-500 dark:hover:text-accent-400 transition-colors"
+                    class="text-brand-400 hover:text-brand-500 dark:text-brand-500 dark:hover:text-brand-300 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${member.name} on GitHub`}

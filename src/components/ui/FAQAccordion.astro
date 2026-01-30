@@ -35,12 +35,12 @@ const rightColumn = columns === 2 ? faqs.slice(midpoint) : [];
     {(eyebrow || headline || description) && (
       <div class={`mb-12 md:mb-16 ${columns === 1 ? 'max-w-3xl mx-auto text-center' : 'max-w-3xl'}`}>
         {eyebrow && (
-          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-3">
             {eyebrow}
           </p>
         )}
         {headline && (
-          <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+          <h2 class="text-brand-700 dark:text-brand-100 mb-4">
             {headline}
           </h2>
         )}
@@ -59,7 +59,7 @@ const rightColumn = columns === 2 ? faqs.slice(midpoint) : [];
         {leftColumn.map((faq, index) => (
           <details class="group py-6" data-faq-item>
             <summary class="flex items-center justify-between cursor-pointer list-none">
-              <h3 class="text-base md:text-lg font-medium text-brand-900 dark:text-brand-100 pr-8">
+              <h3 class="text-base md:text-lg font-medium text-brand-700 dark:text-brand-100 pr-8">
                 {faq.question}
               </h3>
               <span class="shrink-0 ml-4">
@@ -86,7 +86,7 @@ const rightColumn = columns === 2 ? faqs.slice(midpoint) : [];
           {rightColumn.map((faq, index) => (
             <details class="group py-6" data-faq-item>
               <summary class="flex items-center justify-between cursor-pointer list-none">
-                <h3 class="text-base md:text-lg font-medium text-brand-900 dark:text-brand-100 pr-8">
+                <h3 class="text-base md:text-lg font-medium text-brand-700 dark:text-brand-100 pr-8">
                   {faq.question}
                 </h3>
                 <span class="shrink-0 ml-4">

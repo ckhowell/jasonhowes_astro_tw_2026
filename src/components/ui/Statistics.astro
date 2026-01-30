@@ -35,7 +35,7 @@ const gridCols = {
 const statClasses = {
   default: '',
   cards: 'bg-brand-50 dark:bg-brand-900 rounded-2xl p-8',
-  bordered: 'border-l-2 border-accent-500 dark:border-accent-400 pl-6',
+  bordered: 'border-l-2 border-brand-500 dark:border-brand-400 pl-6',
   inline: 'text-center'
 };
 ---
@@ -46,12 +46,12 @@ const statClasses = {
     {(eyebrow || headline || description) && (
       <div class={`mb-12 md:mb-16 ${variant === 'inline' ? 'text-center' : 'max-w-3xl'}`}>
         {eyebrow && (
-          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-3">
             {eyebrow}
           </p>
         )}
         {headline && (
-          <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+          <h2 class="text-brand-700 dark:text-brand-100 mb-4">
             {headline}
           </h2>
         )}
@@ -67,7 +67,7 @@ const statClasses = {
     <div class={`grid grid-cols-1 ${gridCols[columns]} gap-8 md:gap-12`}>
       {stats.map((stat) => (
         <div class={statClasses[variant]}>
-          <div class="text-4xl md:text-5xl lg:text-6xl font-medium text-brand-900 dark:text-brand-100 tracking-tight mb-2">
+          <div class="text-4xl md:text-5xl lg:text-6xl font-medium text-brand-700 dark:text-brand-100 tracking-tight mb-2">
             {stat.value}
           </div>
           <div class="text-base font-medium text-brand-700 dark:text-brand-300 mb-1">

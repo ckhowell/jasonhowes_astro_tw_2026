@@ -38,12 +38,12 @@ const gridCols = {
     {(eyebrow || headline || description) && (
       <div class="max-w-3xl mx-auto text-center mb-12 md:mb-16">
         {eyebrow && (
-          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-3">
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-3">
             {eyebrow}
           </p>
         )}
         {headline && (
-          <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+          <h2 class="text-brand-700 dark:text-brand-100 mb-4">
             {headline}
           </h2>
         )}
@@ -73,14 +73,14 @@ const gridCols = {
                 class="w-12 h-12 rounded-full object-cover"
               />
             ) : (
-              <div class="w-12 h-12 rounded-full bg-accent-200 dark:bg-accent-800 flex items-center justify-center">
-                <span class="text-lg font-medium text-accent-700 dark:text-accent-300">
+              <div class="w-12 h-12 rounded-full bg-brand-200 dark:bg-brand-800 flex items-center justify-center">
+                <span class="text-lg font-medium text-brand-600 dark:text-brand-300">
                   {testimonial.name.charAt(0)}
                 </span>
               </div>
             )}
             <div>
-              <div class="font-medium text-brand-900 dark:text-brand-100">
+              <div class="font-medium text-brand-700 dark:text-brand-100">
                 {testimonial.name}
               </div>
               <div class="text-sm text-brand-500 dark:text-brand-500">

@@ -37,7 +37,7 @@ const {
             href={eyebrowLink}
             class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 dark:bg-brand-800 text-sm text-brand-700 dark:text-brand-300 hover:bg-brand-200 dark:hover:bg-brand-700 transition-colors"
           >
-            <span class="inline-block w-2 h-2 rounded-full bg-accent-500 dark:bg-accent-400"></span>
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-500 dark:bg-brand-400"></span>
             <span>{eyebrow}</span>
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -45,7 +45,7 @@ const {
           </a>
         ) : (
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 dark:bg-brand-800 text-sm text-brand-700 dark:text-brand-300">
-            <span class="inline-block w-2 h-2 rounded-full bg-accent-500 dark:bg-accent-400"></span>
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-500 dark:bg-brand-400"></span>
             <span>{eyebrow}</span>
           </span>
         )}
@@ -53,7 +53,7 @@ const {
     )}
 
     <!-- Headline -->
-    <h1 class="text-brand-900 dark:text-brand-100 mb-6 text-balance">
+    <h1 class="text-brand-700 dark:text-brand-100 mb-6 text-balance">
       {headline}
     </h1>
 
@@ -70,7 +70,7 @@ const {
         {primaryCTA && (
           <a
             href={primaryCTA.href}
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-700 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
           >
             {primaryCTA.text}
           </a>

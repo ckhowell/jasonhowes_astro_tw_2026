@@ -1,0 +1,457 @@
+---
+// Style Guide - Typography, Buttons, and UI Elements
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Nav variant="light" />
+
+  <!-- Header -->
+  <section class="pt-32 pb-12 md:pt-40 md:pb-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-sm uppercase tracking-[0.15em] text-brand-600 dark:text-brand-400 mb-4">
+        Design System
+      </p>
+      <h1 class="text-brand-700 dark:text-brand-100 mb-6">
+        Style Guide
+      </h1>
+      <p class="text-lg text-brand-600 dark:text-brand-400 max-w-2xl">
+        Typography, colors, buttons, and UI components. Toggle dark/light mode using the button in the navigation to preview both themes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Text Color Reference -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-8">Text Color Reference</h2>
+
+      <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-4">Light Mode</h3>
+            <div class="space-y-3">
+              <p class="text-brand-700">text-brand-700 - Primary headings</p>
+              <p class="text-brand-600">text-brand-600 - Body text</p>
+              <p class="text-brand-500">text-brand-500 - Secondary/muted text</p>
+              <p class="text-brand-400">text-brand-400 - Placeholder text</p>
+              <p class="text-brand-500">text-brand-500 - Links & accents</p>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-4">Dark Mode</h3>
+            <div class="space-y-3">
+              <p class="dark:text-brand-100">dark:text-brand-100 - Primary headings</p>
+              <p class="dark:text-brand-200">dark:text-brand-200 - Subheadings</p>
+              <p class="dark:text-brand-300">dark:text-brand-300 - Body text alt</p>
+              <p class="dark:text-brand-400">dark:text-brand-400 - Body text</p>
+              <p class="dark:text-brand-300">dark:text-brand-300 - Links & accents</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Color Palette -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-8">Color Palette</h2>
+
+      <!-- Brand Colors -->
+      <div class="mb-12">
+        <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-4">Brand Colors</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-4">
+          <div>
+            <div class="h-16 rounded-lg bg-brand-50 border border-brand-200"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-50</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-100"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-100</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-200"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-200</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-300"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-300</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-400"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-400</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-500"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-500</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-600"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-600</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-700"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-700</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-800"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-800</p>
+          </div>
+          <div>
+            <div class="h-16 rounded-lg bg-brand-900"></div>
+            <p class="text-xs text-brand-600 dark:text-brand-400 mt-2">brand-900</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="py-12 px-4 bg-brand-100 dark:bg-brand-900">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-8">Typography</h2>
+
+      <!-- Headings -->
+      <div class="mb-12">
+        <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-6">Headings</h3>
+        <div class="space-y-6 bg-brand-50 dark:bg-brand-950 rounded-2xl p-8">
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">h1 - text-brand-700 dark:text-brand-100</p>
+            <h1 class="text-brand-700 dark:text-brand-100">Heading One</h1>
+          </div>
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">h2 - text-brand-700 dark:text-brand-100</p>
+            <h2 class="text-brand-700 dark:text-brand-100">Heading Two</h2>
+          </div>
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">h3 - text-brand-700 dark:text-brand-200</p>
+            <h3 class="text-2xl text-brand-700 dark:text-brand-200">Heading Three</h3>
+          </div>
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">h4 - text-brand-700 dark:text-brand-200</p>
+            <h4 class="text-xl text-brand-700 dark:text-brand-200">Heading Four</h4>
+          </div>
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">h5 - text-brand-700 dark:text-brand-300</p>
+            <h5 class="text-lg text-brand-700 dark:text-brand-300">Heading Five</h5>
+          </div>
+          <div>
+            <p class="text-xs text-brand-500 mb-2">h6 - text-brand-600 dark:text-brand-400</p>
+            <h6 class="text-base font-medium text-brand-600 dark:text-brand-400">Heading Six</h6>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body Text -->
+      <div class="mb-12">
+        <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-6">Body Text</h3>
+        <div class="space-y-6 bg-brand-50 dark:bg-brand-950 rounded-2xl p-8">
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">Large - text-lg text-brand-600 dark:text-brand-400</p>
+            <p class="text-lg text-brand-600 dark:text-brand-400">
+              This is large body text. Use for lead paragraphs, introductions, and important descriptions that need extra emphasis.
+            </p>
+          </div>
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">Base - text-brand-600 dark:text-brand-400</p>
+            <p class="text-brand-600 dark:text-brand-400">
+              This is standard body text. Use for general content, paragraphs, and most written content throughout the site. It provides good readability for longer passages.
+            </p>
+          </div>
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">Small - text-sm text-brand-600 dark:text-brand-400</p>
+            <p class="text-sm text-brand-600 dark:text-brand-400">
+              This is small body text. Use for captions, helper text, metadata, and secondary information.
+            </p>
+          </div>
+          <div>
+            <p class="text-xs text-brand-500 mb-2">Extra Small - text-xs text-brand-500 dark:text-brand-500</p>
+            <p class="text-xs text-brand-500 dark:text-brand-500">
+              This is extra small text. Use for fine print, timestamps, and tertiary information.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Special Text Styles -->
+      <div>
+        <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-6">Special Text Styles</h3>
+        <div class="space-y-6 bg-brand-50 dark:bg-brand-950 rounded-2xl p-8">
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">Eyebrow - text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400</p>
+            <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400">
+              Eyebrow Text
+            </p>
+          </div>
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">Link - text-brand-500 dark:text-brand-300 hover:text-brand-600</p>
+            <a href="#" class="text-brand-500 dark:text-brand-300 hover:text-brand-600 dark:hover:text-brand-200 underline underline-offset-2">
+              This is a text link
+            </a>
+          </div>
+          <div class="border-b border-brand-200 dark:border-brand-700 pb-6">
+            <p class="text-xs text-brand-500 mb-2">Quote - text-xl italic text-brand-700 dark:text-brand-300</p>
+            <blockquote class="text-xl italic text-brand-700 dark:text-brand-300 border-l-4 border-brand-500 pl-6">
+              "This is a pull quote or testimonial style text."
+            </blockquote>
+          </div>
+          <div>
+            <p class="text-xs text-brand-500 mb-2">Label - text-sm uppercase tracking-wider font-semibold text-brand-700 dark:text-brand-200</p>
+            <p class="text-sm uppercase tracking-wider font-semibold text-brand-700 dark:text-brand-200">
+              Section Label
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buttons -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-8">Buttons</h2>
+
+      <!-- Primary Buttons -->
+      <div class="mb-12">
+        <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-6">Primary Buttons</h3>
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8">
+          <div class="flex flex-wrap gap-4 items-center mb-6">
+            <button class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-brand-100 text-brand-100 dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-200 transition-colors">
+              Primary Button
+            </button>
+            <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-900 dark:bg-brand-100 text-brand-100 dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-200 transition-colors">
+              Small Primary
+            </button>
+            <button class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-900 dark:bg-brand-100 text-brand-100 dark:text-brand-900 font-medium hover:bg-brand-800 dark:hover:bg-brand-200 transition-colors">
+              Large Primary
+            </button>
+          </div>
+          <p class="text-xs text-brand-500">
+            bg-brand-900 dark:bg-brand-100 text-brand-100 dark:text-brand-900
+          </p>
+        </div>
+      </div>
+
+      <!-- Secondary Buttons -->
+      <div class="mb-12">
+        <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-6">Secondary Buttons (Outline)</h3>
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8">
+          <div class="flex flex-wrap gap-4 items-center mb-6">
+            <button class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium text-sm hover:bg-brand-200 dark:hover:bg-brand-800 transition-colors">
+              Secondary Button
+            </button>
+            <button class="inline-flex items-center justify-center px-5 py-2.5 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium text-sm hover:bg-brand-200 dark:hover:bg-brand-800 transition-colors">
+              Small Secondary
+            </button>
+            <button class="inline-flex items-center justify-center px-8 py-4 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium hover:bg-brand-200 dark:hover:bg-brand-800 transition-colors">
+              Large Secondary
+            </button>
+          </div>
+          <p class="text-xs text-brand-500">
+            border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300
+          </p>
+        </div>
+      </div>
+
+      <!-- Link Buttons -->
+      <div>
+        <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-6">Link Buttons</h3>
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8">
+          <div class="flex flex-wrap gap-6 items-center mb-6">
+            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-brand-500 dark:text-brand-300 hover:gap-3 transition-all">
+              Learn more
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-brand-700 dark:text-brand-300 hover:text-brand-500 dark:hover:text-brand-200 transition-colors">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+              </svg>
+              Go back
+            </a>
+          </div>
+          <p class="text-xs text-brand-500">
+            text-brand-500 dark:text-brand-300 with arrow icon
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Elements -->
+  <section class="py-12 px-4 bg-brand-100 dark:bg-brand-900">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-8">Form Elements</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Text Input -->
+        <div class="bg-brand-50 dark:bg-brand-950 rounded-2xl p-8">
+          <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-4">Text Input</h3>
+          <label class="block text-sm font-medium text-brand-700 dark:text-brand-300 mb-2">
+            Label
+          </label>
+          <input
+            type="text"
+            placeholder="Placeholder text"
+            class="w-full px-4 py-3 rounded-lg border border-brand-200 dark:border-brand-700 bg-brand-50 dark:bg-brand-800 text-brand-700 dark:text-brand-100 placeholder-brand-400 dark:placeholder-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          />
+          <p class="text-xs text-brand-500 mt-3">
+            border-brand-200 dark:border-brand-700 bg-brand-50 dark:bg-brand-800
+          </p>
+        </div>
+
+        <!-- Select -->
+        <div class="bg-brand-50 dark:bg-brand-950 rounded-2xl p-8">
+          <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-4">Select</h3>
+          <label class="block text-sm font-medium text-brand-700 dark:text-brand-300 mb-2">
+            Label
+          </label>
+          <select class="w-full px-4 py-3 rounded-lg border border-brand-200 dark:border-brand-700 bg-brand-50 dark:bg-brand-800 text-brand-700 dark:text-brand-100 focus:outline-none focus:ring-2 focus:ring-brand-500">
+            <option value="">Select an option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <p class="text-xs text-brand-500 mt-3">
+            Same styling as text input
+          </p>
+        </div>
+
+        <!-- Textarea -->
+        <div class="bg-brand-50 dark:bg-brand-950 rounded-2xl p-8">
+          <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-4">Textarea</h3>
+          <label class="block text-sm font-medium text-brand-700 dark:text-brand-300 mb-2">
+            Label
+          </label>
+          <textarea
+            rows="4"
+            placeholder="Enter your message..."
+            class="w-full px-4 py-3 rounded-lg border border-brand-200 dark:border-brand-700 bg-brand-50 dark:bg-brand-800 text-brand-700 dark:text-brand-100 placeholder-brand-400 dark:placeholder-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500 resize-none"
+          ></textarea>
+          <p class="text-xs text-brand-500 mt-3">
+            Same styling as text input
+          </p>
+        </div>
+
+        <!-- Checkbox & Radio -->
+        <div class="bg-brand-50 dark:bg-brand-950 rounded-2xl p-8">
+          <h3 class="text-lg font-medium text-brand-700 dark:text-brand-200 mb-4">Checkbox & Radio</h3>
+          <div class="space-y-4">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" class="w-5 h-5 rounded border-brand-300 dark:border-brand-600 text-brand-500 focus:ring-brand-500" />
+              <span class="text-brand-700 dark:text-brand-300">Checkbox option</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="radio" class="w-5 h-5 border-brand-300 dark:border-brand-600 text-brand-500 focus:ring-brand-500" />
+              <span class="text-brand-700 dark:text-brand-300">Radio option 1</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="radio" class="w-5 h-5 border-brand-300 dark:border-brand-600 text-brand-500 focus:ring-brand-500" />
+              <span class="text-brand-700 dark:text-brand-300">Radio option 2</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cards -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-8">Cards</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Default Card -->
+        <div class="bg-brand-50 dark:bg-brand-900 rounded-2xl p-8 border border-brand-200 dark:border-brand-700">
+          <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-6">
+            <i class="bx bx-star text-2xl text-brand-600 dark:text-brand-400"></i>
+          </div>
+          <h3 class="text-xl font-medium text-brand-700 dark:text-brand-100 mb-3">
+            Default Card
+          </h3>
+          <p class="text-brand-600 dark:text-brand-400 mb-4">
+            This is a standard card with border styling.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-brand-500 dark:text-brand-300 hover:gap-3 transition-all">
+            Learn more
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Filled Card -->
+        <div class="bg-brand-100 dark:bg-brand-800 rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-200 dark:bg-brand-700 flex items-center justify-center mb-6">
+            <i class="bx bx-rocket text-2xl text-brand-600 dark:text-brand-400"></i>
+          </div>
+          <h3 class="text-xl font-medium text-brand-700 dark:text-brand-100 mb-3">
+            Filled Card
+          </h3>
+          <p class="text-brand-600 dark:text-brand-400 mb-4">
+            This card uses a filled background without border.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-brand-500 dark:text-brand-300 hover:gap-3 transition-all">
+            Learn more
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Dark Card -->
+        <div class="bg-brand-900 dark:bg-brand-100 rounded-2xl p-8">
+          <div class="w-12 h-12 rounded-xl bg-brand-800 dark:bg-brand-200 flex items-center justify-center mb-6">
+            <i class="bx bx-bulb text-2xl text-brand-400 dark:text-brand-600"></i>
+          </div>
+          <h3 class="text-xl font-medium text-brand-100 dark:text-brand-900 mb-3">
+            Inverted Card
+          </h3>
+          <p class="text-brand-300 dark:text-brand-600 mb-4">
+            This card inverts colors for emphasis.
+          </p>
+          <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-brand-400 dark:text-brand-500 hover:gap-3 transition-all">
+            Learn more
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Badges & Tags -->
+  <section class="py-12 px-4 bg-brand-100 dark:bg-brand-900">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-8">Badges & Tags</h2>
+
+      <div class="bg-brand-50 dark:bg-brand-950 rounded-2xl p-8">
+        <div class="flex flex-wrap gap-4 mb-6">
+          <span class="inline-flex items-center px-3 py-1 rounded-full bg-brand-200 dark:bg-brand-800 text-sm text-brand-700 dark:text-brand-300">
+            Default Badge
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-800 text-sm text-brand-600 dark:text-brand-300">
+            Light Badge
+          </span>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-900 dark:bg-brand-100 text-sm text-brand-100 dark:text-brand-900">
+            <span class="w-2 h-2 rounded-full bg-brand-400"></span>
+            Status Badge
+          </span>
+          <span class="inline-flex items-center px-3 py-1 rounded-full border border-brand-300 dark:border-brand-600 text-sm text-brand-600 dark:text-brand-400">
+            Outline Badge
+          </span>
+        </div>
+        <p class="text-xs text-brand-500">
+          Various badge styles for categories, status indicators, and tags
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

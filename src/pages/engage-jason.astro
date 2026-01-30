@@ -61,10 +61,10 @@ const clients = [
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
             Speaking, Training & Consulting
           </p>
-          <h1 class="text-brand-900 dark:text-brand-100 mb-6">
+          <h1 class="text-brand-700 dark:text-brand-100 mb-6">
             Bring Jason to your organization
           </h1>
           <p class="text-lg text-brand-600 dark:text-brand-400 mb-8">
@@ -72,7 +72,7 @@ const clients = [
           </p>
           <a
             href="/contact"
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-900 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
+            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-700 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
           >
             Request Availability
           </a>
@@ -92,7 +92,7 @@ const clients = [
   <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-2xl mb-12">
-        <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+        <h2 class="text-brand-700 dark:text-brand-100 mb-4">
           How Jason can help
         </h2>
         <p class="text-brand-600 dark:text-brand-400">
@@ -103,10 +103,10 @@ const clients = [
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {services.map((service) => (
           <div class="bg-white dark:bg-brand-900 rounded-2xl p-8 border border-brand-200 dark:border-brand-700">
-            <div class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center mb-6">
-              <i class={`bx ${service.icon} text-2xl text-accent-600 dark:text-accent-400`}></i>
+            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-6">
+              <i class={`bx ${service.icon} text-2xl text-brand-500 dark:text-brand-400`}></i>
             </div>
-            <h3 class="text-xl text-brand-900 dark:text-brand-100 mb-3">
+            <h3 class="text-xl text-brand-700 dark:text-brand-100 mb-3">
               {service.title}
             </h3>
             <p class="text-brand-600 dark:text-brand-400 mb-6">
@@ -115,14 +115,14 @@ const clients = [
             <ul class="space-y-2 mb-8">
               {service.features.map((feature) => (
                 <li class="flex items-start gap-2 text-sm text-brand-600 dark:text-brand-400">
-                  <i class="bx bx-check text-accent-500 mt-0.5"></i>
+                  <i class="bx bx-check text-brand-500 mt-0.5"></i>
                   {feature}
                 </li>
               ))}
             </ul>
             <a
               href="/contact"
-              class="inline-flex items-center gap-2 text-sm font-medium text-accent-600 dark:text-accent-400 hover:gap-3 transition-all"
+              class="inline-flex items-center gap-2 text-sm font-medium text-brand-500 dark:text-brand-400 hover:gap-3 transition-all"
             >
               {service.cta}
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -140,10 +140,10 @@ const clients = [
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <p class="text-sm uppercase tracking-[0.15em] text-accent-600 dark:text-accent-400 mb-4">
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
             Who Jason Works With
           </p>
-          <h2 class="text-brand-900 dark:text-brand-100 mb-4">
+          <h2 class="text-brand-700 dark:text-brand-100 mb-4">
             Trusted by leading organizations
           </h2>
           <p class="text-brand-600 dark:text-brand-400 mb-8">
@@ -152,7 +152,7 @@ const clients = [
           <ul class="grid grid-cols-2 gap-4">
             {clients.map((client) => (
               <li class="flex items-center gap-2 text-brand-700 dark:text-brand-300">
-                <i class="bx bx-check-circle text-accent-500"></i>
+                <i class="bx bx-check-circle text-brand-500"></i>
                 {client}
               </li>
             ))}
@@ -167,7 +167,7 @@ const clients = [
               <span class="text-brand-600 dark:text-brand-400 font-semibold">SM</span>
             </div>
             <div>
-              <p class="font-medium text-brand-900 dark:text-brand-100">Sarah Mitchell</p>
+              <p class="font-medium text-brand-700 dark:text-brand-100">Sarah Mitchell</p>
               <p class="text-sm text-brand-500">VP of Sales, TechCorp</p>
             </div>
           </div>
@@ -188,7 +188,7 @@ const clients = [
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="/contact"
-          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-brand-900 font-medium text-sm hover:bg-brand-100 transition-colors"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-brand-700 font-medium text-sm hover:bg-brand-100 transition-colors"
         >
           Request Availability
         </a>
