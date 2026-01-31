@@ -1,103 +1,144 @@
 ---
 import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Jason Howes - Specialist in sales recruitment and performance consulting",
+  description = "The sales hiring playbook for global leaders. Learn how to attract, recruit, and retain the top 20% of sales professionals with a proven methodology."
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="fonts-loading">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Inline script to prevent flash of wrong theme -->
-    <script is:inline>
-      if (localStorage.getItem('color-theme') === 'light' ||
-          (!('color-theme' in localStorage) && !window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.remove('dark');
-      }
-    </script>
-    <title>
-      Jason Howes - Specialist in sales recruitment and performance consulting.
-    </title>
-    <meta name="viewport" content="width=device-width" />
-    <meta
-      name="description"
-      content="The sales hiring playbook for global leaders. Learn how to attract, recruit, and retain the top 20% of sales professionals with a proven methodology."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
     <meta name="author" content="Jason Howes" />
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    <meta property="og:image" content="assets/img/book/front.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/jason-howes-og.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Crystal Ball Recruiting | Jason Howes - The Sales Hiring Playbook" />
-    <meta property="og:description" content="The sales hiring playbook for global leaders. Learn how to attract, recruit, and retain the top 20% of sales professionals with a proven methodology." />
 
-    <!-- Preconnect to font sources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
 
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" as="style">
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Load fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet" />
-
-    <!-- Hide page until fonts load -->
-    <style>
-      html.fonts-loading {
-        opacity: 0;
-      }
+    <!-- Critical CSS inline for fonts -->
+    <style is:inline>
+      /* System font stack fallback */
       html {
-        opacity: 1;
-        transition: opacity 0.1s ease-in;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+      /* Prevent CLS from font swap */
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400 700;
+        font-display: swap;
+        src: local('Inter');
+      }
+      @font-face {
+        font-family: 'Mona Sans';
+        font-style: normal;
+        font-weight: 400 700;
+        font-display: swap;
+        src: local('Mona Sans');
       }
     </style>
 
-    <!-- Remove fonts-loading class when fonts are ready -->
-    <script is:inline>
-      if ('fonts' in document) {
-        Promise.all([
-          document.fonts.load('400 1em Inter'),
-          document.fonts.load('500 1em "Mona Sans"')
-        ]).then(() => {
-          document.documentElement.classList.remove('fonts-loading');
-        }).catch(() => {
-          document.documentElement.classList.remove('fonts-loading');
-        });
-        // Fallback - show page after 1 second regardless
-        setTimeout(() => {
-          document.documentElement.classList.remove('fonts-loading');
-        }, 1000);
-      } else {
-        document.documentElement.classList.remove('fonts-loading');
-      }
-    </script>
+    <!-- Load Google Fonts with display=swap -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Mona+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+    </noscript>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Load Boxicons asynchronously -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    </noscript>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6KTY18J9KM"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+      gtag('config', 'G-6KTY18J9KM');
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+    <!-- Theme detection - runs immediately to prevent flash -->
+    <script is:inline>
+      (function() {
+        const theme = localStorage.getItem('color-theme');
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
   </head>
-  <body class="font-sans bg-brand-50 dark:bg-brand-950">
+  <body class="font-sans bg-brand-50 dark:bg-brand-950 text-brand-700 dark:text-brand-300">
     <slot />
+
+    <!-- Defer non-critical scripts -->
+    <script>
+      // Lazy load analytics after page is interactive
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          // Add your analytics script here when ready
+          // Example: loadGoogleAnalytics('G-XXXXXXXXXX');
+        });
+      }
+    </script>
   </body>
 </html>
 
-<style>
+<style is:global>
   html,
   body {
     margin: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>

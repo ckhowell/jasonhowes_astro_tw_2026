@@ -16,7 +16,7 @@ This is an Astro-based static website for Jason Howes' sales recruiting consulta
 - **Typography**: Headings are uppercase Raleway (light weight), body text Inter; responsive fluid sizing via calc()
 - **Layout Grid**: Responsive grids with Tailwind classes, often `lg:grid-cols-2` for desktop splits
 - **Section IDs**: Add `id="section-name"` for navigation (e.g., `id="author"` in Author.astro)
-- **Image Handling**: Images in `public/` referenced with absolute paths like `/jason-howes.jpg`
+- **Image Handling**: Images in `public/` referenced with absolute paths like `/jason-howes.webp`
 
 ## Development Workflow
 - **Start Dev**: `npm run dev` (serves at localhost:4321)

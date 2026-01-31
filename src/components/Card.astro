@@ -5,6 +5,7 @@ const baseButtonClasses = 'inline-flex items-center justify-center gap-2 rounded
 const variantClasses = buttonVariant === 'accent'
   ? 'bg-brand-900 text-brand-100 hover:bg-brand-800 focus-visible:outline-brand-500'
   : 'bg-brand-400 text-brand-50 hover:bg-brand-800 focus-visible:outline-brand-400';
+const isDownload = buttonLink?.endsWith('.pdf');
 ---
 <div class="flex flex-col md:flex-row overflow-hidden max-w-md">
   <div class="md:w-auto w-full flex justify-center md:justify-start">
@@ -16,7 +17,7 @@ const variantClasses = buttonVariant === 'accent'
     <p class="mb-4 text-sm text-brand-600 dark:text-brand-300">{copy}</p>
     {buttonText && buttonLink && (
       <div>
-        <a href={buttonLink} class={`${baseButtonClasses} ${variantClasses}`}>
+        <a href={buttonLink} class={`${baseButtonClasses} ${variantClasses}`} download={isDownload ? true : undefined}>
           {buttonText}
           <i class="bx bx-down-arrow-alt text-xl"></i>
         </a>

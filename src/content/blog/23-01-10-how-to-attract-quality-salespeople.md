@@ -21,4 +21,4 @@ category: "Hiring"
 > Do you need help attracting quality salespeople or uncovering more science behind your recruitment process? 
 
 ##### If you want to be a sales superstar and are prepared to put in the hard work to improve so you can get your next dream job, message me. 
-![Finidng Sales people](/assets/img/articles/finding-sales.jpg)
+![Finidng Sales people](/assets/img/articles/finding-sales.webp)

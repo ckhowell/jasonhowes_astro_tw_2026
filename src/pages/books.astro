@@ -10,7 +10,7 @@ const books = [
     subtitle: 'The Sales Hiring Playbook',
     description: 'Stop gambling on sales hires. Learn the science-backed system for identifying, assessing, and hiring sales talent that actually performs.',
     image: '/Crystal_Ball_Recruiting-book.png',
-    buyLink: '#',
+    buyLink: 'https://checkout.square.site/merchant/MLYMGRG25RRY0/checkout/WKYHCC24YGZPUBFU2GCGYYD4',
     featured: true
   },
   {
@@ -69,10 +69,11 @@ const books = [
               {book.description}
             </p>
             <div class="flex flex-wrap gap-4">
-              <a href={book.buyLink} class="btn btn-primary">
+              <a href={book.buyLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                 Buy Now
               </a>
-              <a href="/free-chapter" class="btn btn-secondary">
+              <a href="/Sample-Chapter-for-Crystal-Ball Recruiting.pdf" class="btn btn-secondary" download>
+                <i class="bx bx-download"></i>
                 Free Chapter
               </a>
             </div>

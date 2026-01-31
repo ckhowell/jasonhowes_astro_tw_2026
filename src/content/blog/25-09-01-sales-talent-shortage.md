@@ -49,7 +49,7 @@ To attract and retain top sales talent, it’s crucial to balance competitive ba
 
 Once you know who’s got the potential, it’s time to provide them with the tools and training that align with your business priorities. Our comprehensive 12-month program breaks down best practices into bite-sized, actionable lessons. It’s hands-on experience, targeted coaching and strategic learning designed to build skills, boost confidence and accelerate growth.
 
-![Sales Development Framework](/assets/img/membrain/membrane-article.jpg)
+![Sales Development Framework](/assets/img/membrain/membrane-article.webp)
 
 #### 5. EMPOWER: Equip for Sustained Success
 

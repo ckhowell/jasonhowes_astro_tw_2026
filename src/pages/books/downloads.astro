@@ -1,0 +1,131 @@
+---
+// Books Downloads page - Bonus resources for Crystal Ball Recruiting
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+// Resources data - actual PDFs from /public/books/downloads/
+const resources = [
+  {
+    id: 1,
+    title: 'Sales Compensation Guide',
+    description: 'A comprehensive whitepaper on structuring competitive sales compensation plans that attract and retain top talent. Covers base salary, commission structures, bonuses, and incentive design.',
+    category: 'Compensation',
+    type: 'PDF',
+    fileSize: '2.7 MB',
+    downloadUrl: '/books/downloads/Arrow Sales Compensation Whitepaper 14th May 2025.pdf',
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'Sales Onboarding Process',
+    description: 'Complete onboarding framework for new sales hires. Includes checklists, timelines, and best practices for the critical first 90 days.',
+    category: 'Onboarding',
+    type: 'PDF',
+    fileSize: '1.6 MB',
+    downloadUrl: '/books/downloads/Arrow Onboarding Process final.pdf',
+    featured: true
+  }
+];
+
+const getTypeIcon = (type: string) => {
+  switch (type) {
+    case 'PDF':
+      return 'bxs-file-pdf';
+    case 'XLSX':
+      return 'bxs-file';
+    default:
+      return 'bx-file';
+  }
+};
+
+const getTypeColor = (type: string) => {
+  switch (type) {
+    case 'PDF':
+      return 'text-brand-400';
+    default:
+      return 'text-brand-500';
+  }
+};
+---
+
+<Layout>
+  <Nav variant="light" />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          Crystal Ball Recruiting
+        </p>
+        <h1 class="text-brand-700 dark:text-brand-100 mb-6">
+          Bonus Resources
+        </h1>
+        <p class="text-lg text-brand-600 dark:text-brand-400">
+          Thank you for purchasing Crystal Ball Recruiting. Download these exclusive bonus resources to help you implement the strategies from the book.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads -->
+  <section class="pb-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {resources.map((resource) => (
+          <div class="card-glass-solid p-8">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-16 h-16 rounded-xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center">
+                <i class={`bx ${getTypeIcon(resource.type)} text-3xl ${getTypeColor(resource.type)}`}></i>
+              </div>
+              <div class="flex-grow">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-brand-200 dark:bg-brand-700 text-brand-700 dark:text-brand-300 mb-2">
+                  {resource.category}
+                </span>
+                <h3 class="text-xl font-semibold text-brand-700 dark:text-brand-100 mb-2">
+                  {resource.title}
+                </h3>
+                <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">
+                  {resource.description}
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-brand-500 dark:text-brand-500">
+                    {resource.type} • {resource.fileSize}
+                  </span>
+                  <a href={resource.downloadUrl} class="btn btn-primary btn-sm" download>
+                    <i class="bx bx-download"></i>
+                    Download
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Book -->
+  <section class="pb-24 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-brand-700 dark:text-brand-100 mb-4">
+        Need more help?
+      </h2>
+      <p class="text-brand-600 dark:text-brand-400 mb-8">
+        If you have questions about implementing these resources or want to discuss how Jason can help your organisation, get in touch.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/books" class="btn btn-secondary">
+          <i class="bx bx-left-arrow-alt"></i>
+          Back to Books
+        </a>
+        <a href="/contact" class="btn btn-primary">
+          Contact Jason
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
