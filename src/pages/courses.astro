@@ -55,23 +55,32 @@ const courses = [
   <!-- Hero -->
   <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4">
     <div class="max-w-7xl mx-auto">
-      <div class="max-w-3xl">
-        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
-          Online Courses
-        </p>
-        <h1 class="text-brand-700 dark:text-brand-100 mb-6">
-          Learn at your own pace
-        </h1>
-        <p class="text-lg text-brand-600 dark:text-brand-400">
-          Self-paced training programs designed for sales leaders and their teams. Master prospecting, pipeline management, and closing techniques on your schedule.
-        </p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+            Online Courses
+          </p>
+          <h1 class="text-brand-700 dark:text-brand-100 mb-6">
+            Learn at your own pace
+          </h1>
+          <p class="text-lg text-brand-600 dark:text-brand-400">
+            Self-paced training programs designed for sales leaders and their teams. Master prospecting, pipeline management, and closing techniques on your schedule.
+          </p>
+        </div>
+        <div class="flex justify-center">
+          <img
+            src="/jason-howes-sales-training-workshops.jpg"
+            alt="Jason Howes Sales Training"
+            class="w-full rounded-2xl shadow-xl"
+          />
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Featured Course -->
   {courses.filter(c => c.featured).map((course) => (
-    <section class="py-16 md:py-24 px-4 bg-brand-100 dark:bg-brand-900">
+    <section class="py-16 md:py-24 px-4">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
@@ -104,16 +113,10 @@ const courses = [
             </div>
 
             <div class="flex items-center gap-6">
-              <a
-                href={course.link}
-                class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-700 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
-              >
+              <a href={course.link} class="btn btn-primary">
                 Enroll Now - {course.price}
               </a>
-              <a
-                href="#"
-                class="text-sm font-medium text-brand-500 dark:text-brand-400 hover:underline"
-              >
+              <a href="#" class="btn btn-link">
                 Preview curriculum
               </a>
             </div>
@@ -137,14 +140,14 @@ const courses = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {courses.filter(c => !c.featured).map((course) => (
-          <div class="bg-brand-50 dark:bg-brand-900 rounded-2xl p-6 md:p-8 border border-brand-200 dark:border-brand-700">
+          <div class="bg-brand-50 dark:bg-brand-900 rounded-2xl p-6 md:p-8 border border-brand-200 dark:border-brand-700 flex flex-col">
             <h3 class="text-xl text-brand-700 dark:text-brand-100 mb-2">
               {course.title}
             </h3>
             <p class="text-sm text-brand-500 dark:text-brand-400 mb-4">
               {course.subtitle}
             </p>
-            <p class="text-sm text-brand-600 dark:text-brand-400 mb-6">
+            <p class="text-sm text-brand-600 dark:text-brand-400 mb-6 flex-grow">
               {course.description}
             </p>
 
@@ -157,10 +160,7 @@ const courses = [
               <span class="text-lg font-semibold text-brand-700 dark:text-brand-100">
                 {course.price}
               </span>
-              <a
-                href={course.link}
-                class="inline-flex items-center gap-2 text-sm font-medium text-brand-500 dark:text-brand-400 hover:gap-3 transition-all"
-              >
+              <a href={course.link} class="btn btn-link">
                 Learn more
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -174,20 +174,22 @@ const courses = [
   </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-24 px-4 bg-brand-900 dark:bg-brand-950">
+  <section class="py-16 md:py-24 px-4">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-brand-100 mb-4">
+      <h2 class="mb-4">
         Not sure which course is right for you?
       </h2>
-      <p class="text-brand-300 mb-8">
+      <p class="mb-8">
         Book a free 15-minute consultation and we'll help you choose the program that fits your goals.
       </p>
-      <a
-        href="/contact"
-        class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-brand-700 font-medium text-sm hover:bg-brand-100 transition-colors"
-      >
-        Book a Call
-      </a>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact" class="btn btn-primary">
+          Book a Call
+        </a>
+        <a href="/contact" class="btn btn-secondary">
+          Get in Touch
+        </a>
+      </div>
     </div>
   </section>
 

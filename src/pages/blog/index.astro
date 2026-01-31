@@ -10,6 +10,8 @@ const sortedPosts = allPosts.sort((a, b) => {
   return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 });
 
+const allCategories = Array.from(new Set(allPosts.map(post => post.data.category).filter(Boolean)));
+
 // Function to convert title to sentence case
 const toSentenceCase = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -36,12 +38,34 @@ const toSentenceCase = (str: string) => {
     </div>
   </section>
 
+  <!-- Category Filter -->
+  <section class="pb-8 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap gap-3 mb-8">
+        <button
+          class="filter-btn px-4 py-2 rounded-full border text-sm font-medium transition bg-brand-500 text-white border-brand-500"
+          data-category=""
+        >
+          All
+        </button>
+        {allCategories.map(category => (
+          <button
+            class="filter-btn px-4 py-2 rounded-full border text-sm font-medium transition bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-200 border-brand-200 dark:border-brand-700"
+            data-category={category}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Blog Grid -->
   <section class="pb-24 px-4">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
         {sortedPosts.map((post) => (
-          <article class="group">
+          <article class="group blog-post" data-category={post.data.category || ''}>
             <a href={`/blog/${post.slug}`} class="block">
               <!-- Image placeholder or featured image -->
               {post.data.image ? (
@@ -85,7 +109,7 @@ const toSentenceCase = (str: string) => {
               </p>
 
               <!-- Read more -->
-              <span class="inline-flex items-center gap-2 text-sm font-medium text-brand-500 dark:text-brand-400 group-hover:gap-3 transition-all">
+              <span class="btn btn-link">
                 Read article
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -110,3 +134,41 @@ const toSentenceCase = (str: string) => {
 
   <Footer />
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const blogPosts = document.querySelectorAll('.blog-post');
+
+    const activeClasses = ['bg-brand-500', 'text-white', 'border-brand-500'];
+    const inactiveClasses = ['bg-brand-100', 'dark:bg-brand-900', 'text-brand-700', 'dark:text-brand-200', 'border-brand-200', 'dark:border-brand-700'];
+
+    const setActiveButton = (activeBtn: Element) => {
+      filterButtons.forEach(btn => {
+        btn.classList.remove(...activeClasses);
+        btn.classList.add(...inactiveClasses);
+      });
+      activeBtn.classList.remove(...inactiveClasses);
+      activeBtn.classList.add(...activeClasses);
+    };
+
+    const filterPosts = (category: string) => {
+      blogPosts.forEach(post => {
+        const postCategory = (post as HTMLElement).dataset.category || '';
+        if (category === '' || postCategory === category) {
+          (post as HTMLElement).style.display = '';
+        } else {
+          (post as HTMLElement).style.display = 'none';
+        }
+      });
+    };
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = (btn as HTMLElement).dataset.category || '';
+        setActiveButton(btn);
+        filterPosts(category);
+      });
+    });
+  });
+</script>

@@ -34,7 +34,7 @@ const services = [
     title: 'Consulting & Advisory',
     description: 'Strategic guidance for sales leaders serious about transformation. Ongoing support to drive lasting change.',
     features: [
-      'Sales organization assessment',
+      'Sales organisations assessment',
       'Hiring process optimization',
       'Team performance analysis',
       'Compensation and incentive design'
@@ -49,7 +49,7 @@ const clients = [
   'Professional services firms',
   'Technology companies',
   'Financial services',
-  'Healthcare organizations'
+  'Healthcare organisationss'
 ];
 ---
 
@@ -65,23 +65,20 @@ const clients = [
             Speaking, Training & Consulting
           </p>
           <h1 class="text-brand-700 dark:text-brand-100 mb-6">
-            Bring Jason to your organization
+            Bring Jason to your organisation
           </h1>
           <p class="text-lg text-brand-600 dark:text-brand-400 mb-8">
             Keynotes, workshops, and advisory services that transform sales teams. Practical strategies your people can implement immediately.
           </p>
-          <a
-            href="/contact"
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-700 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
-          >
+          <a href="/contact" class="btn btn-primary">
             Request Availability
           </a>
         </div>
         <div class="flex justify-center">
           <img
-            src="/book-signing.jpg"
+            src="/keynote-speaking-jason-howes.jpg"
             alt="Jason Howes speaking"
-            class="w-full max-w-md rounded-2xl shadow-xl"
+            class="w-full h-96 md:h-[500px] rounded-2xl shadow-xl object-cover"
           />
         </div>
       </div>
@@ -102,7 +99,7 @@ const clients = [
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {services.map((service) => (
-          <div class="bg-white dark:bg-brand-900 rounded-2xl p-8 border border-brand-200 dark:border-brand-700">
+          <div class="card-glass-solid rounded-2xl p-8 border border-brand-200 dark:border-brand-700 flex flex-col">
             <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-6">
               <i class={`bx ${service.icon} text-2xl text-brand-500 dark:text-brand-400`}></i>
             </div>
@@ -112,7 +109,7 @@ const clients = [
             <p class="text-brand-600 dark:text-brand-400 mb-6">
               {service.description}
             </p>
-            <ul class="space-y-2 mb-8">
+            <ul class="space-y-2 mb-8 flex-grow">
               {service.features.map((feature) => (
                 <li class="flex items-start gap-2 text-sm text-brand-600 dark:text-brand-400">
                   <i class="bx bx-check text-brand-500 mt-0.5"></i>
@@ -120,10 +117,7 @@ const clients = [
                 </li>
               ))}
             </ul>
-            <a
-              href="/contact"
-              class="inline-flex items-center gap-2 text-sm font-medium text-brand-500 dark:text-brand-400 hover:gap-3 transition-all"
-            >
+            <a href="/contact" class="btn btn-link self-start">
               {service.cta}
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -131,6 +125,14 @@ const clients = [
             </a>
           </div>
         ))}
+      </div>
+      
+      <div class="max-w-7xl mx-auto mt-16">
+        <img
+          src="/jason-howes-sales-training-workshops.jpg"
+          alt="Jason Howes Sales Training Workshops"
+          class="w-full rounded-2xl shadow-xl"
+        />
       </div>
     </div>
   </section>
@@ -144,10 +146,10 @@ const clients = [
             Who Jason Works With
           </p>
           <h2 class="text-brand-700 dark:text-brand-100 mb-4">
-            Trusted by leading organizations
+            Trusted by leading organisationss
           </h2>
           <p class="text-brand-600 dark:text-brand-400 mb-8">
-            From startups to Fortune 500 companies, Jason has helped organizations of all sizes transform their sales capabilities.
+            From startups to Fortune 500 companies, Jason has helped organisationss of all sizes transform their sales capabilities.
           </p>
           <ul class="grid grid-cols-2 gap-4">
             {clients.map((client) => (
@@ -177,26 +179,20 @@ const clients = [
   </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-24 px-4 bg-brand-900 dark:bg-brand-950">
+  <section class="py-16 md:py-24 px-4">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-brand-100 mb-4">
+      <h2 class="mb-4">
         Ready to get started?
       </h2>
-      <p class="text-brand-300 mb-8">
-        Let's discuss how Jason can help your organization achieve its sales goals.
+      <p class="mb-8">
+        Let's discuss how Jason can help your organisation achieve its sales goals.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-brand-700 font-medium text-sm hover:bg-brand-100 transition-colors"
-        >
+        <a href="/contact" class="btn btn-primary">
           Request Availability
         </a>
-        <a
-          href="tel:+61000000000"
-          class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-600 text-brand-100 font-medium text-sm hover:bg-brand-800 transition-colors"
-        >
-          Call Directly
+        <a href="/contact" class="btn btn-secondary">
+          Get in Touch
         </a>
       </div>
     </div>

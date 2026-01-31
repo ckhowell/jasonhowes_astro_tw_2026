@@ -1,5 +1,5 @@
-// Oatmeal Component Library
-// Astro components inspired by Tailwind Plus Oatmeal kit
+// Component Library
+// Astro components inspired by Tailwind Plus kit
 
 // Heroes
 export { default as HeroCentered } from './HeroCentered.astro';

@@ -4,10 +4,26 @@
 import { getCollection } from 'astro:content';
 
 const podcastEpisodes = [
-  { title: 'How "Hannah the Hunter" Achieved a Blowout Year and Breakthrough Sales Success', date: 'MARCH 4, 2025' },
-  { title: 'A Big Picture Diagnostic: 5 Reasons Your Sales Team May Not Be Developing More New Business', date: 'NOVEMBER 24, 2024' },
-  { title: 'Check Your Ego. Don\'t Play Hero. Prepare & Prioritize to Minimize Stress & Ensure Success', date: 'AUGUST 29, 2023' },
-  { title: 'The #1 Reason Your Sales Team Is Not Bringing In More New Business', date: 'AUGUST 22, 2023' },
+  {
+    title: 'Crystal Ball Recruiting: Why Sales Hiring Is Broken',
+    date: 'JANUARY 15, 2026',
+    link: 'https://podcasts.apple.com/au/podcast/art-science-of-complex-sales/id1723340327?i=1000745419597'
+  },
+  {
+    title: 'The Traits That Actually Predict Sales Success',
+    date: 'JANUARY 8, 2026',
+    link: '/podcast'
+  },
+  {
+    title: 'Why Most Sales Training Fails (And How to Fix It)',
+    date: 'JANUARY 1, 2026',
+    link: '/podcast'
+  },
+  {
+    title: 'Coaching Underperformers: When to Invest vs Move On',
+    date: 'DECEMBER 25, 2025',
+    link: '/podcast'
+  },
 ];
 
 const formatDateForLabel = (isoDate: string) =>
@@ -55,8 +71,8 @@ const blogPosts = (await getCollection('blog'))
 
                 <!-- Episode Info - Enhanced Contrast -->
                 <div class="text-center mb-4">
-                  <p class="text-[10px]  mb-1 font-medium">How a Top-Producer Prospects.</p>
-                  <p class="text-xs font-semibold">The Sales Management. Simplified.</p>
+                  <p class="text-[10px]  mb-1 font-medium">Crystal Ball Recruiting: Why Sales Hiring Is Broken</p>
+                  <p class="text-xs font-semibold">The Sales Leadership Podcast</p>
                 </div>
 
                 <!-- Progress Bar - Enhanced -->
@@ -115,9 +131,9 @@ const blogPosts = (await getCollection('blog'))
             <div class="space-y-6">
               {podcastEpisodes.map((episode) => (
                 <div class="group cursor-pointer">
-                  <p class="font-semibold text-brand-800 dark:text-brand-200 leading-snug mb-1 group-hover:text-brand-500 dark:group-hover:text-brand-300 transition-colors">
+                  <a href={episode.link} target="_blank" rel="noopener noreferrer" class="font-semibold text-brand-700 dark:text-brand-200 leading-snug mb-1 group-hover:text-brand-500 dark:group-hover:text-brand-300 transition-colors">
                     {episode.title}
-                  </p>
+                  </a>
                   <p class="text-xs text-brand-500 uppercase tracking-wider">{episode.date}</p>
                 </div>
               ))}
@@ -140,7 +156,7 @@ const blogPosts = (await getCollection('blog'))
             <div class="space-y-6">
               {blogPosts.map((post) => (
                 <a href={post.href} class="group block cursor-pointer" aria-label={`Read ${post.title}`}>
-                  <p class="font-semibold text-brand-800 dark:text-brand-200 leading-snug mb-1 group-hover:text-brand-500 dark:group-hover:text-brand-300 transition-colors">
+                  <p class="font-semibold text-brand-700 dark:text-brand-200 leading-snug mb-1 group-hover:text-brand-500 dark:group-hover:text-brand-300 transition-colors">
                     {post.title}
                   </p>
                   <p class="text-xs text-brand-500 uppercase tracking-wider">{post.date}</p>

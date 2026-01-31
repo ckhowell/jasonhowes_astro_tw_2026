@@ -75,7 +75,7 @@ This comparative analysis helps pinpoint where a salesperson may be struggling a
 
 **BUILDING HIGH-PERFORMANCE SALES TEAMS**
 
-Arrow’s commitment to excellence extends beyond recruitment and training. They are dedicated to building high-performance sales cultures within organizations. We provide tools for business and sales leaders to ensure the right people are in the right roles.
+Arrow’s commitment to excellence extends beyond recruitment and training. They are dedicated to building high-performance sales cultures within organisationss. We provide tools for business and sales leaders to ensure the right people are in the right roles.
 
 Howes advised “by providing a total package, Arrow ensures that businesses can focus on growth, innovation and technology rather than the day-to-day struggles of managing a sales team. Most people are time poor, with automation and process we focus on getting your team working on the right activities, not just the comfortable ones.”
 

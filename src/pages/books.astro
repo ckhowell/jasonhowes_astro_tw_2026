@@ -9,7 +9,7 @@ const books = [
     title: 'Crystal Ball Recruiting',
     subtitle: 'The Sales Hiring Playbook',
     description: 'Stop gambling on sales hires. Learn the science-backed system for identifying, assessing, and hiring sales talent that actually performs.',
-    image: '/assets/img/book/front.jpg',
+    image: '/Crystal_Ball_Recruiting-book.png',
     buyLink: '#',
     featured: true
   },
@@ -44,7 +44,7 @@ const books = [
           Practical wisdom for sales leaders
         </h1>
         <p class="text-lg text-brand-600 dark:text-brand-400">
-          Bestselling guides that have transformed thousands of sales organizations. Implement what you learn immediately.
+          Bestselling guides that have transformed thousands of sales organisationss. Implement what you learn immediately.
         </p>
       </div>
     </div>
@@ -52,7 +52,7 @@ const books = [
 
   <!-- Featured Book -->
   {books.filter(b => b.featured).map((book) => (
-    <section class="py-16 md:py-24 px-4 bg-brand-100 dark:bg-brand-900">
+    <section class="py-16 md:py-24 px-4">
       <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div class="order-2 lg:order-1">
@@ -69,16 +69,10 @@ const books = [
               {book.description}
             </p>
             <div class="flex flex-wrap gap-4">
-              <a
-                href={book.buyLink}
-                class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-700 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
-              >
+              <a href={book.buyLink} class="btn btn-primary">
                 Buy Now
               </a>
-              <a
-                href="/free-chapter"
-                class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium text-sm hover:bg-brand-200 dark:hover:bg-brand-800 transition-colors"
-              >
+              <a href="/free-chapter" class="btn btn-secondary">
                 Free Chapter
               </a>
             </div>
@@ -87,7 +81,7 @@ const books = [
             <img
               src={book.image}
               alt={book.title}
-              class="w-64 md:w-80 rounded-lg shadow-2xl"
+              class=""
             />
           </div>
         </div>
@@ -96,7 +90,7 @@ const books = [
   ))}
 
   <!-- Other Books -->
-  <section class="py-16 md:py-24 px-4">
+  <section class="py-40 md:py-40 px-4">
     <div class="max-w-7xl mx-auto">
       <h2 class="text-brand-700 dark:text-brand-100 mb-12">
         More from Jason
@@ -119,10 +113,7 @@ const books = [
               <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">
                 {book.description}
               </p>
-              <a
-                href={book.buyLink}
-                class="inline-flex items-center gap-2 text-sm font-medium text-brand-500 dark:text-brand-400 hover:gap-3 transition-all"
-              >
+              <a href={book.buyLink} class="btn btn-link">
                 Learn more
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />

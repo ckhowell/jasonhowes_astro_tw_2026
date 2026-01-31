@@ -41,18 +41,18 @@
           </svg>
         </button>
       </div>
-      <div id="main-menu" class="hidden lg:flex lg:gap-x-12">
-        <a href="/blog" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors">Blog</a>
-        <a href="/books" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors">Books</a>
-        <a href="/podcast" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors">Podcast</a>
-        <a href="/about" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors">About</a>
-        <a href="/engage-jason" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors">Engage Jason</a>
-        <a href="/courses" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors">Courses</a>
-        <a href="/contact" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors">Contact</a>
+      <div id="main-menu" class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12">
+        <a href="/blog" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors whitespace-nowrap">Blog</a>
+        <a href="/books" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors whitespace-nowrap">Books</a>
+        <a href="/podcast" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors whitespace-nowrap">Podcast</a>
+        <a href="/about" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors whitespace-nowrap">About</a>
+        <a href="/engage-jason" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors whitespace-nowrap">Engage Jason</a>
+        <a href="/courses" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors whitespace-nowrap">Courses</a>
+        <a href="/contact" class="text-sm/6 font-semibold uppercase text-brand-700 dark:text-brand-400 hover:text-brand-500 dark:hover:text-brand-200 transition-colors whitespace-nowrap">Contact</a>
       </div>
 
       <!-- Dark/Light Mode Toggle -->
-      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+      <div class="hidden lg:flex lg:justify-end pl-4">
         <button
           id="theme-toggle"
           type="button"
@@ -90,13 +90,33 @@
     <el-dialog>
       <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
         <div tabindex="0" class="fixed inset-0 focus:outline-none">
-          <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-brand-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:sm:ring-brand-700">
+          <el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-brand-700 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-700/10 dark:sm:ring-brand-700">
             <div class="flex items-center justify-between">
               <a href="/" class="-m-1.5 p-1.5">
                 <span class="sr-only">Jason Howes</span>
-                <img src="/mark.svg" alt="Site Mark" class="h-8 w-auto" />
-              </a>
-              <button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-brand-400">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2224.2 474.4" class="h-11 w-auto fill-current text-brand-700 dark:text-brand-400" aria-label="Jason Howes Logo">
+              <g>
+                <path d="M172.4,244.4c-6.8,7.1-14.7,12.7-21.9,19.4-13.7,12.4-27.6,26.6-33.8,44.1-2.8,7.9-2.6,17.2,1.8,24.1,12.5,19.2,53,8.6,69.9-.7,67.6-36.4,116.2-131.7,143.9-201.3,2.8-7.1,10.8-10.7,17.9-7.9,7.1,2.8,10.7,10.7,7.9,17.9-7.1,18.5-15.4,36.4-24.3,54-33.4,64.3-90.4,150.3-166.6,164.5-27.7,5.2-63.3-3.1-61.7-37.8,2.6-25.9,22.8-45.3,41.7-60.9,7.3-6.1,15.5-11.5,22.3-18,1.8-1.9,4.7.7,3,2.7h0Z"/>
+                <path d="M435.4,119.4c-11.8,33-30.4,63.4-47.7,93.6-10.8,18.6-21.5,37.7-31.6,56.7-3.9,7.4-8.1,15.5-11.9,23l-5.8,11.6h0c-3.2,6.6-11.1,9.2-17.6,6-7-3.4-9.4-12.4-5.1-18.9,9.6-14.7,19.2-29.3,29-43.8,9.8-14.4,19.9-28.7,29.9-42.9,16.2-23,32.8-45.5,45.5-70.5.8-1.6,3.3-7,4.1-8.7.9-2.2,2.8-6.7,3.7-8.9,1.9-4.9,9.2-2.3,7.4,2.8h.1Z"/>
+                <path d="M345.4,233.1c57.7-20.7,117.6-37,178.1-46.9,60.3-10,121-15.5,181.8-20.9.9,0,1.7.6,1.8,1.5,0,.9-.5,1.6-1.4,1.7-60,9.3-120.2,18.7-179.2,32.6-58.9,13.6-115.8,33.3-171.2,57.3-6.9,3-14.9-.2-17.8-7.1-3.1-7.2.6-15.6,8-18.2h0Z"/>
+                <path d="M581.9,48.4c-7.7,36.4-18.4,72.6-32.6,107.2-23.8,57.5-55.8,111.2-88.6,163.9-11.7,17.2-37.1,1.6-26.7-16.7,31.8-45,63-90.5,88.4-139.3,8.2-16.1,16.1-32.6,22.8-49.4,9.1-22.4,16.6-45.5,23.2-69,2.6-8.5,15.1-5.6,13.6,3.3h0Z"/>
+                <g class="isolate">
+                  <g class="isolate">
+                    <path d="M671.6,286.7c-1.1-1.1-2-2.9-2-4.9,0-3.8,3.3-7.1,7.1-7.1s4,1.3,5.1,2.5c6.9,9.5,14.4,14.4,26.2,14.4s24.9-10.4,24.9-30.6v-79c0-4,3.3-7.3,7.3-7.3s7.1,3.3,7.1,7.3v78.8c0,14.9-4.4,26.2-11.6,33.5-7.1,6.9-16.7,10.6-28,10.6-16.7,0-28.2-7.6-36-18.2Z"/>
+                    <path d="M769.7,293.6l51.7-113c1.8-4,4.5-6.4,9.1-6.4h.7c4.4,0,7.3,2.4,8.9,6.4l51.7,112.8c.5,1.3.9,2.5.9,3.6,0,3.8-3.1,6.9-6.9,6.9s-5.8-2.4-7.1-5.3l-13.3-29.3h-69.9l-13.3,29.7c-1.3,3.1-3.6,4.9-6.9,4.9s-6.6-2.9-6.6-6.6.2-2.4.9-3.8ZM859.8,256.3l-29.3-65.2-29.3,65.2h58.6Z"/>
+                    <path d="M913.5,287.8c-1.6-1.1-2.7-3.1-2.7-5.5,0-4,3.1-7.1,6.9-7.1s3.5.7,4.4,1.6c12,10.2,24,15.1,40.2,15.1s28.4-9.1,28.4-21.7v-.4c0-11.8-6.4-18.6-33.1-24.2-29.3-6.4-42.8-15.8-42.8-36.8v-.4c0-20,17.7-34.8,41.9-34.8s28.9,4.2,40.6,12.6c1.5,1.1,3.1,3.1,3.1,5.8s-3.1,6.9-6.9,6.9-2.9-.4-4.2-1.3c-10.7-7.8-21.1-11.1-32.9-11.1s-27.1,9.1-27.1,20.6v.4c0,12,6.6,18.7,34.6,24.8,28.4,6.2,41.5,16.6,41.5,36v.4c0,21.8-18.2,36-43.5,36s-34-5.8-48.2-17.1Z"/>
+                    <path d="M1028.8,239.8v-.4c0-35.1,26.4-65.9,65.2-65.9s64.8,30.4,64.8,65.5v.4c0,35.1-26.4,65.9-65.2,65.9s-64.8-30.4-64.8-65.5ZM1143.9,239.8v-.4c0-28.9-21.1-52.6-50.2-52.6s-49.9,23.3-49.9,52.2v.4c0,28.9,21.1,52.6,50.2,52.6s49.9-23.3,49.9-52.2Z"/>
+                    <path d="M1189.2,182.2c0-3.8,3.3-7.1,7.1-7.1h2c3.3,0,5.3,1.6,7.3,4.2l77.4,98.6v-96.1c0-3.8,3.1-7.1,7.1-7.1s6.9,3.3,6.9,7.1v115c0,3.8-2.7,6.7-6.6,6.7h-.7c-3.1,0-5.3-1.8-7.5-4.4l-79-101v98.6c0,3.8-3.1,7.1-7.1,7.1s-6.9-3.3-6.9-7.1v-114.7Z"/>
+                    <path d="M1387.6,182.1c0-4,3.3-7.3,7.1-7.3s7.3,3.3,7.3,7.3v50.2h73.5v-50.2c0-4,3.3-7.3,7.3-7.3s7.1,3.3,7.1,7.3v114.7c0,4-3.3,7.3-7.1,7.3s-7.3-3.3-7.3-7.3v-51h-73.5v51c0,4-3.3,7.3-7.3,7.3s-7.1-3.3-7.1-7.3v-114.7Z"/>
+                    <path d="M1520.2,239.8v-.4c0-35.1,26.4-65.9,65.2-65.9s64.8,30.4,64.8,65.5v.4c0,35.1-26.4,65.9-65.2,65.9s-64.8-30.4-64.8-65.5ZM1635.3,239.8v-.4c0-28.9-21.1-52.6-50.2-52.6s-49.9,23.3-49.9,52.2v.4c0,28.9,21.1,52.6,50.2,52.6s49.9-23.3,49.9-52.2Z"/>
+                    <path d="M1667.3,185.3c-.4-1.1-.7-2.2-.7-3.3,0-3.8,3.5-7.3,7.5-7.3s6.4,2.7,7.5,6l35.1,101.2,33.3-101.6c1.1-3.3,3.3-5.6,7.1-5.6h.9c3.6,0,6,2.4,7.1,5.6l33.3,101.6,35.3-101.6c1.1-3.3,3.5-5.6,6.9-5.6s7.3,3.5,7.3,7.1-.5,2.4-.9,3.5l-40.8,113.2c-1.3,3.6-3.8,6.2-7.5,6.2h-1.1c-3.6,0-6.2-2.5-7.5-6.2l-33.1-97.9-32.9,97.9c-1.3,3.6-3.8,6.2-7.5,6.2h-1.1c-3.6,0-6.2-2.4-7.5-6.2l-40.8-113.2Z"/>
+                    <path d="M1875.3,295.8v-112.8c0-4,3.3-7.3,7.1-7.3h79.2c3.6,0,6.6,2.9,6.6,6.6s-2.9,6.6-6.6,6.6h-71.9v43.5h63.7c3.6,0,6.6,3.1,6.6,6.6s-2.9,6.6-6.6,6.6h-63.7v44.6h72.8c3.6,0,6.6,2.9,6.6,6.6s-2.9,6.6-6.6,6.6h-80.1c-3.8,0-7.1-3.3-7.1-7.3Z"/>
+                    <path d="M1992.7,287.8c-1.6-1.1-2.7-3.1-2.7-5.5,0-4,3.1-7.1,6.9-7.1s3.5.7,4.4,1.6c12,10.2,24,15.1,40.2,15.1s28.4-9.1,28.4-21.7v-.4c0-11.8-6.4-18.6-33.1-24.2-29.3-6.4-42.8-15.8-42.8-36.8v-.4c0-20,17.7-34.8,41.9-34.8s28.9,4.2,40.6,12.6c1.5,1.1,3.1,3.1,3.1,5.8s-3.1,6.9-6.9,6.9-2.9-.4-4.2-1.3c-10.7-7.8-21.1-11.1-32.9-11.1s-27.1,9.1-27.1,20.6v.4c0,12,6.6,18.7,34.6,24.8,28.4,6.2,41.5,16.6,41.5,36v.4c0,21.8-18.2,36-43.5,36s-34-5.8-48.2-17.1Z"/>
+                  </g>
+                </g>
+              </g>
+            </svg>              </a>
+              <button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-brand-700 dark:text-brand-400">
                 <span class="sr-only">Close menu</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
                   <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
@@ -106,13 +126,13 @@
             <div class="mt-6 flow-root">
               <div class="-my-6 divide-y divide-gray-500/10 dark:divide-brand-700">
                 <div class="space-y-2 py-6">
-                  <a href="/blog" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Blog</a>
-                  <a href="/books" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Books</a>
-                  <a href="/podcast" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Podcast</a>
-                  <a href="/about" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">About</a>
-                  <a href="/engage-jason" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Engage Jason</a>
-                  <a href="/courses" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Courses</a>
-                  <a href="/contact" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Contact</a>
+                  <a href="/blog" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-brand-700 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Blog</a>
+                  <a href="/books" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-brand-700 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Books</a>
+                  <a href="/podcast" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-brand-700 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Podcast</a>
+                  <a href="/about" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-brand-700 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">About</a>
+                  <a href="/engage-jason" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-brand-700 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Engage Jason</a>
+                  <a href="/courses" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-brand-700 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Courses</a>
+                  <a href="/contact" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-brand-700 dark:text-brand-200 uppercase hover:bg-gray-50 dark:hover:bg-brand-800">Contact</a>
                 </div>
               </div>
             </div>

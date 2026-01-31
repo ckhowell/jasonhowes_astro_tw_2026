@@ -5,10 +5,10 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
 const stats = [
-  { number: '20+', label: 'Years in Sales Leadership' },
-  { number: '500+', label: 'Organizations Transformed' },
-  { number: '10,000+', label: 'Sales Professionals Trained' },
-  { number: '3', label: 'Bestselling Books' }
+  { number: '30+', label: 'Years in Sales' },
+  { number: '$100M+', label: 'Sales Budgets Managed' },
+  { number: '$10M+', label: 'Annual New Business Generated' },
+  { number: '3', label: 'Books (Published & Upcoming)' }
 ];
 
 const values = [
@@ -25,7 +25,7 @@ const values = [
   {
     icon: 'bx-heart',
     title: 'People First',
-    description: 'Great sales organizations are built on great people. Hiring right is the foundation.'
+    description: 'Great sales organisationss are built on great people. Hiring right is the foundation.'
   },
   {
     icon: 'bx-trending-up',
@@ -50,14 +50,14 @@ const values = [
             Helping sales leaders build championship teams
           </h1>
           <p class="text-lg text-brand-600 dark:text-brand-400">
-            Jason Howes is a sales leadership expert, bestselling author, and sought-after speaker who has dedicated his career to helping organizations hire, develop, and retain top sales talent.
+            Jason Howes is a sales leadership expert, bestselling author, and sought-after speaker who has dedicated his career to helping organisationss hire, develop, and retain top sales talent.
           </p>
         </div>
         <div class="flex justify-center">
           <img
-            src="/jason-portrait.jpg"
+            src="/Jason-Howes-speaking.jpg"
             alt="Jason Howes"
-            class="w-full max-w-md rounded-2xl shadow-xl"
+            class="w-full rounded-2xl shadow-xl"
           />
         </div>
       </div>
@@ -65,8 +65,8 @@ const values = [
   </section>
 
   <!-- Stats -->
-  <section class="py-12 px-4 bg-brand-100 dark:bg-brand-900">
-    <div class="max-w-7xl mx-auto">
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto space-y-6 border border-brand-200 dark:border-brand-700 rounded-2xl p-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         {stats.map((stat) => (
           <div class="text-center">
@@ -86,6 +86,11 @@ const values = [
   <section class="py-16 md:py-24 px-4">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl mx-auto">
+        <img
+          src="/jason-howes-sales-training-recuitment.jpg"
+          alt="Jason Howes Sales Training"
+          class="w-full rounded-2xl shadow-xl mb-12"
+        />
         <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4 text-center">
           The Story
         </p>
@@ -104,7 +109,7 @@ const values = [
             But it was in recruiting where Jason had his biggest breakthrough. He realized that most sales hiring was fundamentally broken. Companies were gambling on candidates based on gut feel and rehearsed interview answers, only to watch 50% or more of their hires fail within the first year.
           </p>
           <p>
-            This realization led to the development of his signature diagnostic approach to sales hiring—a methodology that has helped hundreds of organizations dramatically improve their hiring success rates and build sales teams that consistently outperform.
+            This realization led to the development of his signature diagnostic approach to sales hiring—a methodology that has helped hundreds of organisationss dramatically improve their hiring success rates and build sales teams that consistently outperform.
           </p>
         </div>
       </div>
@@ -114,7 +119,12 @@ const values = [
   <!-- Values -->
   <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
     <div class="max-w-7xl mx-auto">
-      <div class="max-w-2xl mb-12 text-center mx-auto">
+      <div class="max-w-3xl mb-12 text-center mx-auto">
+        <img
+          src="/jason-howes-high-performance-sales-teams.jpg"
+          alt="Jason Howes High Performance Sales Teams"
+          class="w-full rounded-2xl shadow-xl mb-12"
+        />
         <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
           Philosophy
         </p>
@@ -128,7 +138,7 @@ const values = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {values.map((value) => (
-          <div class="bg-white dark:bg-brand-900 rounded-2xl p-8 border border-brand-200 dark:border-brand-700">
+          <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 border border-brand-200 dark:border-brand-700">
             <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-6">
               <i class={`bx ${value.icon} text-2xl text-brand-500 dark:text-brand-400`}></i>
             </div>
@@ -156,7 +166,7 @@ const values = [
             Deep knowledge across the sales ecosystem
           </h2>
           <p class="text-brand-600 dark:text-brand-400 mb-8">
-            Jason brings hands-on experience in every aspect of building and leading sales organizations.
+            Jason brings hands-on experience in every aspect of building and leading sales organisationss.
           </p>
 
           <ul class="space-y-4">
@@ -184,24 +194,24 @@ const values = [
             <li class="flex items-start gap-3">
               <i class="bx bx-check-circle text-xl text-brand-500 mt-0.5"></i>
               <div>
-                <p class="font-medium text-brand-700 dark:text-brand-100">Sales Organization Design</p>
+                <p class="font-medium text-brand-700 dark:text-brand-100">Sales organisations Design</p>
                 <p class="text-sm text-brand-600 dark:text-brand-400">Structure, compensation, and process optimization</p>
               </div>
             </li>
           </ul>
         </div>
 
-        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 md:p-12">
-          <blockquote class="text-xl text-brand-700 dark:text-brand-300 mb-6">
-            "Jason doesn't just teach theory—he's lived it. His insights come from real-world experience leading sales teams, and that authenticity comes through in everything he does."
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 md:p-12 h-full flex flex-col justify-center">
+          <blockquote class="text-2xl text-brand-700 dark:text-brand-300 mb-6">
+            "Jason was able to find our unicorn and deliver! The value he provided went over and beyond what we expected."
           </blockquote>
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-full bg-brand-200 dark:bg-brand-800 flex items-center justify-center">
-              <span class="text-brand-600 dark:text-brand-400 font-semibold">MR</span>
+              <span class="text-brand-600 dark:text-brand-400 font-semibold">LC</span>
             </div>
             <div>
-              <p class="font-medium text-brand-700 dark:text-brand-100">Michael Roberts</p>
-              <p class="text-sm text-brand-500">CEO, GrowthTech Solutions</p>
+              <p class="font-medium text-brand-700 dark:text-brand-100">Lisa Collis</p>
+              <p class="text-sm text-brand-500">Playscape Creations</p>
             </div>
           </div>
         </div>
@@ -209,26 +219,28 @@ const values = [
     </div>
   </section>
 
+
   <!-- CTA -->
-  <section class="py-16 md:py-24 px-4 bg-brand-900 dark:bg-brand-950">
+  <section class="pb-16 md:pb-24 px-4">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="text-brand-100 mb-4">
+          <div class="max-w-3xl mx-auto py-16">
+      <img
+        src="/jason-howes-about-pano.jpg"
+        alt="Jason Howes"
+        class="w-full rounded-2xl shadow-xl"
+      />
+    </div>
+      <h2 class="mb-4">
         Let's work together
       </h2>
-      <p class="text-brand-300 mb-8">
-        Whether you need a keynote speaker, a training partner, or strategic consulting, Jason is ready to help your organization succeed.
+      <p class=" mb-8">
+        Whether you need a keynote speaker, a training partner, or strategic consulting, Jason is ready to help your organisations succeed.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a
-          href="/engage-jason"
-          class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-brand-700 font-medium text-sm hover:bg-brand-100 transition-colors"
-        >
+        <a href="/engage-jason" class="btn btn-primary">
           Explore Services
         </a>
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-600 text-brand-100 font-medium text-sm hover:bg-brand-800 transition-colors"
-        >
+        <a href="/contact" class="btn btn-secondary">
           Get in Touch
         </a>
       </div>

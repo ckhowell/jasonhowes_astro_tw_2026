@@ -1,0 +1,509 @@
+---
+// Resources page - Downloadable guides, templates, and tools
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+// Resource categories
+const categories = [
+  { id: 'all', label: 'All Resources' },
+  { id: 'hiring', label: 'Hiring & Recruitment' },
+  { id: 'compensation', label: 'Compensation & Benefits' },
+  { id: 'onboarding', label: 'Onboarding' },
+  { id: 'training', label: 'Training & Development' },
+  { id: 'leadership', label: 'Sales Leadership' },
+  { id: 'templates', label: 'Templates & Checklists' }
+];
+
+// Resources data
+const resources = [
+  {
+    id: 1,
+    title: 'Sales Compensation Guide',
+    description: 'A comprehensive guide to structuring competitive sales compensation plans that attract and retain top talent.',
+    category: 'compensation',
+    type: 'PDF',
+    fileSize: '2.4 MB',
+    downloadUrl: '/downloads/sales-compensation-guide.pdf',
+    featured: true,
+    dateAdded: '2026-01-15'
+  },
+  {
+    id: 2,
+    title: 'Sales Onboarding Process Template',
+    description: 'Step-by-step onboarding checklist and process template for new sales hires. Covers the first 90 days.',
+    category: 'onboarding',
+    type: 'PDF',
+    fileSize: '1.8 MB',
+    downloadUrl: '/downloads/onboarding-process-template.pdf',
+    featured: true,
+    dateAdded: '2026-01-10'
+  },
+  {
+    id: 3,
+    title: 'Interview Question Bank',
+    description: '50+ behavioural and situational interview questions specifically designed for sales roles.',
+    category: 'hiring',
+    type: 'PDF',
+    fileSize: '856 KB',
+    downloadUrl: '/downloads/interview-question-bank.pdf',
+    featured: false,
+    dateAdded: '2026-01-08'
+  },
+  {
+    id: 4,
+    title: 'Sales Training Needs Assessment',
+    description: 'Template to evaluate your team\'s skill gaps and prioritise training investments.',
+    category: 'training',
+    type: 'PDF',
+    fileSize: '1.2 MB',
+    downloadUrl: '/downloads/training-needs-assessment.pdf',
+    featured: false,
+    dateAdded: '2026-01-05'
+  },
+  {
+    id: 5,
+    title: 'Sales Leader\'s Weekly Planner',
+    description: 'Printable weekly planner designed for sales managers to track team performance and coaching activities.',
+    category: 'leadership',
+    type: 'PDF',
+    fileSize: '540 KB',
+    downloadUrl: '/downloads/weekly-planner.pdf',
+    featured: false,
+    dateAdded: '2025-12-20'
+  },
+  {
+    id: 6,
+    title: 'New Hire Checklist',
+    description: 'Essential checklist for onboarding new sales team members. Covers equipment, access, and training.',
+    category: 'templates',
+    type: 'PDF',
+    fileSize: '320 KB',
+    downloadUrl: '/downloads/new-hire-checklist.pdf',
+    featured: false,
+    dateAdded: '2025-12-18'
+  },
+  {
+    id: 7,
+    title: 'Commission Structure Calculator',
+    description: 'Excel spreadsheet to model different commission structures and their impact on earnings.',
+    category: 'compensation',
+    type: 'XLSX',
+    fileSize: '1.1 MB',
+    downloadUrl: '/downloads/commission-calculator.xlsx',
+    featured: false,
+    dateAdded: '2025-12-15'
+  },
+  {
+    id: 8,
+    title: 'Candidate Scorecard Template',
+    description: 'Standardised scorecard for evaluating sales candidates across key competencies.',
+    category: 'hiring',
+    type: 'PDF',
+    fileSize: '680 KB',
+    downloadUrl: '/downloads/candidate-scorecard.pdf',
+    featured: false,
+    dateAdded: '2025-12-10'
+  },
+  {
+    id: 9,
+    title: 'Sales Meeting Agenda Template',
+    description: 'Structured agenda template for running effective weekly sales team meetings.',
+    category: 'templates',
+    type: 'PDF',
+    fileSize: '280 KB',
+    downloadUrl: '/downloads/meeting-agenda-template.pdf',
+    featured: false,
+    dateAdded: '2025-12-08'
+  },
+  {
+    id: 10,
+    title: '30-60-90 Day Plan Template',
+    description: 'Template for creating structured onboarding plans with clear milestones and expectations.',
+    category: 'onboarding',
+    type: 'PDF',
+    fileSize: '920 KB',
+    downloadUrl: '/downloads/30-60-90-plan.pdf',
+    featured: false,
+    dateAdded: '2025-12-05'
+  },
+  {
+    id: 11,
+    title: 'Sales Coaching Framework',
+    description: 'A proven framework for conducting effective one-on-one coaching sessions with sales reps.',
+    category: 'leadership',
+    type: 'PDF',
+    fileSize: '1.5 MB',
+    downloadUrl: '/downloads/coaching-framework.pdf',
+    featured: false,
+    dateAdded: '2025-12-01'
+  },
+  {
+    id: 12,
+    title: 'Role Play Scenarios Guide',
+    description: '20 realistic sales role play scenarios for training and skill development.',
+    category: 'training',
+    type: 'PDF',
+    fileSize: '1.3 MB',
+    downloadUrl: '/downloads/role-play-scenarios.pdf',
+    featured: false,
+    dateAdded: '2025-11-28'
+  },
+  {
+    id: 13,
+    title: 'Job Description Templates',
+    description: 'Ready-to-use job description templates for common sales roles (SDR, AE, AM, Sales Manager).',
+    category: 'hiring',
+    type: 'PDF',
+    fileSize: '750 KB',
+    downloadUrl: '/downloads/job-description-templates.pdf',
+    featured: false,
+    dateAdded: '2025-11-25'
+  },
+  {
+    id: 14,
+    title: 'Performance Review Template',
+    description: 'Comprehensive performance review template tailored for sales professionals.',
+    category: 'leadership',
+    type: 'PDF',
+    fileSize: '890 KB',
+    downloadUrl: '/downloads/performance-review-template.pdf',
+    featured: false,
+    dateAdded: '2025-11-20'
+  },
+  {
+    id: 15,
+    title: 'Territory Planning Workbook',
+    description: 'Workbook for strategic territory planning and account prioritisation.',
+    category: 'templates',
+    type: 'PDF',
+    fileSize: '2.1 MB',
+    downloadUrl: '/downloads/territory-planning-workbook.pdf',
+    featured: false,
+    dateAdded: '2025-11-15'
+  },
+  {
+    id: 16,
+    title: 'Salary Benchmarking Guide',
+    description: 'How to benchmark sales salaries against market rates in Australia.',
+    category: 'compensation',
+    type: 'PDF',
+    fileSize: '1.6 MB',
+    downloadUrl: '/downloads/salary-benchmarking-guide.pdf',
+    featured: false,
+    dateAdded: '2025-11-10'
+  }
+];
+
+const getTypeIcon = (type: string) => {
+  switch (type) {
+    case 'PDF':
+      return 'bxs-file-pdf';
+    case 'XLSX':
+      return 'bxs-file';
+    case 'DOC':
+      return 'bxs-file-doc';
+    default:
+      return 'bx-file';
+  }
+};
+
+const getTypeColor = (type: string) => {
+  switch (type) {
+    case 'PDF':
+      return 'text-brand-400';
+    case 'XLSX':
+      return 'text-green-600';
+    case 'DOC':
+      return 'text-blue-500';
+    default:
+      return 'text-brand-500';
+  }
+};
+
+const getCategoryLabel = (categoryId: string) => {
+  const cat = categories.find(c => c.id === categoryId);
+  return cat ? cat.label : categoryId;
+};
+
+const featuredResources = resources.filter(r => r.featured);
+---
+
+<Layout>
+  <Nav variant="light" />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          Free Resources
+        </p>
+        <h1 class="text-brand-700 dark:text-brand-100 mb-6">
+          Tools & templates for sales leaders
+        </h1>
+        <p class="text-lg text-brand-600 dark:text-brand-400">
+          Download free guides, templates, and tools to help you hire better, train smarter, and lead more effectively.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Resources -->
+  <section class="pb-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-xl font-semibold text-brand-700 dark:text-brand-100 mb-6">Featured Resources</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {featuredResources.map((resource) => (
+          <div class="card-glass-solid p-6 md:p-8">
+            <div class="flex items-start gap-4">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center">
+                <i class={`bx ${getTypeIcon(resource.type)} text-2xl ${getTypeColor(resource.type)}`}></i>
+              </div>
+              <div class="flex-grow">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-brand-200 dark:bg-brand-700 text-brand-700 dark:text-brand-300 mb-2">
+                  {getCategoryLabel(resource.category)}
+                </span>
+                <h3 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">
+                  {resource.title}
+                </h3>
+                <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">
+                  {resource.description}
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-brand-500 dark:text-brand-500">
+                    {resource.type} • {resource.fileSize}
+                  </span>
+                  <a href={resource.downloadUrl} class="btn btn-primary btn-sm" download>
+                    <i class="bx bx-download"></i>
+                    Download
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- All Resources -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        <h2 class="text-xl font-semibold text-brand-700 dark:text-brand-100">All Resources</h2>
+
+        <!-- Category Filter -->
+        <div class="flex items-center gap-2">
+          <label for="category-filter" class="text-sm text-brand-600 dark:text-brand-400">Filter:</label>
+          <select
+            id="category-filter"
+            class="input-glass py-2 px-3 text-sm w-auto"
+          >
+            {categories.map((cat) => (
+              <option value={cat.id}>{cat.label}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <!-- Resources Table -->
+      <div class="card-glass-solid overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full" id="resources-table">
+            <thead>
+              <tr class="border-b border-brand-200 dark:border-brand-700">
+                <th class="text-left py-4 px-6 text-sm font-semibold text-brand-700 dark:text-brand-200">
+                  Resource
+                </th>
+                <th class="text-left py-4 px-6 text-sm font-semibold text-brand-700 dark:text-brand-200 hidden md:table-cell">
+                  Category
+                </th>
+                <th class="text-left py-4 px-6 text-sm font-semibold text-brand-700 dark:text-brand-200 hidden sm:table-cell">
+                  Type
+                </th>
+                <th class="text-left py-4 px-6 text-sm font-semibold text-brand-700 dark:text-brand-200 hidden lg:table-cell">
+                  Size
+                </th>
+                <th class="text-right py-4 px-6 text-sm font-semibold text-brand-700 dark:text-brand-200">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody id="resources-tbody">
+              {resources.map((resource) => (
+                <tr
+                  class="border-b border-brand-100 dark:border-brand-800 hover:bg-brand-50/50 dark:hover:bg-brand-900/50 transition-colors resource-row"
+                  data-category={resource.category}
+                >
+                  <td class="py-4 px-6">
+                    <div class="flex items-center gap-3">
+                      <i class={`bx ${getTypeIcon(resource.type)} text-xl ${getTypeColor(resource.type)}`}></i>
+                      <div>
+                        <p class="font-medium text-brand-700 dark:text-brand-100">
+                          {resource.title}
+                        </p>
+                        <p class="text-xs text-brand-500 dark:text-brand-500 line-clamp-1 max-w-xs">
+                          {resource.description}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 hidden md:table-cell">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-brand-100 dark:bg-brand-800 text-brand-600 dark:text-brand-400">
+                      {getCategoryLabel(resource.category)}
+                    </span>
+                  </td>
+                  <td class="py-4 px-6 text-sm text-brand-600 dark:text-brand-400 hidden sm:table-cell">
+                    {resource.type}
+                  </td>
+                  <td class="py-4 px-6 text-sm text-brand-500 dark:text-brand-500 hidden lg:table-cell">
+                    {resource.fileSize}
+                  </td>
+                  <td class="py-4 px-6 text-right">
+                    <a
+                      href={resource.downloadUrl}
+                      class="inline-flex items-center gap-1 text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300 transition-colors"
+                      download
+                    >
+                      <i class="bx bx-download"></i>
+                      <span class="hidden sm:inline">Download</span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex items-center justify-between py-4 px-6 border-t border-brand-200 dark:border-brand-700">
+          <p class="text-sm text-brand-500 dark:text-brand-500" id="results-count">
+            Showing <span id="showing-count">{resources.length}</span> of {resources.length} resources
+          </p>
+          <div class="flex items-center gap-2" id="pagination">
+            <button
+              class="px-3 py-1 rounded-lg text-sm font-medium text-brand-500 dark:text-brand-400 hover:bg-brand-100 dark:hover:bg-brand-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              id="prev-page"
+              disabled
+            >
+              <i class="bx bx-chevron-left"></i>
+              Prev
+            </button>
+            <span class="px-3 py-1 text-sm text-brand-600 dark:text-brand-400" id="page-info">
+              Page 1 of 1
+            </span>
+            <button
+              class="px-3 py-1 rounded-lg text-sm font-medium text-brand-500 dark:text-brand-400 hover:bg-brand-100 dark:hover:bg-brand-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              id="next-page"
+              disabled
+            >
+              Next
+              <i class="bx bx-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request Resource CTA -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-brand-700 dark:text-brand-100 mb-4">
+        Can't find what you need?
+      </h2>
+      <p class="text-brand-600 dark:text-brand-400 mb-8">
+        We're always creating new resources based on what sales leaders need. Let us know what would help you most.
+      </p>
+      <a href="/contact" class="btn btn-primary">
+        Request a Resource
+        <i class="bx bx-right-arrow-alt"></i>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  // Category filtering and pagination
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+    const tbody = document.getElementById('resources-tbody');
+    const rows = document.querySelectorAll('.resource-row') as NodeListOf<HTMLTableRowElement>;
+    const showingCount = document.getElementById('showing-count');
+    const pageInfo = document.getElementById('page-info');
+    const prevBtn = document.getElementById('prev-page') as HTMLButtonElement;
+    const nextBtn = document.getElementById('next-page') as HTMLButtonElement;
+
+    const ITEMS_PER_PAGE = 10;
+    let currentPage = 1;
+    let filteredRows: HTMLTableRowElement[] = [];
+
+    const updateDisplay = () => {
+      const category = categoryFilter?.value || 'all';
+
+      // Filter rows
+      filteredRows = Array.from(rows).filter(row => {
+        if (category === 'all') return true;
+        return row.dataset.category === category;
+      });
+
+      // Hide all rows first
+      rows.forEach(row => row.style.display = 'none');
+
+      // Calculate pagination
+      const totalPages = Math.ceil(filteredRows.length / ITEMS_PER_PAGE);
+      currentPage = Math.min(currentPage, totalPages) || 1;
+
+      const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+      const endIndex = startIndex + ITEMS_PER_PAGE;
+
+      // Show only current page rows
+      filteredRows.slice(startIndex, endIndex).forEach(row => {
+        row.style.display = '';
+      });
+
+      // Update count and pagination info
+      if (showingCount) {
+        showingCount.textContent = Math.min(endIndex, filteredRows.length).toString();
+      }
+      if (pageInfo) {
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
+      }
+
+      // Update button states
+      if (prevBtn) {
+        prevBtn.disabled = currentPage <= 1;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = currentPage >= totalPages;
+      }
+    };
+
+    // Event listeners
+    categoryFilter?.addEventListener('change', () => {
+      currentPage = 1;
+      updateDisplay();
+    });
+
+    prevBtn?.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        updateDisplay();
+      }
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      const totalPages = Math.ceil(filteredRows.length / ITEMS_PER_PAGE);
+      if (currentPage < totalPages) {
+        currentPage++;
+        updateDisplay();
+      }
+    });
+
+    // Initial display
+    updateDisplay();
+  });
+</script>

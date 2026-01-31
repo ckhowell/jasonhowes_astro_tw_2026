@@ -1,5 +1,5 @@
 ---
-// HeroCentered - Oatmeal-style centered hero with optional announcement badge
+// HeroCentered - centered hero with optional announcement badge
 // Based on home-01 hero pattern
 
 interface Props {
@@ -68,18 +68,12 @@ const {
     {(primaryCTA || secondaryCTA) && (
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         {primaryCTA && (
-          <a
-            href={primaryCTA.href}
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-brand-900 dark:bg-white text-brand-100 dark:text-brand-700 font-medium text-sm hover:bg-brand-800 dark:hover:bg-brand-100 transition-colors"
-          >
+          <a href={primaryCTA.href} class="btn btn-primary">
             {primaryCTA.text}
           </a>
         )}
         {secondaryCTA && (
-          <a
-            href={secondaryCTA.href}
-            class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-300 dark:border-brand-600 text-brand-700 dark:text-brand-300 font-medium text-sm hover:bg-brand-100 dark:hover:bg-brand-800 transition-colors"
-          >
+          <a href={secondaryCTA.href} class="btn btn-secondary">
             {secondaryCTA.text}
           </a>
         )}

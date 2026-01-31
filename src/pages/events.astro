@@ -1,0 +1,355 @@
+---
+// Events page
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const upcomingEvents = [
+  {
+    title: 'Sales Leadership Summit 2026',
+    date: '2026-03-15',
+    displayDate: 'March 15, 2026',
+    time: '9:00 AM - 4:00 PM AEST',
+    location: 'Sydney Convention Centre',
+    city: 'Sydney, NSW',
+    type: 'Conference',
+    description: 'Join Jason for his keynote on "Building High-Performance Sales Teams in the Age of AI" at Australia\'s premier sales leadership event.',
+    registrationUrl: '#',
+    featured: true
+  },
+  {
+    title: 'Crystal Ball Recruiting Workshop',
+    date: '2026-04-08',
+    displayDate: 'April 8-9, 2026',
+    time: '9:00 AM - 5:00 PM AEST',
+    location: 'Arrow Executive HQ',
+    city: 'Melbourne, VIC',
+    type: 'Workshop',
+    description: 'A hands-on two-day intensive workshop covering the diagnostic approach to sales hiring. Limited to 20 participants for maximum engagement.',
+    registrationUrl: '#',
+    featured: false
+  },
+  {
+    title: 'Sales Hiring Masterclass',
+    date: '2026-04-22',
+    displayDate: 'April 22, 2026',
+    time: '10:00 AM - 12:00 PM AEST',
+    location: 'Online (Zoom)',
+    city: 'Virtual Event',
+    type: 'Webinar',
+    description: 'Free webinar exploring the top 5 mistakes companies make when hiring salespeople—and how to avoid them.',
+    registrationUrl: '#',
+    featured: false
+  },
+  {
+    title: 'National Sales Conference',
+    date: '2026-05-10',
+    displayDate: 'May 10-11, 2026',
+    time: 'Full Day',
+    location: 'Brisbane Convention & Exhibition Centre',
+    city: 'Brisbane, QLD',
+    type: 'Conference',
+    description: 'Jason will be presenting "From Gut Feel to Data-Driven: Revolutionising Your Sales Recruitment Process" on Day 1.',
+    registrationUrl: '#',
+    featured: false
+  },
+  {
+    title: 'Sales Team Evaluation Workshop',
+    date: '2026-06-03',
+    displayDate: 'June 3, 2026',
+    time: '9:00 AM - 3:00 PM AEST',
+    location: 'Perth Business Hub',
+    city: 'Perth, WA',
+    type: 'Workshop',
+    description: 'Learn how to objectively evaluate your existing sales team and identify areas for development using the OMG assessment methodology.',
+    registrationUrl: '#',
+    featured: false
+  }
+];
+
+const pastEvents = [
+  {
+    title: 'Sales Excellence Forum 2025',
+    date: '2025-11-20',
+    displayDate: 'November 20, 2025',
+    location: 'Melbourne Convention Centre',
+    city: 'Melbourne, VIC',
+    type: 'Conference'
+  },
+  {
+    title: 'B2B Sales Strategies Summit',
+    date: '2025-09-15',
+    displayDate: 'September 15, 2025',
+    location: 'Sydney Hilton',
+    city: 'Sydney, NSW',
+    type: 'Conference'
+  },
+  {
+    title: 'Crystal Ball Recruiting Book Launch',
+    date: '2025-08-01',
+    displayDate: 'August 1, 2025',
+    location: 'The Ivy',
+    city: 'Sydney, NSW',
+    type: 'Book Launch'
+  }
+];
+
+const getTypeColor = (type: string) => {
+  switch (type) {
+    case 'Conference':
+      return 'bg-brand-500 text-white';
+    case 'Workshop':
+      return 'bg-brand-300 text-brand-900';
+    case 'Webinar':
+      return 'bg-brand-200 text-brand-800';
+    case 'Book Launch':
+      return 'bg-brand-400 text-white';
+    default:
+      return 'bg-brand-100 text-brand-700';
+  }
+};
+---
+
+<Layout>
+  <Nav variant="light" />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          Events & Speaking
+        </p>
+        <h1 class="text-brand-700 dark:text-brand-100 mb-6">
+          See Jason live
+        </h1>
+        <p class="text-lg text-brand-600 dark:text-brand-400">
+          From keynote presentations to hands-on workshops, discover upcoming opportunities to learn from Jason's 30+ years of sales expertise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Event -->
+  {upcomingEvents.filter(e => e.featured).map((event) => (
+    <section class="pb-12 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="card-glass-solid p-8 md:p-12 relative overflow-hidden">
+          <div class="absolute top-4 right-4">
+            <span class="inline-flex items-center px-3 py-1 rounded-full bg-brand-500 text-white text-sm font-medium">
+              Featured Event
+            </span>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <span class={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 ${getTypeColor(event.type)}`}>
+                {event.type}
+              </span>
+              <h2 class="text-brand-700 dark:text-brand-100 mb-4">
+                {event.title}
+              </h2>
+              <p class="text-brand-600 dark:text-brand-400 mb-6">
+                {event.description}
+              </p>
+              <div class="space-y-3 mb-8">
+                <div class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
+                  <i class="bx bx-calendar text-xl text-brand-500"></i>
+                  <span>{event.displayDate}</span>
+                </div>
+                <div class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
+                  <i class="bx bx-time text-xl text-brand-500"></i>
+                  <span>{event.time}</span>
+                </div>
+                <div class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
+                  <i class="bx bx-map text-xl text-brand-500"></i>
+                  <span>{event.location}, {event.city}</span>
+                </div>
+              </div>
+              <a href={event.registrationUrl} class="btn btn-primary">
+                Register Now
+                <i class="bx bx-right-arrow-alt"></i>
+              </a>
+            </div>
+            <div class="hidden lg:block">
+              <img
+                src="/Jason-Howes-speaking.jpg"
+                alt="Jason Howes speaking at event"
+                class="w-full rounded-xl shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- Upcoming Events -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-12">
+        <div>
+          <h2 class="text-brand-700 dark:text-brand-100 mb-2">Upcoming Events</h2>
+          <p class="text-brand-600 dark:text-brand-400">Don't miss these opportunities to see Jason in action</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        {upcomingEvents.filter(e => !e.featured).map((event) => (
+          <div class="card-glass-solid p-6 md:p-8">
+            <div class="flex flex-col md:flex-row md:items-center gap-6">
+              <!-- Date Badge -->
+              <div class="flex-shrink-0 w-20 text-center">
+                <div class="bg-brand-100 dark:bg-brand-800 rounded-xl p-3">
+                  <p class="text-sm font-medium text-brand-500 dark:text-brand-400 uppercase">
+                    {new Date(event.date).toLocaleDateString('en-AU', { month: 'short' })}
+                  </p>
+                  <p class="text-2xl font-bold text-brand-700 dark:text-brand-100">
+                    {new Date(event.date).getDate()}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Event Details -->
+              <div class="flex-grow">
+                <div class="flex flex-wrap items-center gap-3 mb-2">
+                  <span class={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${getTypeColor(event.type)}`}>
+                    {event.type}
+                  </span>
+                  <span class="text-sm text-brand-500 dark:text-brand-500">
+                    {event.city}
+                  </span>
+                </div>
+                <h3 class="text-xl font-semibold text-brand-700 dark:text-brand-100 mb-2">
+                  {event.title}
+                </h3>
+                <p class="text-brand-600 dark:text-brand-400 mb-3 line-clamp-2">
+                  {event.description}
+                </p>
+                <div class="flex flex-wrap items-center gap-4 text-sm text-brand-500 dark:text-brand-500">
+                  <span class="flex items-center gap-1">
+                    <i class="bx bx-time"></i>
+                    {event.time}
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <i class="bx bx-map"></i>
+                    {event.location}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Register Button -->
+              <div class="flex-shrink-0">
+                <a href={event.registrationUrl} class="btn btn-secondary">
+                  Register
+                  <i class="bx bx-right-arrow-alt"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Book Jason -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+            Book Jason
+          </p>
+          <h2 class="text-brand-700 dark:text-brand-100 mb-6">
+            Bring Jason to your event
+          </h2>
+          <p class="text-brand-600 dark:text-brand-400 mb-6">
+            Jason is available for keynote presentations, workshops, and corporate training sessions. With 30+ years of real-world sales experience, he delivers actionable insights that resonate with audiences from frontline salespeople to C-suite executives.
+          </p>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
+              <i class="bx bx-check-circle text-xl text-brand-500"></i>
+              <span>Keynote presentations (45-90 minutes)</span>
+            </li>
+            <li class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
+              <i class="bx bx-check-circle text-xl text-brand-500"></i>
+              <span>Half-day and full-day workshops</span>
+            </li>
+            <li class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
+              <i class="bx bx-check-circle text-xl text-brand-500"></i>
+              <span>Multi-day corporate training programs</span>
+            </li>
+            <li class="flex items-center gap-3 text-brand-600 dark:text-brand-400">
+              <i class="bx bx-check-circle text-xl text-brand-500"></i>
+              <span>Virtual and in-person options available</span>
+            </li>
+          </ul>
+          <a href="/contact" class="btn btn-primary">
+            Enquire About Booking
+            <i class="bx bx-right-arrow-alt"></i>
+          </a>
+        </div>
+        <div>
+          <img
+            src="/jason-howes-high-performance-sales-teams.jpg"
+            alt="Jason Howes presenting"
+            class="w-full rounded-2xl shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Events -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-brand-700 dark:text-brand-100 mb-8">Past Events</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {pastEvents.map((event) => (
+          <div class="border border-brand-200 dark:border-brand-700 rounded-2xl p-6">
+            <span class={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium mb-3 ${getTypeColor(event.type)}`}>
+              {event.type}
+            </span>
+            <h3 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">
+              {event.title}
+            </h3>
+            <div class="space-y-1 text-sm text-brand-500 dark:text-brand-500">
+              <p class="flex items-center gap-2">
+                <i class="bx bx-calendar"></i>
+                {event.displayDate}
+              </p>
+              <p class="flex items-center gap-2">
+                <i class="bx bx-map"></i>
+                {event.city}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="pb-16 md:pb-24 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-brand-700 dark:text-brand-100 mb-4">
+        Stay in the loop
+      </h2>
+      <p class="text-brand-600 dark:text-brand-400 mb-8">
+        Subscribe to Jason's newsletter to be the first to know about upcoming events, new content, and exclusive opportunities.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+        <input
+          type="email"
+          placeholder="Enter your email"
+          class="input-glass flex-grow"
+        />
+        <button class="btn btn-primary">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
