@@ -7,9 +7,11 @@ interface Props {
 }
 
 const {
-  title = "Jason Howes - Specialist in sales recruitment and performance consulting",
-  description = "The sales hiring playbook for global leaders. Learn how to attract, recruit, and retain the top 20% of sales professionals with a proven methodology."
+  title = "Jason Howes | Crystal Ball Recruiting | 91% Accurate Sales Hiring",
+  description = "Stop gambling on gut feel. 50% of sales hires fail—yours don't have to. Jason Howes uses 91% accurate, science-backed assessments to identify the top 20% of sales professionals before you invest $200K."
 } = Astro.props;
+
+const keywords = "sales recruitment Australia, sales DNA assessment, hire salespeople Brisbane, sales hiring mistakes, BDM recruitment, sales team assessment, sales candidate testing, Crystal Ball Recruiting, Jason Howes, Arrow Executive Sales";
 ---
 
 <!doctype html>
@@ -19,7 +21,10 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content="Jason Howes" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={Astro.url.href} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -37,6 +42,12 @@ const {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/jason-howes-og.jpg" />
+    <meta name="twitter:creator" content="@jasonhowes" />
+
+    <!-- Additional SEO -->
+    <meta property="og:site_name" content="Jason Howes - Crystal Ball Recruiting" />
+    <meta property="og:locale" content="en_AU" />
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,0 +1,341 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const modules = [
+  {
+    number: '01',
+    title: 'Understanding the Sales Hiring Crisis',
+    description: 'Why 50% of sales hires fail, the traits of your A-players, and the true cost of recruitment mistakes. Your top 20% drive 80% of your business—learn to identify them.'
+  },
+  {
+    number: '02',
+    title: 'The Job Description',
+    description: '72% of new hires say their job was misrepresented. Learn to write role-specific, KPI-focused job descriptions that attract the right candidates and set clear expectations.'
+  },
+  {
+    number: '03',
+    title: 'Employer Branding',
+    description: 'Over 75% of candidates research your company before applying. Build authentic messaging that showcases why top performers should join your team.'
+  },
+  {
+    number: '04',
+    title: 'Writing Job Ads That Convert',
+    description: 'Craft headlines that grab attention and inspire top talent to apply. Templates, competitor analysis, and feedback to make your ads stand out.'
+  },
+  {
+    number: '05',
+    title: 'Sourcing & Assessment',
+    description: 'Target passive top performers when talent is scarce. Use AI-powered tools and the Sales DNA Assessment to predict performance and remove bias early.'
+  },
+  {
+    number: '06',
+    title: 'Structured Interviews & Selection',
+    description: 'Phone screens, scorecards, and interview templates that ensure consistency. Plus best-practice reference checking to validate your decisions.'
+  },
+  {
+    number: '07',
+    title: 'Onboarding for Success',
+    description: '30/60/90-day success plans that ramp new hires faster. Companies with effective onboarding see 10% higher budget attainment and 2x tenure.'
+  },
+  {
+    number: '08',
+    title: 'Sales Manager Recruitment',
+    description: 'Hiring leaders is different. Learn the specific competencies, assessment criteria, and interview approaches for sales management roles.'
+  }
+];
+
+const benefits = [
+  {
+    icon: 'bx-wallet',
+    title: 'Save Up to 50%',
+    description: 'Bring recruitment in-house and eliminate external recruiter fees. The training pays for itself with your first hire.'
+  },
+  {
+    icon: 'bx-check-shield',
+    title: 'Hire with Confidence',
+    description: 'Access the same 91% accurate Sales DNA Assessment tools used by Australia\'s top sales organisations.'
+  },
+  {
+    icon: 'bx-repeat',
+    title: 'Repeatable Process',
+    description: 'Build a documented system your entire team can follow. No more ad-hoc hiring or inconsistent results.'
+  },
+  {
+    icon: 'bx-time-five',
+    title: 'Faster Ramp-Up',
+    description: 'Structured onboarding templates get new hires productive in weeks, not months.'
+  }
+];
+
+const formats = [
+  {
+    title: 'One-Day Intensive',
+    description: 'Full workshop covering all STAR™ modules in a single day',
+    duration: '1 day',
+    ideal: 'Teams ready for rapid implementation'
+  },
+  {
+    title: '4-Week Program',
+    description: '4 x 90-minute virtual sessions with homework between',
+    duration: '4 weeks',
+    ideal: 'Busy teams who need flexibility'
+  },
+  {
+    title: '8-Week Program',
+    description: '8 x 60-minute sessions for deeper learning and practice',
+    duration: '8 weeks',
+    ideal: 'Teams wanting comprehensive mastery'
+  }
+];
+---
+
+<Layout
+  title="STAR™ Recruitment Training | Learn to Hire Like an Expert | Jason Howes"
+  description="Train your team to hire salespeople like experts. The STAR™ system brings recruitment in-house, saves up to 50% on recruiter fees, and uses 91% accurate assessments."
+>
+  <Nav variant="light" />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4 bg-gradient-to-b from-brand-100 to-brand-50 dark:from-brand-900 dark:to-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+            STAR™ Recruitment System
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-700 dark:text-brand-100 mb-6 leading-tight">
+            Train your team to hire like experts
+          </h1>
+          <p class="text-lg text-brand-600 dark:text-brand-400 mb-8">
+            Bring recruitment in-house with the STAR™ system. Get all the tools, templates, and assessment access you need to find and hire the top 20% of sales professionals—without expensive recruiters.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-8 py-4 font-semibold text-white shadow-lg transition-colors hover:bg-brand-700"
+            >
+              Book Your Workshop
+              <i class="bx bx-right-arrow-alt text-xl"></i>
+            </a>
+            <a
+              href="/books"
+              class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-600 px-8 py-4 font-semibold text-brand-700 dark:text-brand-300 dark:border-brand-400 transition-colors hover:bg-brand-100 dark:hover:bg-brand-800"
+            >
+              Read the Book First
+            </a>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="card-glass-strong rounded-2xl shadow-2xl p-8 max-w-md">
+            <div class="text-center mb-6">
+              <span class="text-6xl font-bold text-brand-600 dark:text-brand-400">STAR</span>
+              <span class="text-2xl align-top text-brand-500">™</span>
+            </div>
+            <div class="space-y-4 text-sm">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-700 flex items-center justify-center font-bold text-brand-600 dark:text-brand-300">S</div>
+                <div>
+                  <p class="font-semibold text-brand-700 dark:text-brand-200">Sourcing</p>
+                  <p class="text-brand-600 dark:text-brand-400">Attract wider talent pools</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-700 flex items-center justify-center font-bold text-brand-600 dark:text-brand-300">T</div>
+                <div>
+                  <p class="font-semibold text-brand-700 dark:text-brand-200">Testing</p>
+                  <p class="text-brand-600 dark:text-brand-400">91% accurate assessments</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-700 flex items-center justify-center font-bold text-brand-600 dark:text-brand-300">A</div>
+                <div>
+                  <p class="font-semibold text-brand-700 dark:text-brand-200">Assessing</p>
+                  <p class="text-brand-600 dark:text-brand-400">Structured interviews & scorecards</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-brand-100 dark:bg-brand-700 flex items-center justify-center font-bold text-brand-600 dark:text-brand-300">R</div>
+                <div>
+                  <p class="font-semibold text-brand-700 dark:text-brand-200">Retaining</p>
+                  <p class="text-brand-600 dark:text-brand-400">Onboarding that drives tenure</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          Why STAR™?
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100">
+          Stop outsourcing. Start owning your hiring.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {benefits.map((benefit) => (
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center mx-auto mb-6">
+              <i class={`bx ${benefit.icon} text-3xl text-brand-500 dark:text-brand-400`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-3">
+              {benefit.title}
+            </h3>
+            <p class="text-sm text-brand-600 dark:text-brand-400">
+              {benefit.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          What You'll Learn
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100 mb-4">
+          8 modules to transform your hiring
+        </h2>
+        <p class="text-brand-600 dark:text-brand-400 max-w-2xl mx-auto">
+          Each module builds on insights from Crystal Ball Recruiting, giving you practical tools and templates you can implement immediately.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {modules.map((module) => (
+          <div class="card-glass-strong rounded-2xl p-6 flex gap-6">
+            <div class="text-3xl font-bold text-brand-200 dark:text-brand-700 flex-shrink-0">
+              {module.number}
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">
+                {module.title}
+              </h3>
+              <p class="text-sm text-brand-600 dark:text-brand-400">
+                {module.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Formats -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          Flexible Delivery
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100">
+          Choose your format
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {formats.map((format) => (
+          <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 border border-brand-200 dark:border-brand-700 text-center">
+            <h3 class="text-xl font-semibold text-brand-700 dark:text-brand-100 mb-2">
+              {format.title}
+            </h3>
+            <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">
+              {format.description}
+            </p>
+            <div class="inline-block bg-brand-200 dark:bg-brand-800 rounded-full px-4 py-2 mb-4">
+              <span class="text-sm font-semibold text-brand-700 dark:text-brand-300">{format.duration}</span>
+            </div>
+            <p class="text-xs text-brand-500 dark:text-brand-500">
+              Ideal for: {format.ideal}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+            What's Included
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100 mb-6">
+            Everything you need to hire like an expert
+          </h2>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-green-500 mt-0.5"></i>
+              <span class="text-brand-600 dark:text-brand-400">Sales DNA Assessment access for your candidates</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-green-500 mt-0.5"></i>
+              <span class="text-brand-600 dark:text-brand-400">Job description and job ad templates</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-green-500 mt-0.5"></i>
+              <span class="text-brand-600 dark:text-brand-400">Structured interview scripts and scorecards</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-green-500 mt-0.5"></i>
+              <span class="text-brand-600 dark:text-brand-400">Reference checking templates</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-green-500 mt-0.5"></i>
+              <span class="text-brand-600 dark:text-brand-400">30/60/90-day onboarding framework</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-green-500 mt-0.5"></i>
+              <span class="text-brand-600 dark:text-brand-400">Ongoing support and Q&A access</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="bx bx-check-circle text-xl text-green-500 mt-0.5"></i>
+              <span class="text-brand-600 dark:text-brand-400">Copy of Crystal Ball Recruiting for each participant</span>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 md:p-12">
+          <blockquote class="text-xl md:text-2xl text-brand-700 dark:text-brand-300 mb-6">
+            "If you've enjoyed my book, buy a copy for your HR manager, your sales manager, or any hiring managers who could benefit from STAR™ training. It will make you a lot of money."
+          </blockquote>
+          <p class="font-medium text-brand-700 dark:text-brand-100">— Jason Howes</p>
+          <p class="text-sm text-brand-500">Crystal Ball Recruiting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100 mb-6">
+        Ready to take control of your hiring?
+      </h2>
+      <p class="text-lg text-brand-600 dark:text-brand-400 mb-8">
+        Book a discovery call to discuss which STAR™ format is right for your team.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact" class="btn btn-primary">
+          Book Your Workshop
+        </a>
+        <a href="/sales-dna-assessment" class="btn btn-secondary">
+          Start with an Assessment
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

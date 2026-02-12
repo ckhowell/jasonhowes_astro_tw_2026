@@ -1,0 +1,293 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const features = [
+  {
+    icon: 'bx-target-lock',
+    title: '91% Predictive Accuracy',
+    description: 'Know if a candidate can sell before you invest. No more gut feel—just data-driven confidence.'
+  },
+  {
+    icon: 'bx-data',
+    title: '2M+ Salespeople Assessed',
+    description: 'Powered by Objective Management Group\'s database—the largest sales-specific assessment data in the world.'
+  },
+  {
+    icon: 'bx-time-five',
+    title: 'Results in Hours',
+    description: 'Candidates complete the assessment in ~45 minutes. You get detailed insights delivered to your inbox the same day.'
+  },
+  {
+    icon: 'bx-check-shield',
+    title: 'Sales-Specific, Not Generic',
+    description: 'Unlike personality tests, this measures actual selling competencies: hunting, closing, qualifying, and mindset.'
+  }
+];
+
+const competencies = [
+  { name: 'Will to Sell', description: 'Desire, commitment, and motivation to succeed in sales' },
+  { name: 'Sales DNA', description: 'Mindset factors that support or sabotage sales performance' },
+  { name: 'Tactical Selling', description: 'Hunting, qualifying, presenting, and closing skills' },
+  { name: 'Reaching Decision Makers', description: 'Ability to access and influence C-suite buyers' },
+  { name: 'Consultative Selling', description: 'Discovery, listening, and value-based selling approach' },
+  { name: 'Comfortable Discussing Money', description: 'Willingness to have direct pricing conversations' }
+];
+
+const useCases = [
+  {
+    title: 'Hiring New Salespeople',
+    description: 'Screen candidates before investing interview time. Only progress those recommended by the assessment.',
+    icon: 'bx-user-plus'
+  },
+  {
+    title: 'Evaluating Your Current Team',
+    description: 'Identify hidden gaps in your existing sales force. Know who can hunt, who should farm, and who needs coaching.',
+    icon: 'bx-group'
+  },
+  {
+    title: 'Promotion Decisions',
+    description: 'Before promoting a top performer to management, verify they have the competencies to lead.',
+    icon: 'bx-trending-up'
+  },
+  {
+    title: 'Targeted Training',
+    description: 'Stop generic training. The assessment reveals exactly where each person needs development.',
+    icon: 'bx-bullseye'
+  }
+];
+---
+
+<Layout
+  title="Sales DNA Assessment | 91% Accurate Sales Hiring | Jason Howes"
+  description="Stop gambling on gut feel. The Sales DNA Assessment is 91% accurate and powered by 2M+ salespeople assessed. Know if a candidate can sell before you invest $200K."
+>
+  <Nav variant="light" />
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 md:pt-40 md:pb-20 px-4 bg-gradient-to-b from-brand-100 to-brand-50 dark:from-brand-900 dark:to-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+            Sales DNA Assessment
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-700 dark:text-brand-100 mb-6 leading-tight">
+            Know if they can sell <em>before</em> you hire them
+          </h1>
+          <p class="text-lg text-brand-600 dark:text-brand-400 mb-8">
+            The Sales DNA Assessment is 91% predictive, sales-specific, and backed by data from 2 million+ salespeople worldwide. Stop hoping. Start knowing.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-8 py-4 font-semibold text-white shadow-lg transition-colors hover:bg-brand-700"
+            >
+              Get Started
+              <i class="bx bx-right-arrow-alt text-xl"></i>
+            </a>
+            <a
+              href="/books"
+              class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-600 px-8 py-4 font-semibold text-brand-700 dark:text-brand-300 dark:border-brand-400 transition-colors hover:bg-brand-100 dark:hover:bg-brand-800"
+            >
+              Read the Book
+            </a>
+          </div>
+        </div>
+        <div class="flex justify-center">
+          <div class="card-glass-strong rounded-2xl shadow-2xl p-8 max-w-md">
+            <div class="text-center mb-6">
+              <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 dark:bg-green-900 mb-4">
+                <span class="text-3xl font-bold text-green-600 dark:text-green-400">85</span>
+              </div>
+              <p class="text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-wide">Recommended</p>
+            </div>
+            <div class="space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-brand-600 dark:text-brand-400">Sales Percentile</span>
+                <div class="flex items-center gap-2">
+                  <div class="w-24 h-2 bg-brand-200 dark:bg-brand-700 rounded-full overflow-hidden">
+                    <div class="w-[85%] h-full bg-green-500 rounded-full"></div>
+                  </div>
+                  <span class="text-sm font-semibold text-brand-700 dark:text-brand-300">85</span>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-brand-600 dark:text-brand-400">Will to Sell</span>
+                <div class="flex items-center gap-2">
+                  <div class="w-24 h-2 bg-brand-200 dark:bg-brand-700 rounded-full overflow-hidden">
+                    <div class="w-[88%] h-full bg-green-500 rounded-full"></div>
+                  </div>
+                  <span class="text-sm font-semibold text-brand-700 dark:text-brand-300">88</span>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-brand-600 dark:text-brand-400">Sales DNA</span>
+                <div class="flex items-center gap-2">
+                  <div class="w-24 h-2 bg-brand-200 dark:bg-brand-700 rounded-full overflow-hidden">
+                    <div class="w-[85%] h-full bg-green-500 rounded-full"></div>
+                  </div>
+                  <span class="text-sm font-semibold text-brand-700 dark:text-brand-300">85</span>
+                </div>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-sm text-brand-600 dark:text-brand-400">Tactical</span>
+                <div class="flex items-center gap-2">
+                  <div class="w-24 h-2 bg-brand-200 dark:bg-brand-700 rounded-full overflow-hidden">
+                    <div class="w-[75%] h-full bg-green-500 rounded-full"></div>
+                  </div>
+                  <span class="text-sm font-semibold text-brand-700 dark:text-brand-300">75</span>
+                </div>
+              </div>
+            </div>
+            <p class="text-xs text-brand-500 dark:text-brand-500 mt-4 text-center">Sample assessment result for a "Recommended" candidate</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Stats -->
+  <section class="py-12 px-4">
+    <div class="max-w-7xl mx-auto border border-brand-200 dark:border-brand-700 rounded-2xl p-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-brand-700 dark:text-brand-100 mb-2">50%</p>
+          <p class="text-sm text-brand-600 dark:text-brand-400">of sales hires fail within 18 months</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-brand-700 dark:text-brand-100 mb-2">$200K+</p>
+          <p class="text-sm text-brand-600 dark:text-brand-400">average cost of a failed sales hire</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-brand-700 dark:text-brand-100 mb-2">17</p>
+          <p class="text-sm text-brand-600 dark:text-brand-400">months average salesperson tenure</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-bold text-brand-700 dark:text-brand-100 mb-2">6%</p>
+          <p class="text-sm text-brand-600 dark:text-brand-400">of salespeople are true hunters</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          Why It Works
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100">
+          Not a personality test. A sales performance predictor.
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {features.map((feature) => (
+          <div class="card-glass-strong rounded-2xl p-8">
+            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-6">
+              <i class={`bx ${feature.icon} text-2xl text-brand-500 dark:text-brand-400`}></i>
+            </div>
+            <h3 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-3">
+              {feature.title}
+            </h3>
+            <p class="text-sm text-brand-600 dark:text-brand-400">
+              {feature.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What It Measures -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+            21 Core Competencies
+          </p>
+          <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100 mb-6">
+            What the assessment reveals
+          </h2>
+          <p class="text-brand-600 dark:text-brand-400 mb-8">
+            The Sales DNA Assessment evaluates 21 core competencies across three main areas. Unlike generic personality tests, every metric is tied directly to sales performance.
+          </p>
+          <div class="space-y-4">
+            {competencies.map((comp) => (
+              <div class="flex items-start gap-3">
+                <i class="bx bx-check-circle text-xl text-green-500 mt-0.5"></i>
+                <div>
+                  <p class="font-medium text-brand-700 dark:text-brand-100">{comp.name}</p>
+                  <p class="text-sm text-brand-600 dark:text-brand-400">{comp.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 md:p-12">
+          <blockquote class="text-xl md:text-2xl text-brand-700 dark:text-brand-300 mb-6">
+            "The assessment uncovered that this person had a lot of areas they were never going to change. I would rather know what someone can do—and won't do—BEFORE I hire them."
+          </blockquote>
+          <p class="font-medium text-brand-700 dark:text-brand-100">— Jason Howes</p>
+          <p class="text-sm text-brand-500">Crystal Ball Recruiting</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          Use Cases
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100">
+          How leaders use the Sales DNA Assessment
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {useCases.map((useCase) => (
+          <div class="card-glass-strong rounded-2xl p-8 flex gap-6">
+            <div class="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-800 flex items-center justify-center flex-shrink-0">
+              <i class={`bx ${useCase.icon} text-2xl text-brand-500 dark:text-brand-400`}></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">
+                {useCase.title}
+              </h3>
+              <p class="text-sm text-brand-600 dark:text-brand-400">
+                {useCase.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100 mb-6">
+        Ready to stop gambling on gut feel?
+      </h2>
+      <p class="text-lg text-brand-600 dark:text-brand-400 mb-8">
+        Mention "Crystal Ball Recruiting" and leave us a Google Review to qualify for 20% off your first assessment.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact" class="btn btn-primary">
+          Get Your First Assessment
+        </a>
+        <a href="/books" class="btn btn-secondary">
+          Read the Book First
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

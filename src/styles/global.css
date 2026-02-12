@@ -373,15 +373,15 @@
             0 0 0 3px rgba(138, 180, 224, 0.15);
     }
 
-    /* Textarea specific - solid background */
+    /* Textarea specific - white background to match other inputs */
     :where(textarea.input-glass) {
-        background: var(--color-brand-50);
+        background: white;
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
     }
 
     .dark :where(textarea.input-glass) {
-        background: var(--color-brand-950);
+        background: var(--color-brand-900);
     }
 }
 

@@ -8,7 +8,7 @@ const books = [
   {
     title: 'Crystal Ball Recruiting',
     subtitle: 'The Sales Hiring Playbook',
-    description: 'Stop gambling on sales hires. Learn the science-backed system for identifying, assessing, and hiring sales talent that actually performs.',
+    description: "The playbook that's transforming how Australia hires salespeople.",
     image: '/Crystal_Ball_Recruiting-book.png',
     buyLink: 'https://checkout.square.site/merchant/MLYMGRG25RRY0/checkout/WKYHCC24YGZPUBFU2GCGYYD4',
     featured: true
@@ -65,9 +65,30 @@ const books = [
             <p class="text-lg text-brand-500 dark:text-brand-400 mb-6">
               {book.subtitle}
             </p>
-            <p class="text-brand-600 dark:text-brand-400 mb-8">
-              {book.description}
+
+            <!-- Problem statement -->
+            <p class="text-brand-600 dark:text-brand-400 mb-4">
+              50% of sales hires fail within 18 months—costing businesses over $200,000 per mistake. Crystal Ball Recruiting reveals the science-backed methodology Jason Howes has used to help hundreds of Australian businesses dramatically improve their sales hiring success rate.
             </p>
+
+            <!-- What you'll learn -->
+            <p class="text-brand-600 dark:text-brand-400 mb-6">
+              Drawing on 2M+ salesperson assessments and 91% predictive accuracy, you'll discover the 21 core competencies that separate top performers from the rest, the STAR™ recruitment system to bring hiring in-house, and practical frameworks you can implement immediately.
+            </p>
+
+            <!-- Testimonial -->
+            <div class="p-4 mb-8">
+              <div class="flex text-yellow-400 mb-2">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              </div>
+              <p class="dark:text-brand-200 text-brand-800"><strong>"The Crystal Ball Process is like having the answers before the exam starts. Every hire feels stronger than the last."</strong></p>
+              <p class="text-sm text-brand-600 dark:text-brand-400 mt-1">&mdash; Brendan O'Shea, National Sales Manager, Knotwood ANZ</p>
+            </div>
+
             <div class="flex flex-wrap gap-4">
               <a href={book.buyLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                 Buy Now
