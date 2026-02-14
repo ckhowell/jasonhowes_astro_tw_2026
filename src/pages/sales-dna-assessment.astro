@@ -57,6 +57,24 @@ const useCases = [
     icon: 'bx-bullseye'
   }
 ];
+
+const testimonials = [
+  {
+    name: "Craig Armstrong",
+    role: "CEO, Mortim Australia",
+    quote: "It validates gut instincts with data-backed testing. That gave me real confidence in shortlisting strong candidates."
+  },
+  {
+    name: "Leo Santini",
+    role: "General Manager, ShapeCUT",
+    quote: "By applying Jason's method, we attracted the right candidates and aligned them with purpose."
+  },
+  {
+    name: "Brendan O'Shea",
+    role: "National Sales Manager, Knotwood ANZ",
+    quote: "Every hire feels stronger than the last. The system raises the bar and shows the team what good really looks like."
+  }
+];
 ---
 
 <Layout
@@ -227,12 +245,40 @@ const useCases = [
             ))}
           </div>
         </div>
-        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 md:p-12">
-          <blockquote class="text-xl md:text-2xl text-brand-700 dark:text-brand-300 mb-6">
-            "The assessment uncovered that this person had a lot of areas they were never going to change. I would rather know what someone can do—and won't do—BEFORE I hire them."
-          </blockquote>
-          <p class="font-medium text-brand-700 dark:text-brand-100">— Jason Howes</p>
-          <p class="text-sm text-brand-500">Crystal Ball Recruiting</p>
+        <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-8 md:p-12 h-full flex flex-col justify-center relative overflow-hidden" data-assessment-testimonial-root>
+          {testimonials.map((t, index) => (
+            <div
+              class={`assessment-testimonial-slide absolute inset-0 p-8 md:p-12 flex flex-col justify-center transition-opacity duration-500 ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              data-assessment-slide
+              data-index={index}
+            >
+              <blockquote class="text-xl md:text-2xl text-brand-700 dark:text-brand-300 mb-6">
+                "{t.quote}"
+              </blockquote>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-brand-200 dark:bg-brand-800 flex items-center justify-center">
+                  <span class="text-brand-600 dark:text-brand-400 font-semibold">{t.name.split(' ').map(n => n[0]).join('')}</span>
+                </div>
+                <div>
+                  <p class="font-medium text-brand-700 dark:text-brand-100">{t.name}</p>
+                  <p class="text-sm text-brand-500">{t.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <!-- Navigation Dots -->
+          <div class="absolute bottom-4 left-8 md:left-12 flex gap-2 z-20" role="tablist" aria-label="Testimonials">
+            {testimonials.map((_, index) => (
+              <button
+                type="button"
+                class={`assessment-dot size-2 rounded-full transition-all duration-300 ${index === 0 ? 'bg-brand-600 dark:bg-brand-400 scale-125' : 'bg-brand-300 dark:bg-brand-600 hover:bg-brand-500'}`}
+                data-assessment-dot
+                data-index={index}
+                aria-label={`Show testimonial ${index + 1}`}
+              ></button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -291,3 +337,59 @@ const useCases = [
 
   <Footer />
 </Layout>
+
+<script>
+  const root = document.querySelector('[data-assessment-testimonial-root]');
+  if (root) {
+    const slides = Array.from(root.querySelectorAll('[data-assessment-slide]'));
+    const dots = Array.from(root.querySelectorAll('[data-assessment-dot]'));
+    let active = 0;
+    let timerId: number | undefined;
+
+    const setActive = (nextIndex: number) => {
+      slides.forEach((slide, index) => {
+        const isActive = index === nextIndex;
+        slide.classList.toggle('opacity-100', isActive);
+        slide.classList.toggle('z-10', isActive);
+        slide.classList.toggle('opacity-0', !isActive);
+        slide.classList.toggle('z-0', !isActive);
+      });
+
+      dots.forEach((dot, index) => {
+        const isActive = index === nextIndex;
+        dot.classList.toggle('bg-brand-600', isActive);
+        dot.classList.toggle('dark:bg-brand-400', isActive);
+        dot.classList.toggle('scale-125', isActive);
+        dot.classList.toggle('bg-brand-300', !isActive);
+        dot.classList.toggle('dark:bg-brand-600', !isActive);
+      });
+
+      active = nextIndex;
+    };
+
+    const advance = () => {
+      const nextIndex = (active + 1) % slides.length;
+      setActive(nextIndex);
+    };
+
+    const resetTimer = () => {
+      if (timerId) window.clearInterval(timerId);
+      timerId = window.setInterval(advance, 5000);
+    };
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const nextIndex = Number((dot as HTMLElement).dataset.index);
+        setActive(nextIndex);
+        resetTimer();
+      });
+    });
+
+    resetTimer();
+
+    root.addEventListener('mouseenter', () => {
+      if (timerId) window.clearInterval(timerId);
+    });
+    root.addEventListener('mouseleave', resetTimer);
+  }
+</script>

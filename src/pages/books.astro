@@ -4,28 +4,28 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-const books = [
+const featuredBook = {
+  title: 'Crystal Ball Recruiting',
+  subtitle: 'The Sales Hiring Playbook',
+  description: "The playbook that's transforming how Australia hires salespeople.",
+  image: '/Crystal_Ball_Recruiting-book.png',
+  buyLink: 'https://checkout.square.site/merchant/MLYMGRG25RRY0/checkout/WKYHCC24YGZPUBFU2GCGYYD4'
+};
+
+const upcomingBooks = [
   {
-    title: 'Crystal Ball Recruiting',
-    subtitle: 'The Sales Hiring Playbook',
-    description: "The playbook that's transforming how Australia hires salespeople.",
-    image: '/Crystal_Ball_Recruiting-book.png',
-    buyLink: 'https://checkout.square.site/merchant/MLYMGRG25RRY0/checkout/WKYHCC24YGZPUBFU2GCGYYD4',
-    featured: true
+    title: 'Sales Training for Leaner Teams',
+    subtitle: 'Drive Results with Fewer People',
+    description: 'How to raise output and drive new business with fewer people, using the right systems and technology.',
+    year: '2026',
+    bookNumber: 2
   },
   {
-    title: 'Sales Management. Simplified.',
-    subtitle: 'The Straight Truth About Getting Exceptional Results from Your Sales Team',
-    description: 'A practical guide to sales management that cuts through the noise and delivers real-world strategies that work.',
-    image: 'https://placehold.co/400x600/b8d0ed/244a78?text=Book+2',
-    buyLink: '#'
-  },
-  {
-    title: 'New Sales. Simplified.',
-    subtitle: 'The Essential Handbook for Prospecting and New Business Development',
-    description: 'Master the art of prospecting and new business development with proven frameworks and actionable strategies.',
-    image: 'https://placehold.co/400x600/b8d0ed/244a78?text=Book+3',
-    buyLink: '#'
+    title: 'Sales Leadership by Design',
+    subtitle: 'Build Teams That Thrive',
+    description: 'How to lead, coach, and scale teams that thrive in competitive markets.',
+    year: '2027',
+    bookNumber: 3
   }
 ];
 ---
@@ -51,99 +51,217 @@ const books = [
   </section>
 
   <!-- Featured Book -->
-  {books.filter(b => b.featured).map((book) => (
-    <section class="py-16 md:py-24 px-4">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div class="order-2 lg:order-1">
-            <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
-              Featured Book
-            </p>
-            <h2 class="text-brand-700 dark:text-brand-100 mb-2">
-              {book.title}
-            </h2>
-            <p class="text-lg text-brand-500 dark:text-brand-400 mb-6">
-              {book.subtitle}
-            </p>
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+            Featured Book
+          </p>
+          <h2 class="text-brand-700 dark:text-brand-100 mb-2">
+            {featuredBook.title}
+          </h2>
+          <p class="text-lg text-brand-500 dark:text-brand-400 mb-6">
+            {featuredBook.subtitle}
+          </p>
 
-            <!-- Problem statement -->
-            <p class="text-brand-600 dark:text-brand-400 mb-4">
-              50% of sales hires fail within 18 months—costing businesses over $200,000 per mistake. Crystal Ball Recruiting reveals the science-backed methodology Jason Howes has used to help hundreds of Australian businesses dramatically improve their sales hiring success rate.
-            </p>
+          <!-- Problem statement -->
+          <p class="text-brand-600 dark:text-brand-400 mb-4">
+            50% of sales hires fail within 18 months—costing businesses over $200,000 per mistake. Crystal Ball Recruiting reveals the science-backed methodology Jason Howes has used to help hundreds of Australian businesses dramatically improve their sales hiring success rate.
+          </p>
 
-            <!-- What you'll learn -->
-            <p class="text-brand-600 dark:text-brand-400 mb-6">
-              Drawing on 2M+ salesperson assessments and 91% predictive accuracy, you'll discover the 21 core competencies that separate top performers from the rest, the STAR™ recruitment system to bring hiring in-house, and practical frameworks you can implement immediately.
-            </p>
+          <!-- What you'll learn -->
+          <p class="text-brand-600 dark:text-brand-400 mb-6">
+            Drawing on 2M+ salesperson assessments and 91% predictive accuracy, you'll discover the 21 core competencies that separate top performers from the rest, the STAR™ recruitment system to bring hiring in-house, and practical frameworks you can implement immediately.
+          </p>
 
-            <!-- Testimonial -->
-            <div class="p-4 mb-8">
-              <div class="flex text-yellow-400 mb-2">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-              </div>
-              <p class="dark:text-brand-200 text-brand-800"><strong>"The Crystal Ball Process is like having the answers before the exam starts. Every hire feels stronger than the last."</strong></p>
-              <p class="text-sm text-brand-600 dark:text-brand-400 mt-1">&mdash; Brendan O'Shea, National Sales Manager, Knotwood ANZ</p>
+          <!-- Testimonial -->
+          <div class="p-4 mb-8">
+            <div class="flex text-yellow-400 mb-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
             </div>
-
-            <div class="flex flex-wrap gap-4">
-              <a href={book.buyLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                Buy Now
-              </a>
-              <a href="/Sample-Chapter-for-Crystal-Ball Recruiting.pdf" class="btn btn-secondary" download>
-                <i class="bx bx-download"></i>
-                Free Chapter
-              </a>
-            </div>
+            <p class="dark:text-brand-200 text-brand-800"><strong>"The Crystal Ball Process is like having the answers before the exam starts. Every hire feels stronger than the last."</strong></p>
+            <p class="text-sm text-brand-600 dark:text-brand-400 mt-1">&mdash; Brendan O'Shea, National Sales Manager, Knotwood ANZ</p>
           </div>
-          <div class="order-1 lg:order-2 flex justify-center">
-            <img
-              src={book.image}
-              alt={book.title}
-              class=""
-            />
+
+          <div class="flex flex-wrap gap-4">
+            <a href={featuredBook.buyLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              Buy Now
+            </a>
+            <a href="/Sample-Chapter-for-Crystal-Ball Recruiting.pdf" class="btn btn-secondary" download>
+              <i class="bx bx-download"></i>
+              Free Chapter
+            </a>
           </div>
         </div>
+        <div class="order-1 lg:order-2 flex justify-center">
+          <img
+            src={featuredBook.image}
+            alt={featuredBook.title}
+            class=""
+          />
+        </div>
       </div>
-    </section>
-  ))}
+    </div>
+  </section>
 
-  <!-- Other Books -->
-  <section class="py-40 md:py-40 px-4">
+  <!-- What's Inside -->
+  <section class="py-16 md:py-24 px-4 bg-brand-50 dark:bg-brand-950">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-brand-700 dark:text-brand-100 mb-12">
-        More from Jason
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-        {books.filter(b => !b.featured).map((book) => (
-          <div class="flex gap-6">
-            <img
-              src={book.image}
-              alt={book.title}
-              class="w-32 md:w-40 rounded-lg shadow-lg flex-shrink-0"
-            />
-            <div>
-              <h3 class="text-xl text-brand-700 dark:text-brand-100 mb-2">
-                {book.title}
-              </h3>
-              <p class="text-sm text-brand-500 dark:text-brand-400 mb-3">
-                {book.subtitle}
-              </p>
-              <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">
-                {book.description}
-              </p>
-              <a href={book.buyLink} class="btn btn-link">
-                Learn more
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          What's Inside
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100 mb-4">
+          Every chapter tackles a critical hiring challenge
+        </h2>
+        <p class="text-brand-600 dark:text-brand-400 max-w-2xl mx-auto">
+          From assessing your current team to retaining top performers, Crystal Ball Recruiting gives you actionable frameworks for every stage.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-group text-xl text-brand-500 dark:text-brand-400"></i>
           </div>
-        ))}
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Assessing Your Current Team</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Identify the real capabilities of your sales team and pinpoint the gaps that affect performance.</p>
+        </div>
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-dollar-circle text-xl text-brand-500 dark:text-brand-400"></i>
+          </div>
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Making an ROI on Your Salespeople</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Understand the full financial impact of every hire with a simple cost breakdown.</p>
+        </div>
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-file text-xl text-brand-500 dark:text-brand-400"></i>
+          </div>
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Defining the Role Clearly</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Create precise role definitions and integrate CRM automation to keep expectations measurable.</p>
+        </div>
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-trophy text-xl text-brand-500 dark:text-brand-400"></i>
+          </div>
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Compensation & Incentives</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Build packages that attract real achievers, balancing extrinsic and intrinsic motivators.</p>
+        </div>
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-magnet text-xl text-brand-500 dark:text-brand-400"></i>
+          </div>
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Attracting Top Sales Talent</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Write ads that cut through to the top 20% who aren't actively looking.</p>
+        </div>
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-check-shield text-xl text-brand-500 dark:text-brand-400"></i>
+          </div>
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Removing Bias from Hiring</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Replace gut feel with data-driven insights using the STAR™ assessment process.</p>
+        </div>
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-select-multiple text-xl text-brand-500 dark:text-brand-400"></i>
+          </div>
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Selecting the Best Players</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Build a repeatable process for shortlisting and interviews that reveals actual sales behaviour.</p>
+        </div>
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-rocket text-xl text-brand-500 dark:text-brand-400"></i>
+          </div>
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Onboarding for Success</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Turn new hires into productive contributors faster with an actionable 90-day plan.</p>
+        </div>
+        <div class="card-glass-strong rounded-xl p-6">
+          <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
+            <i class="bx bx-heart text-xl text-brand-500 dark:text-brand-400"></i>
+          </div>
+          <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Retaining Top Performers</h3>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Build loyalty through structure, accountability, and opportunity—not just pay rises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coming Soon - The Trilogy -->
+  <section class="py-16 md:py-24 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
+          Coming Soon
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100 mb-4">
+          The Sales Leadership Trilogy
+        </h2>
+        <p class="text-brand-600 dark:text-brand-400 max-w-2xl mx-auto">
+          Crystal Ball Recruiting is the first in a planned trilogy that guides leaders through the full lifecycle of building a high-performing sales organisation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Book 1 - Available Now -->
+        <div class="text-center">
+          <div class="relative mb-6 flex justify-center">
+            <img
+              src="/Crystal_Ball_Recruiting-book.png"
+              alt="Crystal Ball Recruiting"
+              class="w-40 md:w-48 rounded-lg shadow-xl"
+            />
+            <span class="absolute -top-3 -right-3 md:right-auto md:left-1/2 md:translate-x-12 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Available Now
+            </span>
+          </div>
+          <p class="text-xs uppercase tracking-wider text-brand-500 dark:text-brand-400 mb-2">Book One</p>
+          <h4 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">Crystal Ball Recruiting</h4>
+          <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">How to attract, recruit, and retain the top 20% of sales professionals.</p>
+          <a href={featuredBook.buyLink} class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
+            Buy Now
+          </a>
+        </div>
+
+        <!-- Book 2 - Coming 2026 -->
+        <div class="text-center opacity-75">
+          <div class="relative mb-6 flex justify-center">
+            <img
+              src="/Sales-Training.png"
+              alt="Sales Training for Leaner Teams"
+              class="w-40 md:w-48 rounded-lg shadow-xl"
+            />
+            <span class="absolute -top-3 -right-3 md:right-auto md:left-1/2 md:translate-x-12 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              2026
+            </span>
+          </div>
+          <p class="text-xs uppercase tracking-wider text-brand-500 dark:text-brand-400 mb-2">Book Two</p>
+          <h4 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">Sales Training for Leaner Teams</h4>
+          <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">How to raise output and drive new business with fewer people, using the right systems and technology.</p>
+          <span class="inline-block text-sm text-brand-500 dark:text-brand-400 font-medium">Coming 2026</span>
+        </div>
+
+        <!-- Book 3 - Coming 2027 -->
+        <div class="text-center opacity-75">
+          <div class="relative mb-6 flex justify-center">
+            <img
+              src="/Sales-Leadership.png"
+              alt="Sales Leadership by Design"
+              class="w-40 md:w-48 rounded-lg shadow-xl"
+            />
+            <span class="absolute -top-3 -right-3 md:right-auto md:left-1/2 md:translate-x-12 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              2027
+            </span>
+          </div>
+          <p class="text-xs uppercase tracking-wider text-brand-500 dark:text-brand-400 mb-2">Book Three</p>
+          <h4 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">Sales Leadership by Design</h4>
+          <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">How to lead, coach, and scale teams that thrive in competitive markets.</p>
+          <span class="inline-block text-sm text-brand-500 dark:text-brand-400 font-medium">Coming 2027</span>
+        </div>
       </div>
     </div>
   </section>

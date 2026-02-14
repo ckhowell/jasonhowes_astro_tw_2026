@@ -143,61 +143,63 @@
   </header>
 
 <script>
-  // Header background on scroll
-  const siteHeader = document.getElementById('site-header');
+  // Initialize nav functionality (runs on initial load and after View Transitions)
+  function initNav() {
+    // Header background on scroll
+    const siteHeader = document.getElementById('site-header');
 
-  const updateHeaderBackground = () => {
-    if (!siteHeader) return;
-    if (window.scrollY > 12) {
-      siteHeader.classList.add('scrolled');
-    } else {
-      siteHeader.classList.remove('scrolled');
+    const updateHeaderBackground = () => {
+      if (!siteHeader) return;
+      if (window.scrollY > 12) {
+        siteHeader.classList.add('scrolled');
+      } else {
+        siteHeader.classList.remove('scrolled');
+      }
+    };
+
+    updateHeaderBackground();
+    window.addEventListener('scroll', updateHeaderBackground, { passive: true });
+
+    // Theme toggle functionality
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    // Set icon based on current theme
+    function updateIcon() {
+      if (document.documentElement.classList.contains('dark')) {
+        themeToggleLightIcon?.classList.remove('hidden');
+        themeToggleDarkIcon?.classList.add('hidden');
+      } else {
+        themeToggleDarkIcon?.classList.remove('hidden');
+        themeToggleLightIcon?.classList.add('hidden');
+      }
     }
-  };
 
-  updateHeaderBackground();
-  window.addEventListener('scroll', updateHeaderBackground, { passive: true });
+    // Sync icon with current theme state
+    updateIcon();
 
-  // Theme toggle functionality
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-  const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    themeToggleBtn?.addEventListener('click', function() {
+      // Toggle icons
+      themeToggleDarkIcon?.classList.toggle('hidden');
+      themeToggleLightIcon?.classList.toggle('hidden');
 
-  // Set initial icon based on current theme
-  function updateIcon() {
-    if (document.documentElement.classList.contains('dark')) {
-      themeToggleLightIcon?.classList.remove('hidden');
-      themeToggleDarkIcon?.classList.add('hidden');
-    } else {
-      themeToggleDarkIcon?.classList.remove('hidden');
-      themeToggleLightIcon?.classList.add('hidden');
-    }
+      // Toggle dark class on html element
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
   }
 
-  // Check for saved theme preference or default to system preference
-  if (localStorage.getItem('color-theme') === 'dark' ||
-      (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  } else {
-    document.documentElement.classList.remove('dark');
-  }
+  // Run on initial page load
+  initNav();
 
-  updateIcon();
-
-  themeToggleBtn?.addEventListener('click', function() {
-    // Toggle icons
-    themeToggleDarkIcon?.classList.toggle('hidden');
-    themeToggleLightIcon?.classList.toggle('hidden');
-
-    // Toggle dark class on html element
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('color-theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('color-theme', 'dark');
-    }
-  });
+  // Re-run after View Transitions complete
+  document.addEventListener('astro:page-load', initNav);
 </script>
 
 <style>
