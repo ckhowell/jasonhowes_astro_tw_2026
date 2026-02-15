@@ -143,54 +143,58 @@
   </header>
 
 <script>
-  // Initialize nav functionality (runs on initial load and after View Transitions)
-  function initNav() {
-    // Header background on scroll
-    const siteHeader = document.getElementById('site-header');
+  // Track if global listeners have been added (these persist across View Transitions)
+  let globalListenersAdded = false;
 
-    const updateHeaderBackground = () => {
-      if (!siteHeader) return;
-      if (window.scrollY > 12) {
-        siteHeader.classList.add('scrolled');
-      } else {
-        siteHeader.classList.remove('scrolled');
-      }
-    };
-
-    updateHeaderBackground();
-    window.addEventListener('scroll', updateHeaderBackground, { passive: true });
-
-    // Theme toggle functionality
-    const themeToggleBtn = document.getElementById('theme-toggle');
+  // Update theme icon based on current state
+  function updateThemeIcon() {
     const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-    // Set icon based on current theme
-    function updateIcon() {
-      if (document.documentElement.classList.contains('dark')) {
-        themeToggleLightIcon?.classList.remove('hidden');
-        themeToggleDarkIcon?.classList.add('hidden');
-      } else {
-        themeToggleDarkIcon?.classList.remove('hidden');
-        themeToggleLightIcon?.classList.add('hidden');
-      }
+    if (document.documentElement.classList.contains('dark')) {
+      themeToggleLightIcon?.classList.remove('hidden');
+      themeToggleDarkIcon?.classList.add('hidden');
+    } else {
+      themeToggleDarkIcon?.classList.remove('hidden');
+      themeToggleLightIcon?.classList.add('hidden');
     }
+  }
 
-    // Sync icon with current theme state
-    updateIcon();
+  // Header scroll background handler
+  function updateHeaderBackground() {
+    const siteHeader = document.getElementById('site-header');
+    if (!siteHeader) return;
+    if (window.scrollY > 12) {
+      siteHeader.classList.add('scrolled');
+    } else {
+      siteHeader.classList.remove('scrolled');
+    }
+  }
 
-    themeToggleBtn?.addEventListener('click', function() {
-      // Toggle icons
-      themeToggleDarkIcon?.classList.toggle('hidden');
-      themeToggleLightIcon?.classList.toggle('hidden');
+  // Initialize nav functionality
+  function initNav() {
+    // Always update icon state and header background (elements may be new after View Transition)
+    updateThemeIcon();
+    updateHeaderBackground();
 
-      // Toggle dark class on html element
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('color-theme', 'light');
-      } else {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('color-theme', 'dark');
+    // Only set up global event listeners once (document/window persist across transitions)
+    if (globalListenersAdded) return;
+    globalListenersAdded = true;
+
+    // Scroll listener on window (persists across View Transitions)
+    window.addEventListener('scroll', updateHeaderBackground, { passive: true });
+
+    // Use event delegation for theme toggle (document persists across View Transitions)
+    // This way we don't need to reattach handlers to new button elements
+    document.addEventListener('click', function(e) {
+      const toggleBtn = e.target.closest('#theme-toggle');
+      if (toggleBtn) {
+        // Toggle dark class on html element
+        document.documentElement.classList.toggle('dark');
+        localStorage.setItem('color-theme',
+          document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        );
+        updateThemeIcon();
       }
     });
   }
@@ -198,7 +202,7 @@
   // Run on initial page load
   initNav();
 
-  // Re-run after View Transitions complete
+  // Re-run after View Transitions complete (to update icon state)
   document.addEventListener('astro:page-load', initNav);
 </script>
 

@@ -110,12 +110,24 @@ const keywords = "sales recruitment Australia, sales DNA assessment, hire salesp
 
     <!-- Theme detection - runs immediately to prevent flash -->
     <script is:inline>
-      (function() {
+      // Apply theme function
+      function applyTheme() {
         const theme = localStorage.getItem('color-theme');
-        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const shouldBeDark = theme === 'dark' || (!theme && prefersDark);
+
+        if (shouldBeDark) {
           document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
         }
-      })();
+      }
+
+      // Apply on initial load
+      applyTheme();
+
+      // Apply after View Transition swaps in new content (before render)
+      document.addEventListener('astro:after-swap', applyTheme);
     </script>
 
     <!-- View Transitions -->
