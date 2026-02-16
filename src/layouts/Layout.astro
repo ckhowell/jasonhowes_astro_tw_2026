@@ -33,6 +33,7 @@ const keywords = "sales recruitment Australia, sales DNA assessment, hire salesp
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content="/jason-howes-og.jpg" />
@@ -49,6 +50,10 @@ const keywords = "sales recruitment Australia, sales DNA assessment, hire salesp
     <!-- Additional SEO -->
     <meta property="og:site_name" content="Jason Howes - Crystal Ball Recruiting" />
     <meta property="og:locale" content="en_AU" />
+
+    <!-- Language/Region -->
+    <link rel="alternate" hreflang="en-AU" href={Astro.url.href} />
+    <link rel="alternate" hreflang="x-default" href={Astro.url.href} />
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

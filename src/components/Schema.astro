@@ -1,0 +1,147 @@
+---
+/**
+ * Schema.astro - Reusable structured data component
+ *
+ * Usage:
+ * <Schema type="Person" data={{ name: "Jason Howes", ... }} />
+ * <Schema type="Organization" data={{ name: "Arrow Executive Sales", ... }} />
+ * <Schema type="Article" data={{ headline: "...", ... }} />
+ */
+
+interface Props {
+  type: 'Person' | 'Organization' | 'WebSite' | 'Article' | 'BlogPosting' | 'Book' | 'Service' | 'FAQPage';
+  data?: Record<string, any>;
+}
+
+const { type, data = {} } = Astro.props;
+
+// Base schemas
+const schemas: Record<string, any> = {
+  Person: {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Jason Howes",
+    jobTitle: "Sales Recruitment Expert & Author",
+    description: "Sales recruitment expert with 30+ years experience. Author of Crystal Ball Recruiting. Helping businesses hire top-performing salespeople using science-backed assessments.",
+    url: "https://jasonhowes.com.au",
+    image: "https://jasonhowes.com.au/Jason-Howes_7324-web.jpg",
+    sameAs: [
+      "https://www.linkedin.com/in/jason-howes-arrowesc/",
+      "https://www.youtube.com/@arrowexecutivesalesconsult865"
+    ],
+    worksFor: {
+      "@type": "Organization",
+      name: "Arrow Executive Sales"
+    },
+    knowsAbout: [
+      "Sales Recruitment",
+      "Sales Training",
+      "Sales Leadership",
+      "Sales Assessment",
+      "BDM Recruitment"
+    ],
+    ...data
+  },
+
+  Organization: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Arrow Executive Sales",
+    alternateName: "Arrow Executive",
+    url: "https://jasonhowes.com.au",
+    logo: "https://jasonhowes.com.au/favicon.svg",
+    description: "Australia's leading sales recruitment and assessment firm. Helping businesses hire top-performing salespeople using science-backed methodologies.",
+    founder: {
+      "@type": "Person",
+      name: "Jason Howes"
+    },
+    areaServed: ["Australia", "New Zealand"],
+    ...data
+  },
+
+  WebSite: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Jason Howes - Crystal Ball Recruiting",
+    url: "https://jasonhowes.com.au",
+    description: "Sales recruitment expert helping businesses hire top-performing salespeople with 91% accuracy using science-backed assessments.",
+    publisher: {
+      "@type": "Person",
+      name: "Jason Howes"
+    },
+    ...data
+  },
+
+  Article: {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    author: {
+      "@type": "Person",
+      name: "Jason Howes",
+      url: "https://jasonhowes.com.au/about"
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Jason Howes",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://jasonhowes.com.au/favicon.svg"
+      }
+    },
+    ...data
+  },
+
+  BlogPosting: {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    author: {
+      "@type": "Person",
+      name: "Jason Howes",
+      url: "https://jasonhowes.com.au/about"
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Jason Howes",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://jasonhowes.com.au/favicon.svg"
+      }
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage"
+    },
+    ...data
+  },
+
+  Book: {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    author: {
+      "@type": "Person",
+      name: "Jason Howes"
+    },
+    ...data
+  },
+
+  Service: {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    provider: {
+      "@type": "Person",
+      name: "Jason Howes"
+    },
+    areaServed: ["Australia", "New Zealand"],
+    ...data
+  },
+
+  FAQPage: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    ...data
+  }
+};
+
+const schema = schemas[type] || { "@context": "https://schema.org", "@type": type, ...data };
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -28,9 +28,23 @@ const upcomingBooks = [
     bookNumber: 3
   }
 ];
+
+import Schema from '../components/Schema.astro';
+
+const pageTitle = "Crystal Ball Recruiting Book | Jason Howes";
+const pageDescription = "Get Crystal Ball Recruiting by Jason Howes. The sales hiring playbook that's transforming how Australia recruits salespeople with 91% predictive accuracy.";
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription}>
+  <Schema
+    type="Book"
+    data={{
+      name: "Crystal Ball Recruiting",
+      author: { "@type": "Person", name: "Jason Howes" },
+      description: "The Sales Hiring Playbook - Transform how you hire salespeople with science-backed assessments.",
+      url: "https://jasonhowes.com.au/books"
+    }}
+  />
   <Nav variant="light" />
 
   <!-- Hero -->

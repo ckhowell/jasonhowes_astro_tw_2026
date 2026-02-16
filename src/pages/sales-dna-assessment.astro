@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import Schema from '../components/Schema.astro';
 
 const features = [
   {
@@ -81,6 +82,19 @@ const testimonials = [
   title="Sales DNA Assessment | 91% Accurate Sales Hiring | Jason Howes"
   description="Stop gambling on gut feel. The Sales DNA Assessment is 91% accurate and powered by 2M+ salespeople assessed. Know if a candidate can sell before you invest $200K."
 >
+  <Schema
+    type="Service"
+    data={{
+      name: "Sales DNA Assessment",
+      description: "91% accurate sales assessment that evaluates 21 core competencies. Know if a candidate can sell before you invest $200K. Powered by data from 2M+ salespeople.",
+      serviceType: "Sales Assessment",
+      url: "https://jasonhowes.com.au/sales-dna-assessment",
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock"
+      }
+    }}
+  />
   <Nav variant="light" />
 
   <!-- Hero -->

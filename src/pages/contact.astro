@@ -3,9 +3,16 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+
+const pageTitle = "Contact Jason Howes | Sales Training & Speaking Inquiries";
+const pageDescription = "Get in touch with Jason Howes for speaking engagements, sales training, consulting, or media requests. Response within 24-48 business hours.";
+
+// Check for success parameter
+const url = new URL(Astro.request.url);
+const isSuccess = url.searchParams.get('success') === 'true';
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription}>
   <Nav variant="light" />
 
   <!-- Hero -->
@@ -16,10 +23,12 @@ import Footer from '../components/Footer.astro';
           Get in Touch
         </p>
         <h1 class="text-brand-700 dark:text-brand-100 mb-6">
-          Let's start a conversation
+          {isSuccess ? "Message sent!" : "Let's start a conversation"}
         </h1>
         <p class="text-lg text-brand-600 dark:text-brand-400">
-          Have a question about sales hiring, training, or leadership? Want to book Jason for an event? Drop us a line.
+          {isSuccess
+            ? "Thank you for reaching out. We'll get back to you within 24-48 business hours."
+            : "Have a question about sales hiring, training, or leadership? Want to book Jason for an event? Drop us a line."}
         </p>
       </div>
     </div>
@@ -31,10 +40,40 @@ import Footer from '../components/Footer.astro';
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Form -->
         <div class="">
-          <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-6">
-            Send a message
-          </h2>
-          <form class="space-y-6">
+          {isSuccess ? (
+            <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-8 text-center">
+              <div class="w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="bx bx-check text-3xl text-green-600 dark:text-green-400"></i>
+              </div>
+              <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-3">
+                Thank you!
+              </h2>
+              <p class="text-brand-600 dark:text-brand-400 mb-6">
+                Your message has been received. We'll be in touch soon.
+              </p>
+              <a href="/contact" class="btn btn-secondary">
+                Send another message
+              </a>
+            </div>
+          ) : (
+            <>
+              <h2 class="text-2xl text-brand-700 dark:text-brand-100 mb-6">
+                Send a message
+              </h2>
+          <form
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/contact/?success=true"
+            class="space-y-6"
+          >
+            <!-- Netlify Forms hidden fields -->
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="hidden">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label for="first-name" class="block text-sm font-medium text-brand-700 dark:text-brand-300 mb-2">
@@ -46,6 +85,7 @@ import Footer from '../components/Footer.astro';
                   name="first-name"
                   class="input-glass"
                   placeholder="John"
+                  required
                 />
               </div>
               <div>
@@ -58,6 +98,7 @@ import Footer from '../components/Footer.astro';
                   name="last-name"
                   class="input-glass"
                   placeholder="Smith"
+                  required
                 />
               </div>
             </div>
@@ -72,6 +113,7 @@ import Footer from '../components/Footer.astro';
                 name="email"
                 class="input-glass"
                 placeholder="john@company.com"
+                required
               />
             </div>
 
@@ -96,11 +138,13 @@ import Footer from '../components/Footer.astro';
                 id="subject"
                 name="subject"
                 class="input-glass"
+                required
               >
                 <option value="">Select a topic</option>
                 <option value="speaking">Speaking engagement</option>
                 <option value="training">Training & workshops</option>
                 <option value="consulting">Consulting & advisory</option>
+                <option value="assessment">Sales DNA Assessment</option>
                 <option value="book">Book inquiry</option>
                 <option value="media">Media request</option>
                 <option value="other">Something else</option>
@@ -117,6 +161,7 @@ import Footer from '../components/Footer.astro';
                 rows="5"
                 class="input-glass resize-none"
                 placeholder="Tell us about your needs..."
+                required
               ></textarea>
             </div>
 
@@ -124,6 +169,8 @@ import Footer from '../components/Footer.astro';
               Send Message
             </button>
           </form>
+            </>
+          )}
         </div>
 
         <!-- Contact Info -->

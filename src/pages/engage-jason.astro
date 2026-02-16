@@ -51,9 +51,26 @@ const clients = [
   'Financial services',
   'Healthcare organisationss'
 ];
+import Schema from '../components/Schema.astro';
+
+const pageTitle = "Engage Jason Howes | Keynote Speaking, Sales Training & Consulting";
+const pageDescription = "Book Jason Howes for keynote speaking, sales training workshops, and consulting. Transform your sales team with practical strategies from Australia's leading sales recruitment expert.";
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription}>
+  <Schema
+    type="Service"
+    data={{
+      name: "Sales Training & Consulting Services",
+      description: pageDescription,
+      serviceType: ["Keynote Speaking", "Sales Training", "Business Consulting"],
+      url: "https://jasonhowes.com.au/engage-jason",
+      offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock"
+      }
+    }}
+  />
   <Nav variant="light" />
 
   <!-- Hero -->

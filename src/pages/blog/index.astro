@@ -16,9 +16,12 @@ const allCategories = Array.from(new Set(allPosts.map(post => post.data.category
 const toSentenceCase = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
+
+const pageTitle = "Sales Insights Blog | Jason Howes";
+const pageDescription = "Expert insights on sales recruitment, leadership, and building high-performing teams. Practical advice from Jason Howes with 30+ years of sales experience.";
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription}>
   <Nav variant="light" />
 
   <!-- Hero Header -->
@@ -136,39 +139,51 @@ const toSentenceCase = (str: string) => {
 </Layout>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  // Track if filter listener has been added (persists across View Transitions)
+  let filterListenerAdded = false;
+
+  const activeClasses = ['bg-brand-500', 'text-white', 'border-brand-500'];
+  const inactiveClasses = ['bg-brand-100', 'dark:bg-brand-900', 'text-brand-700', 'dark:text-brand-200', 'border-brand-200', 'dark:border-brand-700'];
+
+  function setActiveButton(activeBtn: Element) {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const blogPosts = document.querySelectorAll('.blog-post');
-
-    const activeClasses = ['bg-brand-500', 'text-white', 'border-brand-500'];
-    const inactiveClasses = ['bg-brand-100', 'dark:bg-brand-900', 'text-brand-700', 'dark:text-brand-200', 'border-brand-200', 'dark:border-brand-700'];
-
-    const setActiveButton = (activeBtn: Element) => {
-      filterButtons.forEach(btn => {
-        btn.classList.remove(...activeClasses);
-        btn.classList.add(...inactiveClasses);
-      });
-      activeBtn.classList.remove(...inactiveClasses);
-      activeBtn.classList.add(...activeClasses);
-    };
-
-    const filterPosts = (category: string) => {
-      blogPosts.forEach(post => {
-        const postCategory = (post as HTMLElement).dataset.category || '';
-        if (category === '' || postCategory === category) {
-          (post as HTMLElement).style.display = '';
-        } else {
-          (post as HTMLElement).style.display = 'none';
-        }
-      });
-    };
-
     filterButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.classList.remove(...activeClasses);
+      btn.classList.add(...inactiveClasses);
+    });
+    activeBtn.classList.remove(...inactiveClasses);
+    activeBtn.classList.add(...activeClasses);
+  }
+
+  function filterPosts(category: string) {
+    const blogPosts = document.querySelectorAll('.blog-post');
+    blogPosts.forEach(post => {
+      const postCategory = (post as HTMLElement).dataset.category || '';
+      if (category === '' || postCategory === category) {
+        (post as HTMLElement).style.display = '';
+      } else {
+        (post as HTMLElement).style.display = 'none';
+      }
+    });
+  }
+
+  function initBlogFilter() {
+    // Only add the event listener once (document persists across View Transitions)
+    if (filterListenerAdded) return;
+    filterListenerAdded = true;
+
+    // Use event delegation on document (persists across View Transitions)
+    document.addEventListener('click', (e) => {
+      const btn = (e.target as Element).closest('.filter-btn');
+      if (btn) {
         const category = (btn as HTMLElement).dataset.category || '';
         setActiveButton(btn);
         filterPosts(category);
-      });
+      }
     });
-  });
+  }
+
+  // Set up the delegated listener
+  initBlogFilter();
+  document.addEventListener('astro:page-load', initBlogFilter);
 </script>
