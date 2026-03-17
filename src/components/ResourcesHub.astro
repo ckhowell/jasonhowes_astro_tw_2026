@@ -7,60 +7,85 @@ import { getCollection } from 'astro:content';
 async function getPodcastEpisodes() {
   try {
     const rssUrl = 'https://rss.app/feeds/mNatfjGVLfdzGRHK.xml';
-    const response = await fetch(rssUrl);
+    const response = await fetch(rssUrl, {
+      headers: { 'Accept': 'application/rss+xml, application/xml' }
+    });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch podcast RSS');
+      throw new Error(`Failed to fetch podcast RSS: ${response.status}`);
     }
 
     const rssText = await response.text();
-    const items = rssText.match(/<item>([\s\S]*?)<\/item>/g) || [];
 
-    return items.slice(0, 4).map((item) => {
-      const titleMatch = item.match(/<title>([^<]+)<\/title>/);
-      const pubDateMatch = item.match(/<pubDate>([^<]+)<\/pubDate>/);
-      const linkMatch = item.match(/<link>([^<]+)<\/link>/);
+    // Extract all items from the RSS feed
+    const itemMatches = rssText.match(/<item>[\s\S]*?<\/item>/g) || [];
 
-      const title = titleMatch ? titleMatch[1] : 'Untitled Episode';
-      const pubDate = pubDateMatch ? new Date(pubDateMatch[1]) : new Date();
-      const link = linkMatch ? linkMatch[1] : 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853';
+    if (itemMatches.length === 0) {
+      throw new Error('No items found in RSS feed');
+    }
 
-      // Format date as "MONTH DAY, YEAR"
-      const formattedDate = pubDate.toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric'
-      }).toUpperCase();
+    const episodes = itemMatches.map((item) => {
+      // Extract title - handle CDATA and escaped content
+      let titleMatch = item.match(/<title>(?:<!\[CDATA\[)?([^\]<]+)(?:\]\]>)?<\/title>/i);
+      const title = titleMatch ? titleMatch[1].trim() : 'Untitled Episode';
+
+      // Extract publication date
+      const pubDateMatch = item.match(/<pubDate>([^<]+)<\/pubDate>/i);
+      let formattedDate = 'Date Unknown';
+
+      if (pubDateMatch) {
+        try {
+          const pubDate = new Date(pubDateMatch[1]);
+          if (!isNaN(pubDate.getTime())) {
+            formattedDate = pubDate.toLocaleDateString('en-US', {
+              month: 'long',
+              day: 'numeric',
+              year: 'numeric'
+            }).toUpperCase();
+          }
+        } catch (e) {
+          // Date parsing failed, use default
+        }
+      }
+
+      // Extract link - try multiple common patterns
+      let link = 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853';
+      const linkMatch = item.match(/<link>(?:<!\[CDATA\[)?([^\]<]+)(?:\]\]>)?<\/link>/i);
+      if (linkMatch) {
+        link = linkMatch[1].trim();
+      }
 
       return {
         title,
         date: formattedDate,
         link
       };
-    });
+    }).slice(0, 4); // Get only the first 4 episodes
+
+    return episodes;
   } catch (error) {
     console.error('Error fetching podcast episodes:', error);
     // Fallback episodes if RSS fetch fails
     return [
       {
-        title: 'Crystal Ball Recruiting: Why Sales Hiring Is Broken',
-        date: 'JANUARY 15, 2026',
-        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+        title: 'Cybersecurity Risks Every Mid-Market Business Must Take Seriously with Luke Irwin',
+        date: 'MARCH 15, 2026',
+        link: 'https://podcasts.apple.com/us/podcast/cybersecurity-risks-every-mid-market-business-must/id1850329853?i=1000755379963'
       },
       {
-        title: 'The Traits That Actually Predict Sales Success',
-        date: 'JANUARY 8, 2026',
-        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+        title: 'Breaking the Growth Ceiling: Leadership Lessons from a combined 60+ Years of Experience',
+        date: 'MARCH 4, 2026',
+        link: 'https://podcasts.apple.com/us/podcast/breaking-the-growth-ceiling-leadership-lessons-from/id1850329853?i=1000751809322'
       },
       {
-        title: 'Why Most Sales Training Fails (And How to Fix It)',
-        date: 'JANUARY 1, 2026',
-        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+        title: 'Building a LinkedIn Strategy That Actually Drives Sales with Kylie Chown',
+        date: 'FEBRUARY 14, 2026',
+        link: 'https://podcasts.apple.com/us/podcast/building-a-linkedin-strategy-that-actually-drives/id1850329853?i=1000749688184'
       },
       {
-        title: 'Coaching Underperformers: When to Invest vs Move On',
-        date: 'DECEMBER 25, 2025',
-        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+        title: 'National Apprentice and Trainee Week Australia with Jason Banks from MIGAS',
+        date: 'FEBRUARY 1, 2026',
+        link: 'https://podcasts.apple.com/us/podcast/national-apprentice-and-trainee-week-australia-with/id1850329853?i=1000747597916'
       },
     ];
   }

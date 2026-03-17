@@ -6,44 +6,52 @@ import Footer from '../components/Footer.astro';
 
 const courses = [
   {
-    title: 'New Sales. Simplified.',
-    subtitle: 'Master prospecting and new business development',
-    description: 'A comprehensive program for salespeople who want to fill their pipeline with qualified opportunities. Learn the frameworks and tactics that top performers use every day.',
-    duration: '6 weeks',
-    format: 'Self-paced',
-    modules: 12,
-    price: '$497',
+    title: 'Consultative Selling: Land a $10m Contract',
+    subtitle: 'Uncover buying motives through strategic questioning',
+    description: 'Teaches uncovering buying motives through strategic questioning. Techniques used in securing 8-figure deals. Combinable with the Closing course.',
+    duration: 'Full-day',
+    format: 'Workshop',
     link: '#',
     featured: true
   },
   {
-    title: 'Sales Management. Simplified.',
-    subtitle: 'Lead your team to exceptional results',
-    description: 'For new and experienced managers who want to get more from their team. Covers coaching, accountability, hiring, and performance management.',
-    duration: '8 weeks',
-    format: 'Self-paced',
-    modules: 16,
-    price: '$697',
+    title: 'Prospecting: Become a Confident Hunter',
+    subtitle: 'Build a steady pipeline of qualified opportunities',
+    description: 'Build a steady pipeline of qualified opportunities. Includes 5x 60-minute sessions (fortnightly), microlearning, and coaching review.',
+    duration: 'Full-day',
+    format: 'Workshop',
     link: '#'
   },
   {
-    title: 'Your Sales Story',
-    subtitle: 'Craft a compelling narrative that converts',
-    description: 'Learn to tell your story in a way that resonates with prospects and differentiates you from the competition.',
-    duration: '4 weeks',
-    format: 'Self-paced',
-    modules: 8,
-    price: '$297',
+    title: 'Closing: Win More, Win Smarter',
+    subtitle: 'Identify decision points and remove roadblocks',
+    description: 'Uses milestone-driven approach to identify decision points and remove roadblocks. Works alongside Consultative Selling with applied coaching.',
+    duration: 'Full-day',
+    format: 'Workshop',
     link: '#'
   },
   {
-    title: 'Crystal Ball Recruiting',
-    subtitle: 'Hire salespeople who actually perform',
-    description: 'The complete system for identifying, assessing, and onboarding sales talent. Based on the bestselling book.',
-    duration: '6 weeks',
-    format: 'Self-paced',
-    modules: 10,
-    price: '$597',
+    title: 'Sales Mindset: Uncover Hidden Barriers',
+    subtitle: 'Identify mindset blocks limiting performance',
+    description: 'Identifies mindset blocks limiting performance. Includes 3x 60-minute virtual sessions (weekly), 1x 30-minute coaching, microlearning videos, and weekly tasks.',
+    duration: 'Half-day',
+    format: 'Virtual',
+    link: '#'
+  },
+  {
+    title: 'Relationship Building: Accelerate Trust',
+    subtitle: 'Develop trusted advisor positioning',
+    description: 'Develops trusted advisor positioning to shorten sales cycles. Virtual program format with practical exercises and microlearning.',
+    duration: 'Half-day',
+    format: 'Virtual',
+    link: '#'
+  },
+  {
+    title: 'Selling Value: Protect Your Margin',
+    subtitle: 'Position as strategic choice not price-focused',
+    description: 'Teaches positioning as a strategic choice rather than a price-focused competitor. Half-day format with tailored pricing exercises and role-plays.',
+    duration: 'Half-day',
+    format: 'Workshop',
     link: '#'
   }
 ];
@@ -105,10 +113,6 @@ const pageDescription = "Self-paced online sales courses covering prospecting, s
                 {course.duration}
               </span>
               <span class="flex items-center gap-2">
-                <i class="bx bx-book-open text-lg"></i>
-                {course.modules} modules
-              </span>
-              <span class="flex items-center gap-2">
                 <i class="bx bx-laptop text-lg"></i>
                 {course.format}
               </span>
@@ -116,10 +120,10 @@ const pageDescription = "Self-paced online sales courses covering prospecting, s
 
             <div class="flex items-center gap-6">
               <a href={course.link} class="btn btn-primary">
-                Enroll Now - {course.price}
+                Learn More
               </a>
               <a href="#" class="btn btn-link">
-                Preview curriculum
+                Contact us
               </a>
             </div>
           </div>
@@ -155,13 +159,10 @@ const pageDescription = "Self-paced online sales courses covering prospecting, s
 
             <div class="flex flex-wrap gap-4 mb-6 text-xs text-brand-500 dark:text-brand-500">
               <span>{course.duration}</span>
-              <span>{course.modules} modules</span>
+              <span>{course.format}</span>
             </div>
 
-            <div class="flex items-center justify-between">
-              <span class="text-lg font-semibold text-brand-700 dark:text-brand-100">
-                {course.price}
-              </span>
+            <div class="flex items-center justify-end">
               <a href={course.link} class="btn btn-link">
                 Learn more
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
