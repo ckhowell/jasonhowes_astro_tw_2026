@@ -93,7 +93,12 @@ const getTypeColor = (type: string) => {
                   <span class="text-xs text-brand-500 dark:text-brand-500">
                     {resource.type} • {resource.fileSize}
                   </span>
-                  <a href={resource.downloadUrl} class="btn btn-primary btn-sm" download>
+                  <a 
+                    href={resource.downloadUrl} 
+                    class="btn btn-primary btn-sm" 
+                    download
+                    onclick={`trackDownload('${resource.title.replace(/'/g, "\\'")}.pdf', 'PDF')`}
+                  >
                     <i class="bx bx-download"></i>
                     Download
                   </a>

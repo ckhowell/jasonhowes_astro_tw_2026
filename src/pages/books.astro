@@ -8,8 +8,8 @@ const featuredBook = {
   title: 'Crystal Ball Recruiting',
   subtitle: 'The Sales Hiring Playbook',
   description: "The playbook that's transforming how Australia hires salespeople.",
-  image: '/Crystal_Ball_Recruiting-book.png',
-  buyLink: 'https://checkout.square.site/merchant/MLYMGRG25RRY0/checkout/WKYHCC24YGZPUBFU2GCGYYD4'
+  image: '/Crystal_Ball_Recruiting-book-amazon.png',
+  buyLink: 'https://www.amazon.com/Crystal-Ball-Recruiting-Predictive-Professionals/dp/1923583581'
 };
 
 const upcomingBooks = [
@@ -55,7 +55,7 @@ const pageDescription = "Get Crystal Ball Recruiting by Jason Howes. The sales h
           Books by Jason Howes
         </p>
         <h1 class="text-brand-700 dark:text-brand-100 mb-6">
-          Practical wisdom for sales leaders
+          The Predictive Guide to Hiring Top Sales Professionals.
         </h1>
         <p class="text-lg text-brand-600 dark:text-brand-400">
           Bestselling guides that have transformed thousands of sales organisationss. Implement what you learn immediately.
@@ -81,12 +81,12 @@ const pageDescription = "Get Crystal Ball Recruiting by Jason Howes. The sales h
 
           <!-- Problem statement -->
           <p class="text-brand-600 dark:text-brand-400 mb-4">
-            50% of sales hires fail within 18 months—costing businesses over $200,000 per mistake. Crystal Ball Recruiting reveals the science-backed methodology Jason Howes has used to help hundreds of Australian businesses dramatically improve their sales hiring success rate.
+            50% of sales hires fail within 17 months—costing businesses over $200,000 per mistake. Crystal Ball Recruiting reveals the science-backed methodology Jason Howes has used to help hundreds of Australian businesses dramatically improve their sales hiring success rate.
           </p>
 
           <!-- What you'll learn -->
           <p class="text-brand-600 dark:text-brand-400 mb-6">
-            Drawing on 2M+ salesperson assessments and 91% predictive accuracy, you'll discover the 21 core competencies that separate top performers from the rest, the STAR™ recruitment system to bring hiring in-house, and practical frameworks you can implement immediately.
+            Drawing on 2M+ salesperson assessments and 91% predictive accuracy, you'll discover the 21 core competencies that separate top performers from the rest, plus practical frameworks you can implement immediately.
           </p>
 
           <!-- Testimonial -->
@@ -106,7 +106,12 @@ const pageDescription = "Get Crystal Ball Recruiting by Jason Howes. The sales h
             <a href={featuredBook.buyLink} class="btn btn-primary" target="_blank" rel="noopener noreferrer">
               Buy Now
             </a>
-            <a href="/Sample-Chapter-for-Crystal-Ball Recruiting.pdf" class="btn btn-secondary" download>
+            <a 
+              href="/Sample-Chapter-for-Crystal-Ball Recruiting.pdf" 
+              class="btn btn-secondary" 
+              download
+              onclick="trackDownload('Crystal-Ball-Recruiting-Chapter-1-Books-Page.pdf', 'PDF')"
+            >
               <i class="bx bx-download"></i>
               Free Chapter
             </a>
@@ -178,7 +183,7 @@ const pageDescription = "Get Crystal Ball Recruiting by Jason Howes. The sales h
             <i class="bx bx-check-shield text-xl text-brand-500 dark:text-brand-400"></i>
           </div>
           <h3 class="font-semibold text-brand-700 dark:text-brand-100 mb-2">Removing Bias from Hiring</h3>
-          <p class="text-sm text-brand-600 dark:text-brand-400">Replace gut feel with data-driven insights using the STAR™ assessment process.</p>
+          <p class="text-sm text-brand-600 dark:text-brand-400">Replace gut feel with data-driven insights using our in-house assessment process.</p>
         </div>
         <div class="card-glass-solid rounded-xl p-6">
           <div class="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-800 flex items-center justify-center mb-4">
@@ -256,7 +261,7 @@ const pageDescription = "Get Crystal Ball Recruiting by Jason Howes. The sales h
           <p class="text-xs uppercase tracking-wider text-brand-500 dark:text-brand-400 mb-2">Book Two</p>
           <h4 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">Sales Training for Leaner Teams</h4>
           <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">How to raise output and drive new business with fewer people, using the right systems and technology.</p>
-          <span class="inline-block text-sm text-brand-500 dark:text-brand-400 font-medium">Coming 2026</span>
+          <span class="inline-block text-sm text-brand-500 dark:text-brand-400 font-medium">Coming 2027</span>
         </div>
 
         <!-- Book 3 - Coming 2027 -->
@@ -274,7 +279,7 @@ const pageDescription = "Get Crystal Ball Recruiting by Jason Howes. The sales h
           <p class="text-xs uppercase tracking-wider text-brand-500 dark:text-brand-400 mb-2">Book Three</p>
           <h4 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-2">Sales Leadership by Design</h4>
           <p class="text-sm text-brand-600 dark:text-brand-400 mb-4">How to lead, coach, and scale teams that thrive in competitive markets.</p>
-          <span class="inline-block text-sm text-brand-500 dark:text-brand-400 font-medium">Coming 2027</span>
+          <span class="inline-block text-sm text-brand-500 dark:text-brand-400 font-medium">Coming 2029</span>
         </div>
       </div>
     </div>

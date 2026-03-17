@@ -4,8 +4,8 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 
-const pageTitle = "Sales Leadership Podcast | Jason Howes";
-const pageDescription = "The Art & Science of Complex Sales podcast with Jason Howes. Weekly insights on sales management, hiring, and building high-performance teams.";
+const pageTitle = "Sales Trajectory Podcast | Jason Howes";
+const pageDescription = "Sales Leadership, Growth Strategies & Industry Insights. Real stories, proven strategies, and expert insights for sales leaders and professionals.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -17,14 +17,49 @@ const pageDescription = "The Art & Science of Complex Sales podcast with Jason H
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
-            Art & Science of Complex Sales
+            Sales Trajectory Podcast
           </p>
           <h1 class="text-brand-700 dark:text-brand-100 mb-6">
-            Candid conversations with top performers
+            Where innovation meets execution in sales
           </h1>
-          <p class="text-lg text-brand-600 dark:text-brand-400">
-            Weekly insights on sales management, leadership, and building high-performance teams. No fluff, just actionable wisdom.
+          <!-- <h2 class="text-xl md:text-2xl font-semibold text-brand-600 dark:text-brand-400 mb-6">
+            Sales Leadership, Growth Strategies & Industry Insights
+          </h2> -->
+          <p class="text-lg text-brand-600 dark:text-brand-400 mb-6">
+            The show for leaders, sales managers, and professionals who want to launch innovative products, accelerate growth, and build high-performance sales teams. We dive deep into sales training, cutting-edge sales technology and recruiting sales hunters.
           </p>
+          <p class="text-lg text-brand-600 dark:text-brand-400 mb-8">
+            Hosted by Jason Howes, each episode delivers real stories, proven strategies, and expert insights to help you succeed in today's challenging sales landscape.
+          </p>
+          <div class="bg-brand-100 dark:bg-brand-900 rounded-2xl p-6 border border-brand-200 dark:border-brand-700">
+            <p class="text-brand-700 dark:text-brand-300">
+              <strong>Got a new product, or one that's struggling to gain traction?</strong>
+              <br />
+              <a href="/contact" class="underline font-semibold hover:text-brand-600 dark:hover:text-brand-400">Reach out to be a guest</a>
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a
+              href="https://podcasts.apple.com/au/podcast/sales-trajectory-podcast/id1850577613"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-gray-800"
+            >
+              <img src="/podcast_icon.svg" alt="Apple Podcasts" class="w-6 h-6" />
+              Apple Podcasts
+            </a>
+            <a
+              href="https://open.spotify.com/episode/58YkjG0yfsmT2WXmMomG6Q?si=w5RoPcEZQGixggxhwOknsg"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 rounded-full bg-[#1DB954] px-6 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-[#1ed760]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-current" aria-hidden="true">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+              Spotify
+            </a>
+          </div>
         </div>
         <div class="flex justify-center">
           <img

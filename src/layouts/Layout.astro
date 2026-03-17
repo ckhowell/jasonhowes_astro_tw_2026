@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title?: string;
@@ -136,7 +136,7 @@ const keywords = "sales recruitment Australia, sales DNA assessment, hire salesp
     </script>
 
     <!-- View Transitions -->
-    <ViewTransitions />
+    <ClientRouter />
 
     <!-- Page transition styles -->
     <style is:inline>
@@ -222,6 +222,30 @@ const keywords = "sales recruitment Australia, sales DNA assessment, hire salesp
           // Example: loadGoogleAnalytics('G-XXXXXXXXXX');
         });
       }
+
+      // Track download events in Google Analytics
+      function trackDownload(resourceName, resourceType = 'PDF') {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'download', {
+            event_category: 'engagement',
+            event_label: resourceName,
+            content_type: resourceType,
+            file_name: resourceName
+          });
+        }
+      }
+
+      // Auto-track downloads on links with download attribute
+      document.addEventListener('click', (e) => {
+        const downloadLink = e.target.closest('a[download]');
+        if (downloadLink) {
+          const fileName = downloadLink.getAttribute('download') || 
+                          downloadLink.href.split('/').pop() || 
+                          'Unknown';
+          const resourceType = fileName.split('.').pop()?.toUpperCase() || 'PDF';
+          trackDownload(fileName, resourceType);
+        }
+      });
     </script>
 
     <!-- Page loader script -->

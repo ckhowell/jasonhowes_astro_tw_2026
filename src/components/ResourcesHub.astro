@@ -3,28 +3,79 @@
 
 import { getCollection } from 'astro:content';
 
-const podcastEpisodes = [
-  {
-    title: 'Crystal Ball Recruiting: Why Sales Hiring Is Broken',
-    date: 'JANUARY 15, 2026',
-    link: 'https://podcasts.apple.com/au/podcast/art-science-of-complex-sales/id1723340327?i=1000745419597'
-  },
-  {
-    title: 'The Traits That Actually Predict Sales Success',
-    date: 'JANUARY 8, 2026',
-    link: '/podcast'
-  },
-  {
-    title: 'Why Most Sales Training Fails (And How to Fix It)',
-    date: 'JANUARY 1, 2026',
-    link: '/podcast'
-  },
-  {
-    title: 'Coaching Underperformers: When to Invest vs Move On',
-    date: 'DECEMBER 25, 2025',
-    link: '/podcast'
-  },
-];
+// Fetch latest podcast episodes from Apple Podcasts RSS feed
+async function getPodcastEpisodes() {
+  try {
+    // Try podscan.fm first (reliable for Apple Podcasts)
+    let rssUrl = 'https://podscan.fm/api/v1/podcasts/1850329853/rss';
+    let response = await fetch(rssUrl, {
+      headers: { 'Accept': 'application/rss+xml' }
+    });
+    
+    // Fallback to openrss.org if podscan fails
+    if (!response.ok) {
+      rssUrl = 'https://openrss.org/podcasts/1850329853';
+      response = await fetch(rssUrl, {
+        headers: { 'Accept': 'application/rss+xml' }
+      });
+    }
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch podcast RSS');
+    }
+    
+    const rssText = await response.text();
+    const items = rssText.match(/<item>([\s\S]*?)<\/item>/g) || [];
+    
+    return items.slice(0, 4).map((item) => {
+      const titleMatch = item.match(/<title>([^<]+)<\/title>/);
+      const pubDateMatch = item.match(/<pubDate>([^<]+)<\/pubDate>/);
+      
+      const title = titleMatch ? titleMatch[1] : 'Untitled Episode';
+      const pubDate = pubDateMatch ? new Date(pubDateMatch[1]) : new Date();
+      
+      // Format date as "MONTH DAY, YEAR"
+      const formattedDate = pubDate.toLocaleDateString('en-US', { 
+        month: 'long', 
+        day: 'numeric', 
+        year: 'numeric' 
+      }).toUpperCase();
+      
+      return {
+        title,
+        date: formattedDate,
+        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+      };
+    });
+  } catch (error) {
+    console.error('Error fetching podcast episodes:', error);
+    // Fallback episodes if RSS fetch fails
+    return [
+      {
+        title: 'Crystal Ball Recruiting: Why Sales Hiring Is Broken',
+        date: 'JANUARY 15, 2026',
+        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+      },
+      {
+        title: 'The Traits That Actually Predict Sales Success',
+        date: 'JANUARY 8, 2026',
+        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+      },
+      {
+        title: 'Why Most Sales Training Fails (And How to Fix It)',
+        date: 'JANUARY 1, 2026',
+        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+      },
+      {
+        title: 'Coaching Underperformers: When to Invest vs Move On',
+        date: 'DECEMBER 25, 2025',
+        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+      },
+    ];
+  }
+}
+
+const podcastEpisodes = await getPodcastEpisodes();
 
 const formatDateForLabel = (isoDate: string) =>
   new Date(isoDate)
@@ -38,7 +89,7 @@ const blogPosts = (await getCollection('blog'))
   .map((post) => ({
     title: post.data.title,
     date: formatDateForLabel(post.data.pubDate),
-    href: `/blog/${post.slug}`
+    href: `/blog/${post.id}`
   }));
 ---
 
