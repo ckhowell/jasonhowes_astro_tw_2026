@@ -1,0 +1,94 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Message Sent | Jason Howes";
+const pageDescription = "Your message has been received. We'll be in touch within 24-48 business hours.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Nav variant="light" />
+
+  <!-- Success Section -->
+  <section class="min-h-screen flex items-center justify-center px-4 py-20">
+    <div class="max-w-2xl w-full">
+      <!-- Success Card -->
+      <div class="text-center card-glass-strong p-12">
+        <!-- Success Icon -->
+        <div class="w-20 h-20 bg-brand-100 dark:bg-brand-800 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
+          <i class="bx bx-check text-5xl text-brand-600 dark:text-brand-400"></i>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-700 dark:text-brand-100 mb-4">
+          Message sent!
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-xl text-brand-600 dark:text-brand-400 mb-2">
+          Thank you for reaching out.
+        </p>
+        <p class="text-lg text-brand-500 dark:text-brand-500 mb-8">
+          We'll get back to you within 24–48 business hours.
+        </p>
+
+        <!-- Details Box -->
+        <!-- <div class=" p-8 md:p-12  mb-12">
+          <h3 class="text-lg font-semibold text-brand-700 dark:text-brand-100 mb-4">
+            What happens next?
+          </h3>
+          <ul class="space-y-3 text-left max-w-md mx-auto">
+            <li class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 dark:bg-brand-800 flex items-center justify-center mt-0.5">
+                <span class="text-brand-600 dark:text-brand-400 font-semibold text-sm">1</span>
+              </div>
+              <span class="text-brand-600 dark:text-brand-400">We'll review your message</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 dark:bg-brand-800 flex items-center justify-center mt-0.5">
+                <span class="text-brand-600 dark:text-brand-400 font-semibold text-sm">2</span>
+              </div>
+              <span class="text-brand-600 dark:text-brand-400">We'll reach out to schedule a time to chat</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 dark:bg-brand-800 flex items-center justify-center mt-0.5">
+                <span class="text-brand-600 dark:text-brand-400 font-semibold text-sm">3</span>
+              </div>
+              <span class="text-brand-600 dark:text-brand-400">We'll discuss how we can help you</span>
+            </li>
+          </ul>
+        </div> -->
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="/" class="btn btn-primary">
+            Back to Home
+          </a>
+          <a href="/courses" class="btn btn-secondary">
+            Explore Courses
+          </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="text-center border-t border-brand-200 dark:border-brand-700 pt-8 mt-8">
+          <p class="text-sm text-brand-500 dark:text-brand-500 mb-4">
+            Or reach out directly:
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <a href="tel:1300 903 527" class="flex items-center gap-2 text-brand-700 dark:text-brand-100 hover:text-brand-500 dark:hover:text-brand-300 transition-colors font-medium">
+              <i class="bx bx-phone text-xl"></i>
+              1300 903 527
+            </a>
+            <a href="mailto:insights@jasonhowes.com.au" class="flex items-center gap-2 text-brand-700 dark:text-brand-100 hover:text-brand-500 dark:hover:text-brand-300 transition-colors font-medium">
+              <i class="bx bx-envelope text-xl"></i>
+              insights@jasonhowes.com.au
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

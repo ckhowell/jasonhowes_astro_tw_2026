@@ -101,7 +101,7 @@ const formatDateForLabel = (isoDate: string) =>
 const blogPosts = (await getCollection('blog'))
   .filter((post) => Boolean(post.data.pubDate))
   .sort((a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime())
-  .slice(0, 4)
+  .slice(0, 6)
   .map((post) => ({
     title: post.data.title,
     date: formatDateForLabel(post.data.pubDate),
