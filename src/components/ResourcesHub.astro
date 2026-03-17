@@ -3,48 +3,39 @@
 
 import { getCollection } from 'astro:content';
 
-// Fetch latest podcast episodes from Apple Podcasts RSS feed
+// Fetch latest podcast episodes from RSS feed
 async function getPodcastEpisodes() {
   try {
-    // Try podscan.fm first (reliable for Apple Podcasts)
-    let rssUrl = 'https://podscan.fm/api/v1/podcasts/1850329853/rss';
-    let response = await fetch(rssUrl, {
-      headers: { 'Accept': 'application/rss+xml' }
-    });
-    
-    // Fallback to openrss.org if podscan fails
-    if (!response.ok) {
-      rssUrl = 'https://openrss.org/podcasts/1850329853';
-      response = await fetch(rssUrl, {
-        headers: { 'Accept': 'application/rss+xml' }
-      });
-    }
-    
+    const rssUrl = 'https://rss.app/feeds/mNatfjGVLfdzGRHK.xml';
+    const response = await fetch(rssUrl);
+
     if (!response.ok) {
       throw new Error('Failed to fetch podcast RSS');
     }
-    
+
     const rssText = await response.text();
     const items = rssText.match(/<item>([\s\S]*?)<\/item>/g) || [];
-    
+
     return items.slice(0, 4).map((item) => {
       const titleMatch = item.match(/<title>([^<]+)<\/title>/);
       const pubDateMatch = item.match(/<pubDate>([^<]+)<\/pubDate>/);
-      
+      const linkMatch = item.match(/<link>([^<]+)<\/link>/);
+
       const title = titleMatch ? titleMatch[1] : 'Untitled Episode';
       const pubDate = pubDateMatch ? new Date(pubDateMatch[1]) : new Date();
-      
+      const link = linkMatch ? linkMatch[1] : 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853';
+
       // Format date as "MONTH DAY, YEAR"
-      const formattedDate = pubDate.toLocaleDateString('en-US', { 
-        month: 'long', 
-        day: 'numeric', 
-        year: 'numeric' 
+      const formattedDate = pubDate.toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
       }).toUpperCase();
-      
+
       return {
         title,
         date: formattedDate,
-        link: 'https://podcasts.apple.com/us/podcast/sales-trajectory-podcast/id1850329853'
+        link
       };
     });
   } catch (error) {
