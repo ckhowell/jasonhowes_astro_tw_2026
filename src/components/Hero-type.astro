@@ -2,19 +2,118 @@
 
 ---
 
-<section class="relative flex items-center justify-center h-screen bg-checkered">
+<section
+  class="relative flex items-center justify-center min-h-screen bg-checkered"
+>
   <div class="hero-duotone-overlay" aria-hidden="true"></div>
   <div class="hero-water-overlay" aria-hidden="true"></div>
   <div class="hero-gradient-overlay" aria-hidden="true"></div>
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-    <div class="grid lg:grid-cols-2 gap-8 items-center">
-      <div>
-          <h1 class="mb-4 py-6 md:mb-6 leading-tight text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] text-brand-700! dark:text-brand-400!">
+  <div
+    class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-8 sm:pt-28 sm:pb-12 md:py-16"
+  >
+    <div class="grid lg:grid-cols-3 gap-8 items-center">
+      <div class="lg:col-span-2 text-center md:text-left">
+        <!-- Title -->
+        <h1
+          class="mb-4 py-4 md:py-6 md:mb-6 leading-tight text-1xl sm:text-5xl md:text-6xl lg:text-[6rem] xl:text-[7rem] text-brand-700! dark:text-brand-400!"
+        >
           50% of sales hires fail. Yours don't have to.
         </h1>
-        <p class="mb-6 text-lg sm:text-xl md:text-2xl text-brand-600 dark:text-brand-300 max-w-2xl">
-          Crystal Ball Recruiting uses 91% accurate, science-backed assessments to identify the top 20% of sales professionals&mdash;before you invest $200K.
-        </p>
+        <!-- Book feature area -->
+
+        <!-- Two column layout -->
+        <div class="flex flex-col sm:flex-row gap-6 mb-6">
+          <!-- Col 1: Book image -->
+          <div class="shrink-0 mx-auto sm:mx-0">
+            <img
+              src="/front.webp"
+              alt="Crystal Ball Recruiting Book Cover"
+              class="w-36 sm:w-40 md:w-40 h-auto object-contain -rotate-1 drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)]"
+            />
+          </div>
+
+          <!-- Col 2: Description -->
+          <div class="flex flex-col justify-start">
+            <!-- Featured label with stars -->
+            <div
+              class="flex flex-col items-center md:flex-row md:items-center gap-1 md:gap-2 mb-2"
+            >
+              <span class="flex gap-0.5">
+                <svg
+                  class="w-3.5 h-3.5 text-yellow-400 fill-current"
+                  viewBox="0 0 20 20"
+                  ><path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  ></path></svg
+                >
+                <svg
+                  class="w-3.5 h-3.5 text-yellow-400 fill-current"
+                  viewBox="0 0 20 20"
+                  ><path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  ></path></svg
+                >
+                <svg
+                  class="w-3.5 h-3.5 text-yellow-400 fill-current"
+                  viewBox="0 0 20 20"
+                  ><path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  ></path></svg
+                >
+                <svg
+                  class="w-3.5 h-3.5 text-yellow-400 fill-current"
+                  viewBox="0 0 20 20"
+                  ><path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  ></path></svg
+                >
+                <svg
+                  class="w-3.5 h-3.5 text-yellow-400 fill-current"
+                  viewBox="0 0 20 20"
+                  ><path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                  ></path></svg
+                >
+              </span>
+              <!-- <span
+            class="text-xs uppercase tracking-[0.15em] font-semibold text-brand-600 dark:text-brand-400"
+          >
+            Featured Book
+          </span> -->
+            </div>
+            <p
+              class="text-xs uppercase tracking-[0.15em] font-semibold text-brand-600 dark:text-brand-400 mb-3"
+            >
+              The Predictive Guide to Hiring Top Sales Professionals
+            </p>
+
+            <p
+              class="text-xl sm:text-2xl lg:text-3xl text-brand-700! dark:text-brand-400! mb-6 lg:leading-9"
+            >
+              Crystal Ball Recruiting uses 91% accurate, science-backed
+              assessments to identify the top 20% of sales professionals—before
+              you invest $200K.
+            </p>
+            <div
+              class="flex items-center gap-2 text-sm text-brand-700! dark:text-brand-400!"
+            >
+              <svg
+                class="w-4 h-4 shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
+              >
+              <span>Based on 2M+ assessments with proven results</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
         <div class="flex flex-col sm:flex-row gap-4">
           <a
             href="/sales-dna-assessment"
@@ -56,7 +155,7 @@
   .hero-water-overlay {
     position: absolute;
     inset: 0;
-    background-image: url('/jason-howes-sales-recruitment-hero-2.webp');
+    background-image: url("/jason-howes-sales-recruitment-hero-2.webp");
     background-size: cover;
     background-position: center;
     opacity: 0.7;
@@ -74,21 +173,47 @@
   .hero-gradient-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg,
-      rgba(222, 231, 244, 0.95) 0%,
-      rgba(222, 231, 244, 0.75) 35%,
-      rgba(222, 231, 244, 0.3) 60%,
-      rgba(222, 231, 244, 0) 100%
+    /* Mobile: vertical gradient covering full height */
+    background: linear-gradient(
+      180deg,
+      rgba(222, 231, 244, 0.97) 0%,
+      rgba(222, 231, 244, 0.92) 60%,
+      rgba(222, 231, 244, 0.75) 100%
     );
     pointer-events: none;
   }
 
+  /* Tablet and up: switch to horizontal gradient */
+  @media (min-width: 768px) {
+    .hero-gradient-overlay {
+      background: linear-gradient(
+        90deg,
+        rgba(222, 231, 244, 0.95) 0%,
+        rgba(222, 231, 244, 0.75) 35%,
+        rgba(222, 231, 244, 0.3) 60%,
+        rgba(222, 231, 244, 0) 100%
+      );
+    }
+  }
+
   html.dark .hero-gradient-overlay {
-    background: linear-gradient(90deg,
-      rgba(10, 21, 32, 0.95) 0%,
-      rgba(10, 21, 32, 0.85) 40%,
-      rgba(10, 21, 32, 0.5) 70%,
-      rgba(10, 21, 32, 0) 100%
+    background: linear-gradient(
+      180deg,
+      rgba(10, 21, 32, 0.97) 0%,
+      rgba(10, 21, 32, 0.92) 60%,
+      rgba(10, 21, 32, 0.8) 100%
     );
+  }
+
+  @media (min-width: 768px) {
+    html.dark .hero-gradient-overlay {
+      background: linear-gradient(
+        90deg,
+        rgba(10, 21, 32, 0.95) 0%,
+        rgba(10, 21, 32, 0.85) 40%,
+        rgba(10, 21, 32, 0.5) 70%,
+        rgba(10, 21, 32, 0) 100%
+      );
+    }
   }
 </style>

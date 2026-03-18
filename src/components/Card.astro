@@ -1,6 +1,6 @@
 ---
-// Props: image (string), heading (string), subheading (string), copy (string), buttonText (string), buttonLink (string), buttonVariant ('primary' | 'accent')
-const { image, heading, subheading, copy, buttonText, buttonLink, buttonVariant = 'primary' } = Astro.props;
+// Props: image (string), heading (string), subheading (string), copy (string), buttonText (string), buttonLink (string), buttonVariant ('primary' | 'accent'), modalResource (string)
+const { image, heading, subheading, copy, buttonText, buttonLink, buttonVariant = 'primary', modalResource } = Astro.props;
 const baseButtonClasses = 'inline-flex items-center justify-center gap-2 rounded-full px-7 py-3 font-semibold shadow-lg transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2';
 const variantClasses = buttonVariant === 'accent'
   ? 'bg-brand-900 text-brand-100 hover:bg-brand-800 focus-visible:outline-brand-500'
@@ -21,17 +21,28 @@ const getDownloadName = (link: string) => {
     <h6 class="!font-light mb-2 text-brand-800 dark:text-brand-200">{heading}</h6>
     {subheading && <h4 class="text-lg font-semibold mb-2 text-brand-500 dark:text-brand-400">{subheading}</h4>}
     <p class="mb-4 text-sm text-brand-600 dark:text-brand-300">{copy}</p>
-    {buttonText && buttonLink && (
+    {buttonText && (
       <div>
-        <a 
-          href={buttonLink} 
-          class={`${baseButtonClasses} ${variantClasses}`} 
-          download={isDownload ? true : undefined}
-          onclick={isDownload ? `trackDownload('${getDownloadName(buttonLink)}', 'PDF')` : undefined}
-        >
-          {buttonText}
-          <i class="bx bx-down-arrow-alt text-xl"></i>
-        </a>
+        {modalResource ? (
+          <button
+            type="button"
+            class={`${baseButtonClasses} ${variantClasses} cursor-pointer`}
+            data-open-modal={modalResource}
+          >
+            {buttonText}
+            <i class="bx bx-down-arrow-alt text-xl"></i>
+          </button>
+        ) : buttonLink && (
+          <a
+            href={buttonLink}
+            class={`${baseButtonClasses} ${variantClasses}`}
+            download={isDownload ? true : undefined}
+            onclick={isDownload ? `trackDownload('${getDownloadName(buttonLink)}', 'PDF')` : undefined}
+          >
+            {buttonText}
+            <i class="bx bx-down-arrow-alt text-xl"></i>
+          </a>
+        )}
       </div>
     )}
   </div>

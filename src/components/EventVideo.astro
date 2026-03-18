@@ -1,0 +1,27 @@
+---
+const youtubeId = 'dQw4w9WgXcQ'; // Replace with Jason's video ID
+---
+
+<section class="px-4 py-12 md:py-16">
+  <div class="mx-auto max-w-4xl">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-700 dark:text-brand-100 mb-3">
+        Jason in Action
+      </h2>
+      <p class="text-brand-500 dark:text-brand-400">
+        A glimpse from a recent event
+      </p>
+    </div>
+
+    <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+      <iframe
+        src={`https://www.youtube.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+        title="Jason Howes — Event Highlights"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        class="absolute inset-0 w-full h-full"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </div>
+</section>

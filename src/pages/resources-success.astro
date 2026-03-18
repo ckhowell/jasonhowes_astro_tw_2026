@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Resource on its way | Jason Howes";
+const pageDescription = "Thanks for requesting a free resource. We'll send it to your inbox shortly.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <Nav variant="light" />
+
+  <section class="min-h-screen flex items-center justify-center px-4 py-20">
+    <div class="max-w-2xl w-full">
+      <div class="text-center card-glass-strong p-12">
+        <!-- Icon -->
+        <div class="w-20 h-20 bg-brand-100 dark:bg-brand-800 rounded-full flex items-center justify-center mx-auto mb-8">
+          <i class="bx bx-envelope text-5xl text-brand-600 dark:text-brand-400"></i>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-4xl md:text-5xl font-bold text-brand-700 dark:text-brand-100 mb-4">
+          Check your inbox!
+        </h1>
+
+        <!-- Message -->
+        <p class="text-xl text-brand-600 dark:text-brand-400 mb-2">
+          We'll send your document via email shortly.
+        </p>
+        <p class="text-xl text-brand-600 dark:text-brand-400 mb-10">
+          If it doesn't arrive within a few minutes, check your spam folder or reach out directly.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <a href="/" class="btn btn-primary">
+            Back to Home
+          </a>
+          <a href="/books" class="btn btn-secondary">
+            Explore the Book
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
