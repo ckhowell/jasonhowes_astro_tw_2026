@@ -22,10 +22,10 @@ const isSuccess = url.searchParams.get('success') === 'true';
         <p class="text-sm uppercase tracking-[0.15em] text-brand-500 dark:text-brand-400 mb-4">
           Get in Touch
         </p>
-        <h1 class="text-brand-700 dark:text-brand-100 mb-6">
+        <h1 id="contact-heading" class="text-brand-700 dark:text-brand-100 mb-6">
           {isSuccess ? "Message sent!" : "Let's start a conversation"}
         </h1>
-        <p class="text-lg text-brand-600 dark:text-brand-400">
+        <p id="contact-subtext" class="text-lg text-brand-600 dark:text-brand-400">
           {isSuccess
             ? "Thank you for reaching out. We'll get back to you within 24-48 business hours."
             : "Have a question about sales hiring, training, or leadership? Want to book Jason for an event? Drop us a line."}
@@ -250,3 +250,50 @@ const isSuccess = url.searchParams.get('success') === 'true';
 
   <Footer />
 </Layout>
+
+<script>
+  const contextMap: Record<string, { heading: string; subtext: string }> = {
+    assessment: {
+      heading: "Let's get your assessment started",
+      subtext: "Tell us about your team and we'll put together the right Sales DNA assessment package for you.",
+    },
+    speaking: {
+      heading: "Let's talk about your event",
+      subtext: "Tell us about your event and Jason will get back to you within 24–48 hours.",
+    },
+    'speaking-availability': {
+      heading: "Let's check Jason's availability",
+      subtext: "Tell us your event date and location and we'll confirm availability within 24 hours.",
+    },
+    training: {
+      heading: "Let's build your training plan",
+      subtext: "Tell us about your team and we'll put together a tailored training proposal.",
+    },
+    courses: {
+      heading: "Let's find the right course for you",
+      subtext: "Tell us about your goals and we'll recommend the best fit.",
+    },
+    'courses-learn': {
+      heading: "Want to know more?",
+      subtext: "Tell us which course caught your eye and we'll send you everything you need to know.",
+    },
+    'courses-book': {
+      heading: "Let's book your free consultation",
+      subtext: "Pick a time and we'll help you choose the program that best fits your goals.",
+    },
+    book: {
+      heading: "Let's talk about the book",
+      subtext: "Questions about Crystal Ball Recruiting or bulk orders? We'd love to hear from you.",
+    },
+  };
+
+  const from = new URLSearchParams(window.location.search).get('from') ?? '';
+  const ctx = contextMap[from];
+
+  if (ctx) {
+    const heading = document.getElementById('contact-heading');
+    const subtext = document.getElementById('contact-subtext');
+    if (heading) heading.textContent = ctx.heading;
+    if (subtext) subtext.textContent = ctx.subtext;
+  }
+</script>
