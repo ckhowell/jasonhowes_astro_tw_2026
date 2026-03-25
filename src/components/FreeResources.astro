@@ -149,42 +149,49 @@ import Card from './Card.astro';
 </div>
 
 <script>
-  const modal = document.getElementById('resource-modal')!;
-  const backdrop = document.getElementById('modal-backdrop')!;
-  const closeBtn = document.getElementById('modal-close')!;
-  const resourceNameEl = document.getElementById('modal-resource-name')!;
-  const formResourceField = document.getElementById('form-resource-field') as HTMLInputElement;
+  function initModal() {
+    const modal = document.getElementById('resource-modal');
+    const backdrop = document.getElementById('modal-backdrop');
+    const closeBtn = document.getElementById('modal-close');
+    const resourceNameEl = document.getElementById('modal-resource-name');
+    const formResourceField = document.getElementById('form-resource-field') as HTMLInputElement | null;
 
-  function openModal(resourceName: string) {
-    resourceNameEl.textContent = resourceName;
-    formResourceField.value = resourceName;
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-  }
+    if (!modal || !backdrop || !closeBtn || !resourceNameEl || !formResourceField) return;
 
-  function closeModal() {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-
-  // Open on card button click
-  document.querySelectorAll('[data-open-modal]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const resource = (btn as HTMLElement).dataset.openModal ?? '';
-      openModal(resource);
-    });
-  });
-
-  // Close on backdrop click or close button
-  backdrop.addEventListener('click', closeModal);
-  closeBtn.addEventListener('click', closeModal);
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-      closeModal();
+    function openModal(resourceName: string) {
+      resourceNameEl!.textContent = resourceName;
+      formResourceField!.value = resourceName;
+      modal!.classList.remove('hidden');
+      modal!.classList.add('flex');
+      document.body.style.overflow = 'hidden';
     }
-  });
+
+    function closeModal() {
+      modal!.classList.add('hidden');
+      modal!.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // Open on card button click
+    document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const resource = (btn as HTMLElement).dataset.openModal ?? '';
+        openModal(resource);
+      });
+    });
+
+    // Close on backdrop click or close button
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal!.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
+
+  // Run on initial load and after every View Transition navigation
+  document.addEventListener('astro:page-load', initModal);
 </script>
